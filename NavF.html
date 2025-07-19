@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bharat Arogya connects you with doctors, medicines, health awareness, government schemes, wellness tips, and DIY remedies for better health.">
+  <meta name="keywords" content="telemedicine, health awareness, government schemes, wellness, DIY remedies, Bharat Arogya, healthcare">
+  <meta name="author" content="Phantom">
+  <title>Bharat Arogya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Roboto:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #e6f0fa 0%, #e6faf5 100%);
+      scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .footer-about p, .faq-answer, .contact-details li {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .dark-mode {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+      color: #e0e0e0;
+    }
+
+    .dark-mode header,
+    .dark-mode footer,
+    .dark-mode #contact {
+      background: linear-gradient(to right, #2c3e50, #34495e);
+    }
+
+    .dark-mode .btn-primary {
+      background-color: #0056B3;
+    }
+
+    .dark-mode .btn-primary:hover {
+      background-color: #003d80;
+    }
+
+    .dark-mode .btn-secondary {
+      background-color: #218838;
+    }
+
+    .dark-mode .btn-secondary:hover {
+      background-color: #1a6d2e;
+    }
+
+    .container {
+      width: 90%;
+      max-width: clamp(1000px, 90vw, 1200px);
+      margin: auto;
+      padding: 0 clamp(10px, 2vw, 15px);
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1E90FF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.5s ease;
+    }
+
+    #preloader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader {
+      border: 5px solid #00C896;
+      border-top: 5px solid #1E90FF;
+      border-radius: 50%;
+      width: clamp(40px, 5vw, 50px);
+      height: clamp(40px, 5vw, 50px);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(to right, #1E90FF, #00C896);
+      color: #fff;
+      padding: clamp(6px, 1.5vw, 8px) 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 90%;
+      max-width: clamp(1000px, 90vw, 1200px);
+      margin: auto;
+      padding: 0 clamp(8px, 1.5vw, 10px);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo-container img {
+      width: clamp(40px, 6vw, 60px);
+      height: clamp(40px, 6vw, 60px);
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: clamp(4px, 1vw, 6px);
+    }
+
+    header h1 {
+      font-size: clamp(1.2em, 2.2vw, 1.5em);
+      font-weight: 700;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 1.5vw, 12px);
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+
+    nav ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: clamp(6px, 1vw, 10px);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-right: clamp(8px, 1.5vw, 12px);
+    }
+
+    nav ul.nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      font-weight: 500;
+      padding: clamp(3px, 0.8vw, 5px) clamp(6px, 1.2vw, 10px);
+      border-radius: 25px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s, transform 0.3s, color 0.3s, box-shadow 0.3s;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    nav ul.nav-links li a:hover,
+    nav ul.nav-links li a.active {
+      background-color: #00C896;
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0, 200, 150, 0.4);
+    }
+
+    /* Hamburger Button */
+    .hamburger {
+      font-size: clamp(1.2em, 2.5vw, 1.5em);
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: clamp(6px, 1.5vw, 8px);
+      z-index: 101;
+    }
+
+    /* Hamburger Menu */
+    .hamburger-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: clamp(200px, 50vw, 300px);
+      background: #1565C0;
+      z-index: 100;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .hamburger-menu.active {
+      display: block;
+    }
+
+    .hamburger-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(10px, 2vw, 12px);
+    }
+
+    .hamburger-menu ul li {
+      margin: clamp(4px, 1vw, 6px) 0;
+    }
+
+    .hamburger-menu ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+      font-weight: 500;
+      padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 16px);
+      border-radius: 25px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s, transform 0.3s, color 0.3s, box-shadow 0.3s;
+      display: block;
+      text-align: left;
+    }
+
+    .hamburger-menu ul li a:hover {
+      background-color: #00C896;
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0, 200, 150, 0.4);
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: clamp(4px, 1vw, 5px);
+    }
+
+    .dark-mode-toggle i {
+      font-size: clamp(0.9em, 1.8vw, 1.1em);
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .dark-mode-toggle .fa-sun {
+      display: inline;
+    }
+
+    .dark-mode-toggle .fa-moon {
+      display: none;
+    }
+
+    .dark-mode .dark-mode-toggle .fa-sun {
+      display: none;
+    }
+
+    .dark-mode .dark-mode-toggle .fa-moon {
+      display: inline;
+    }
+
+    /* Button Styles */
+    .btn {
+      display: block;
+      margin: 0 auto;
+      padding: clamp(8px, 1.5vw, 12px) clamp(14px, 2.5vw, 18px);
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      text-align: center;
+      max-width: clamp(160px, 25vw, 180px);
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      touch-action: manipulation;
+    }
+
+    .btn-primary {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056B3;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background-color: #28A745;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+    }
+
+    .telemedicine-actions .btn,
+    .medicine-card .btn {
+      font-weight: 700;
+      font-size: clamp(0.9em, 1.5vw, 1.05em);
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate-slide-in {
+      opacity: 0;
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    /* Section Backgrounds */
+    #home {
+      background: linear-gradient(to bottom, #E3F2FD, #BBDEFB);
+    }
+
+    #search {
+      background: linear-gradient(to bottom, #E8F5E9, #C8E6C9);
+    }
+
+    #awareness {
+      background: linear-gradient(to bottom, #E3F2FD, #BBDEFB);
+    }
+
+    #telemedicine {
+      background: linear-gradient(to bottom, #E8F5E9, #C8E6C9);
+    }
+
+    #gov-scheme {
+      background: linear-gradient(to bottom, #F3E5F5, #E1BEE7);
+    }
+
+    #wellness {
+      background: linear-gradient(to bottom, #E0F7FA, #B2EBF2);
+    }
+
+    #diy {
+      background: linear-gradient(to bottom, #FFF3E0, #FFE0B2);
+    }
+
+    #health-tips {
+      background: linear-gradient(to bottom, #F1F8E9, #DCEDC8);
+    }
+
+    #testimonials {
+      background: linear-gradient(to bottom, #EDE7F6, #D1C4E9);
+    }
+
+    #faq {
+      background: linear-gradient(to bottom, #E0F2F1, #B2DFDB);
+    }
+
+    .dark-mode #home,
+    .dark-mode #search,
+    .dark-mode #awareness,
+    .dark-mode #telemedicine,
+    .dark-mode #gov-scheme,
+    .dark-mode #wellness,
+    .dark-mode #diy,
+    .dark-mode #health-tips,
+    .dark-mode #testimonials,
+    .dark-mode #faq {
+      background: linear-gradient(to bottom, #37474F, #263238);
+    }
+
+    /* Slideshow in Home Section */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: clamp(250px, 45vw, 550px);
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide-content {
+      background: rgba(0, 0, 0, 0.5);
+      padding: clamp(15px, 2.5vw, 25px);
+      border-radius: 12px;
+      max-width: clamp(500px, 80vw, 700px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .slide-content h2 {
+      font-size: clamp(1.8em, 4vw, 3.2em);
+      margin-bottom: clamp(10px, 2vw, 15px);
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .slide-content p {
+      font-size: clamp(1em, 1.8vw, 1.4em);
+      margin-bottom: clamp(15px, 2.5vw, 20px);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .slideshow-dots {
+      position: absolute;
+      bottom: clamp(10px, 2vw, 15px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: clamp(6px, 1vw, 8px);
+      z-index: 10;
+    }
+
+    .dot {
+      width: clamp(10px, 1.5vw, 12px);
+      height: clamp(10px, 1.5vw, 12px);
+      background: #fff;
+      opacity: 0.5;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: opacity 0.3s, background 0.3s;
+    }
+
+    .dot.active {
+      opacity: 1;
+      background: #00C896;
+    }
+
+    /* Chatbot Button */
+    .chatbot-btn {
+      position: fixed;
+      bottom: clamp(15px, 3vw, 20px);
+      right: clamp(15px, 3vw, 20px);
+      background: linear-gradient(to right, #1E90FF, #00C896);
+      color: white;
+      width: clamp(40px, 6vw, 50px);
+      height: clamp(40px, 6vw, 50px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: clamp(14px, 2vw, 16px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 150;
+    }
+
+    .chatbot-btn i {
+      font-size: clamp(14px, 2vw, 16px);
+    }
+
+    .chatbot-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 200, 150, 0.4);
+    }
+
+    /* Appointment Button */
+    .appointment-btn {
+      position: fixed;
+      bottom: clamp(15px, 3vw, 20px);
+      left: clamp(15px, 3vw, 20px);
+      background: linear-gradient(to right, #00C896, #1E90FF);
+      color: white;
+      padding: clamp(10px, 1.8vw, 14px) clamp(12px, 2.5vw, 18px);
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 150;
+    }
+
+    .appointment-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(30, 144, 255, 0.4);
+    }
+
+    /* Search Section */
+    #search {
+      padding: clamp(15px, 4vw, 25px) 0;
+      text-align: center;
+    }
+
+    #search .search-container {
+      position: relative;
+      max-width: clamp(280px, 55vw, 450px);
+      margin: auto;
+    }
+
+    #search input {
+      width: 100%;
+      padding: clamp(8px, 1.5vw, 10px) clamp(8px, 1.5vw, 10px) clamp(8px, 1.5vw, 10px) clamp(35px, 5vw, 45px);
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .dark-mode #search input {
+      background-color: #34495e;
+      border-color: #34495e;
+      color: #e0e0e0;
+    }
+
+    #search input:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+    }
+
+    #search .search-icon {
+      position: absolute;
+      left: clamp(10px, 2vw, 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      font-size: clamp(0.9em, 1.5vw, 1.1em);
+    }
+
+    #search .search-feedback {
+      font-size: clamp(0.75em, 1.2vw, 0.85em);
+      color: #666;
+      margin-top: clamp(8px, 1.5vw, 10px);
+      display: none;
+    }
+
+    #search .search-feedback.active {
+      display: block;
+    }
+
+    /* Card Styles */
+    .awareness-card,
+    .medicine-card,
+    .wellness-card,
+    .diy-card,
+    .health-tip-card,
+    .testimonial-card {
+      background-color: #FFFFFF;
+      padding: clamp(12px, 2vw, 18px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gov-scheme-card {
+      background: #FFFFFF;
+      padding: clamp(15px, 2.5vw, 20px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border: 2px solid #e6f0fa;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dark-mode .awareness-card,
+    .dark-mode .gov-scheme-card,
+    .dark-mode .medicine-card,
+    .dark-mode .wellness-card,
+    .dark-mode .diy-card,
+    .dark-mode .health-tip-card,
+    .dark-mode .testimonial-card {
+      background: #37474F;
+    }
+
+    .dark-mode .gov-scheme-card {
+      border: 2px solid #34495e;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .awareness-card:hover,
+    .gov-scheme-card:hover,
+    .medicine-card:hover,
+    .wellness-card:hover,
+    .diy-card:hover,
+    .health-tip-card:hover,
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .gov-scheme-card:hover {
+      box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+      border-color: #28A745;
+    }
+
+    .awareness-card img,
+    .gov-scheme-card img,
+    .medicine-card img,
+    .wellness-card img,
+    .diy-card img,
+    .health-tip-card img {
+      width: 100%;
+      max-width: clamp(100px, 18vw, 140px);
+      height: auto;
+      margin-bottom: clamp(10px, 2vw, 12px);
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .gov-scheme-card img {
+      max-width: clamp(110px, 18vw, 140px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .gov-scheme-card:hover img {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    .testimonial-card img {
+      width: clamp(70px, 10vw, 90px);
+      height: clamp(70px, 10vw, 90px);
+      max-width: clamp(70px, 10vw, 90px);
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto clamp(10px, 2vw, 12px);
+    }
+
+    /* General Section Styles */
+    #awareness,
+    #gov-scheme,
+    #telemedicine,
+    #wellness,
+    #diy,
+    #contact,
+    #testimonials,
+    #faq,
+    #health-tips {
+      padding: clamp(40px, 6vw, 60px) 0;
+    }
+
+    #awareness h2,
+    #gov-scheme h2,
+    #telemedicine h2,
+    #wellness h2,
+    #diy h2,
+    #testimonials h2,
+    #faq h2,
+    #health-tips h2 {
+      text-align: center;
+      font-size: clamp(1.8em, 3.5vw, 2.5em);
+      margin-bottom: clamp(15px, 2.5vw, 20px);
+      color: #007BFF;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    #contact h2 {
+      text-align: center;
+      font-size: clamp(1.8em, 3.5vw, 2.5em);
+      margin-bottom: clamp(15px, 2.5vw, 20px);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .dark-mode h2 {
+      color: #4dabf7;
+    }
+
+    #awareness p,
+    #gov-scheme p,
+    #telemedicine p,
+    #wellness p,
+    #diy p,
+    #contact p,
+    #testimonials p,
+    #faq p,
+    #health-tips p {
+      text-align: center;
+      font-size: clamp(0.9em, 1.4vw, 1.1em);
+      margin-bottom: clamp(20px, 3vw, 30px);
+      max-width: clamp(500px, 80vw, 700px);
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .awareness-grid,
+    .medicine-grid,
+    .wellness-grid,
+    .diy-grid,
+    .health-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 28vw, 240px), 1fr));
+      gap: clamp(15px, 2.5vw, 25px);
+      text-align: center;
+    }
+
+    .gov-scheme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 30vw, 280px), 1fr));
+      gap: clamp(20px, 3vw, 30px);
+      text-align: center;
+    }
+
+    /* Telemedicine Section */
+    .telemedicine-actions {
+      display: flex;
+      justify-content: center;
+      gap: clamp(10px, 2vw, 15px);
+      margin-bottom: clamp(20px, 3vw, 30px);
+      flex-wrap: wrap;
+    }
+
+    .telemedicine-actions .btn {
+      flex: 1;
+      max-width: clamp(140px, 20vw, 160px);
+      min-width: 120px;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: linear-gradient(to right, #1E90FF, #00C896);
+      color: white;
+    }
+
+    .contact-details {
+      background: rgba(255, 255, 255, 0.1);
+      padding: clamp(15px, 2.5vw, 25px);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin: auto;
+      max-width: clamp(350px, 55vw, 550px);
+      text-align: center;
+    }
+
+    .contact-details ul {
+      list-style: none;
+      margin-bottom: clamp(15px, 2.5vw, 20px);
+    }
+
+    .contact-details li {
+      margin-bottom: clamp(10px, 1.5vw, 12px);
+      font-size: clamp(0.85em, 1.4vw, 1em);
+    }
+
+    .contact-details a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .contact-details a:hover {
+      color: #e6f0fa;
+      transform: scale(1.05);
+    }
+
+    .contact-details a i {
+      margin-right: clamp(6px, 1vw, 8px);
+      font-size: clamp(0.9em, 1.5vw, 1.1em);
+    }
+
+    /* Testimonials Section */
+    #testimonials {
+      padding: clamp(40px, 6vw, 60px) 0;
+    }
+
+    .testimonials-slideshow {
+      position: relative;
+      max-width: clamp(350px, 80vw, 550px);
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .testimonial-slide {
+      display: none;
+      text-align: center;
+      padding: clamp(12px, 2vw, 18px);
+    }
+
+    .testimonial-slide.active {
+      display: block;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .testimonial-card {
+      padding: clamp(15px, 2.5vw, 20px);
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      margin: clamp(10px, 2vw, 15px) 0;
+      font-size: clamp(0.85em, 1.4vw, 1em);
+    }
+
+    .testimonial-card h4 {
+      font-size: clamp(0.9em, 1.4vw, 1.1em);
+      color: #007BFF;
+    }
+
+    .dark-mode .testimonial-card h4 {
+      color: #4dabf7;
+    }
+
+    .testimonial-dots {
+      text-align: center;
+      margin-top: clamp(15px, 2.5vw, 20px);
+    }
+
+    .testimonial-dot {
+      display: inline-block;
+      width: clamp(10px, 1.5vw, 12px);
+      height: clamp(10px, 1.5vw, 12px);
+      background: #ccc;
+      border-radius: 50%;
+      margin: 0 clamp(4px, 1vw, 5px);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .testimonial-dot.active {
+      background: #28A745;
+    }
+
+    /* FAQ Section */
+    #faq {
+      padding: clamp(40px, 6vw, 60px) 0;
+    }
+
+    .faq-item {
+      margin-bottom: clamp(10px, 1.5vw, 15px);
+      border-bottom: 1px solid #eee;
+    }
+
+    .dark-mode .faq-item {
+      border-bottom: 1px solid #4a6076;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: clamp(8px, 1.5vw, 12px);
+      cursor: pointer;
+      font-size: clamp(0.9em, 1.4vw, 1.1em);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover {
+      color: #007BFF;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 clamp(8px, 1.5vw, 12px);
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-answer.active {
+      max-height: 200px;
+      padding: clamp(8px, 1.5vw, 12px);
+    }
+
+    .faq-toggle {
+      font-size: clamp(0.9em, 1.5vw, 1.1em);
+      transition: transform 0.3s;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .faq-toggle.active {
+      transform: rotate(45deg);
+    }
+
+    /* Health Tips Section */
+    #health-tips {
+      padding: clamp(40px, 6vw, 60px) 0;
+    }
+
+    .health-tip-card h3 {
+      font-size: clamp(1.1em, 1.8vw, 1.4em);
+      margin-bottom: clamp(8px, 1.5vw, 10px);
+      color: #007BFF;
+    }
+
+    .health-tip-card p {
+      font-size: clamp(0.85em, 1.4vw, 1em);
+    }
+
+    .gov-scheme-card h3 {
+      font-size: clamp(1.2em, 2vw, 1.5em);
+      margin-bottom: clamp(8px, 1.5vw, 10px);
+      color: #007BFF;
+      font-weight: 700;
+    }
+
+    .dark-mode .gov-scheme-card h3 {
+      color: #4dabf7;
+    }
+
+    .gov-scheme-card p {
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      color: #444;
+      margin-bottom: clamp(10px, 2vw, 12px);
+      line-height: 1.6;
+    }
+
+    .dark-mode .gov-scheme-card p {
+      color: #ccd1d9;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, #1E90FF, #00C896);
+      color: #fff;
+      padding: clamp(25px, 4vw, 35px) 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      margin-bottom: clamp(15px, 2.5vw, 20px);
+    }
+
+    .footer-about {
+      text-align: center;
+      max-width: clamp(350px, 75vw, 550px);
+      margin: auto;
+    }
+
+    .footer-about h3 {
+      font-size: clamp(1.1em, 1.8vw, 1.4em);
+      margin-bottom: clamp(8px, 1.5vw, 10px);
+    }
+
+    .footer-about p {
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      line-height: 1.6;
+    }
+
+    footer p {
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      font-weight: 300;
+    }
+
+    /* Responsive Design */
+    @media (min-width: 1600px) {
+      .container {
+        max-width: 1400px;
+      }
+
+      .logo-container img {
+        width: 80px;
+        height: 80px;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      nav ul.nav-links li a {
+        font-size: 1rem;
+        padding: 6px 12px;
+      }
+
+      .slideshow-container {
+        height: 600px;
+      }
+
+      .slide-content h2 {
+        font-size: 3.8em;
+      }
+
+      .slide-content p {
+        font-size: 1.6em;
+      }
+
+      .awareness-grid,
+      .gov-scheme-grid,
+      .medicine-grid,
+      .wellness-grid,
+      .diy-grid,
+      .health-tips-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    @media (min-width: 1200px) and (max-width: 1599px) {
+      .container {
+        max-width: 1100px;
+      }
+
+      .logo-container img {
+        width: 70px;
+        height: 70px;
+      }
+
+      header h1 {
+        font-size: 1.6em;
+      }
+
+      nav ul.nav-links li a {
+        font-size: 0.95rem;
+        padding: 5px 10px;
+      }
+
+      .slideshow-container {
+        height: 550px;
+      }
+
+      .slide-content h2 {
+        font-size: 3.5em;
+      }
+
+      .slide-content p {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        max-width: 95%;
+      }
+
+      .logo-container img {
+        width: 60px;
+        height: 60px;
+      }
+
+      header h1 {
+        font-size: 1.4em;
+      }
+
+      nav ul.nav-links li a {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+      }
+
+      .slideshow-container {
+        height: 450px;
+      }
+
+      .slide-content h2 {
+        font-size: 3em;
+      }
+
+      .slide-content p {
+        font-size: 1.4em;
+      }
+
+      .awareness-grid,
+      .gov-scheme-grid,
+      .medicine-grid,
+      .wellness-grid,
+      .diy-grid,
+      .health-tips-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 5px 0;
+      }
+
+      .header-inner {
+        padding: 0 6px;
+      }
+
+      .logo-container img {
+        width: 50px;
+        height: 50px;
+      }
+
+      header h1 {
+        font-size: 1.3em;
+      }
+
+      nav ul.nav-links {
+        display: flex;
+        gap: clamp(4px, 0.8vw, 6px);
+      }
+
+      nav ul.nav-links li a {
+        font-size: 0.8rem;
+        padding: 3px 6px;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .slideshow-container {
+        height: 350px;
+      }
+
+      .slide-content h2 {
+        font-size: 2.5em;
+      }
+
+      .slide-content p {
+        font-size: 1.2em;
+      }
+
+      .telemedicine-actions {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .telemedicine-actions .btn {
+        max-width: 180px;
+      }
+
+      .awareness-grid,
+      .gov-scheme-grid,
+      .medicine-grid,
+      .wellness-grid,
+      .diy-grid,
+      .health-tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-details {
+        max-width: 400px;
+      }
+
+      .chatbot-btn {
+        bottom: 70px;
+      }
+
+      .appointment-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 8px;
+      }
+
+      .logo-container img {
+        width: 45px;
+        height: 45px;
+      }
+
+      header h1 {
+        font-size: 1.2em;
+      }
+
+      .hamburger {
+        font-size: 1.3em;
+      }
+
+      nav ul.nav-links li a {
+        font-size: 0.75rem;
+        padding: 2px 5px;
+      }
+
+      .hamburger-menu ul li a {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+      }
+
+      .slideshow-container {
+        height: 300px;
+      }
+
+      .slide-content h2 {
+        font-size: 2.2em;
+      }
+
+      .slide-content p {
+        font-size: 1.1em;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+        max-width: 160px;
+      }
+
+      .contact-details {
+        max-width: 350px;
+        padding: 15px;
+      }
+
+      .testimonials-slideshow {
+        max-width: 350px;
+      }
+
+      .gov-scheme-card h3 {
+        font-size: 1.3em;
+      }
+
+      .gov-scheme-card p {
+        font-size: 0.9em;
+      }
+
+      .chatbot-btn,
+      .appointment-btn {
+        bottom: 15px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-container {
+        margin-bottom: 0;
+      }
+
+      .logo-container img {
+        width: 40px;
+        height: 40px;
+      }
+
+      header h1 {
+        font-size: 1.1em;
+      }
+
+      .hamburger {
+        font-size: 1.2em;
+      }
+
+      nav ul.nav-links li a {
+        font-size: 0.7rem;
+        padding: 2px 4px;
+      }
+
+      .hamburger-menu ul li a {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+
+      .slideshow-container {
+        height: 250px;
+      }
+
+      .slide-content h2 {
+        font-size: 2em;
+      }
+
+      .slide-content p {
+        font-size: 1em;
+      }
+
+      .btn {
+        padding: 6px 14px;
+        font-size: 0.85em;
+        max-width: 140px;
+      }
+
+      .contact-details {
+        max-width: 320px;
+      }
+
+      .testimonials-slideshow {
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-container">
+        <img src="ba_logo.jpeg" alt="Bharat Arogya Logo" loading="lazy">
+        <h1>Bharat Arogya</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#awareness">Awareness</a></li>
+          <li><a href="#telemedicine">Telemedicine</a></li>
+          <li><a href="#gov-scheme">Gov-Scheme</a></li>
+          <li><a href="#wellness">Wellness</a></li>
+          <li><a href="#diy">DIY</a></li>
+          <li>
+            <div class="dark-mode-toggle">
+              <i class="fas fa-sun"></i>
+              <i class="fas fa-moon"></i>
+            </div>
+          </li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle navigation menu">☰</button>
+        <div class="hamburger-menu">
+          <ul>
+            <li><a href="about_bharatarogya.html">About Us</a></li>
+            <li><a href="privacy_terms.html">Privacy and Terms</a></li>
+            <li><a href="nearby_hospitals.html">Nearby Hospitals</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Home Section with Slideshow -->
+  <section id="home" class="animate-on-scroll">
+    <div class="slideshow-container">
+      <div class="slide" style="background-image: url('aysumanbs.jpeg');">
+        <div class="slide-content">
+          <h2>Ayushman Bharat</h2>
+          <p>Free healthcare for millions of families.</p>
+          <a href="#gov-scheme" class="btn btn-secondary">Explore Schemes</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('women_emp.jpeg');">
+        <div class="slide-content">
+          <h2>Empower Women Entrepreneurs</h2>
+          <p>Support for startups and women-led businesses.</p>
+          <a href="#gov-scheme" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('slide_group.jpeg');">
+        <div class="slide-content">
+          <h2>Your Health, Our Priority</h2>
+          <p>Breathe. Heal. Evolve.</p>
+          <a href="#telemedicine" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('slidehos.jpg');">
+        <div class="slide-content">
+          <h2>Access Healthcare Anytime</h2>
+          <p>Connect with doctors and get medicines delivered.</p>
+          <a href="#telemedicine" class="btn btn-secondary">Explore Services</a>
+        </div>
+      </div>
+      <div class="slide" style="background-image: url('slidewel.jpg');">
+        <div class="slide-content">
+          <h2>Wellness at Your Fingertips</h2>
+          <p>Discover tips and remedies for a healthier life.</p>
+          <a href="#wellness" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="slideshow-dots">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Button -->
+  <a href="https://www.chatbase.co/chatbot-iframe/F4C0HcTdA-6hJUghOy67n" class="chatbot-btn" aria-label="Talk to Health Assistant">
+    <i class="fas fa-robot"></i>
+  </a>
+
+  <!-- Appointment Button -->
+  <a href="#contact" class="appointment-btn" aria-label="Book Appointment">Book Appointment</a>
+
+  <!-- Search Section -->
+  <section id="search" class="animate-on-scroll">
+    <div class="container">
+      <div class="search-container">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input type="text" id="search-input" placeholder="Search services, schemes, tips, or remedies..." aria-label="Search services" oninput="filterContent(this.value)">
+      </div>
+      <p id="search-feedback" class="search-feedback">No results found for "<span id="query"></span>". Try a different keyword.</p>
+    </div>
+  </section>
+
+  <!-- Awareness Section -->
+  <section id="awareness" class="animate-on-scroll">
+    <div class="container">
+      <h2>Health Awareness</h2>
+      <p>Stay informed about diseases, hygiene, and healthy practices.</p>
+      <div class="awareness-grid">
+        <div class="awareness-card" data-title="Disease Prevention" data-aos="zoom-in">
+          <img src="disease prevention.jpg" alt="Disease prevention tips" loading="lazy">
+          <h3>Disease Prevention</h3>
+          <p>Learn how to protect yourself from common diseases.</p>
+          <a href="https://www.cdc.gov/chronic-disease/prevention/index.html" class="btn btn-secondary">Read More</a>
+        </div>
+        <div class="awareness-card" data-title="Hygiene Tips" data-aos="zoom-in" data-aos-delay="100">
+          <img src="hygiene_tips.jpg" alt="Hygiene prevention" loading="lazy">
+          <h3>Hygiene Tips</h3>
+          <p>Best practices for personal and community hygiene.</p>
+          <a href="https://www.healthdirect.gov.au/personal-hygiene" class="btn btn-secondary">Read More</a>
+        </div>
+        <div class="awareness-card" data-title="Vaccination Awareness" data-aos="zoom-in" data-aos-delay="200">
+          <img src="vacination.png" alt="Vaccination awareness" loading="lazy">
+          <h3>Vaccination Awareness</h3>
+          <p>Understand the importance of timely vaccinations.</p>
+          <a href="https://mohfw.gov.in/press-info/7848" class="btn btn-secondary">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Telemedicine Section -->
+  <section id="telemedicine" class="animate-on-scroll">
+    <div class="container">
+      <h2>Telemedicine Services</h2>
+      <p>Access healthcare from home with consultations and medicine delivery.</p>
+      <div class="telemedicine-actions">
+        <a href="https://www.1mg.com/order-with-prescription/" class="btn btn-primary">Buy Medicines</a>
+        <a href="https://www.practo.com/consult/direct/new_consultation" class="btn btn-secondary">Online Consultation</a>
+        <a href="#contact" class="btn btn-primary">Face-to-Face Booking</a>
+      </div>
+      <div class="medicine-grid">
+        <div class="medicine-card" data-title="General Medicines" data-aos="zoom-in">
+          <img src="https://cdn4.singleinterface.com/files/enterprise/coverphoto/292681/banners-for-micro-Site-02-08-04-25-04-08-01.jpg" alt="General over-the-counter medicines" loading="lazy">
+          <h3>General Medicines</h3>
+          <p>Over-the-counter medications for common ailments.</p>
+          <a href="https://www.1mg.com/categories/over-the-counter-175" class="btn btn-secondary">Shop Now</a>
+        </div>
+        <div class="medicine-card" data-title="Prescription Drugs" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://medino.imgix.net/statmedicine_v1.png?w=800&auto=format" loading="lazy">
+          <h3>Prescription Drugs</h3>
+          <p>Order prescription medicines with ease.</p>
+          <a href="https://www.1mg.com/order-with-prescription/" class="btn btn-secondary">Shop Now</a>
+        </div>
+        <div class="medicine-card" data-title="Health Devices" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://thehealthcareinsights.com/wp-content/uploads/2020/12/Essential-medical-devices-that-should-be-available-at-your-home.jpg" alt="Health devices like BP monitors" loading="lazy">
+          <h3>Health Devices</h3>
+          <p>Monitor your health with reliable devices.</p>
+          <a href="https://www.1mg.com/categories/medical-devices-1" class="btn btn-secondary">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Government Schemes Section -->
+  <section id="gov-scheme" class="animate-on-scroll">
+    <div class="container">
+      <h2>Government Schemes</h2>
+      <p>Explore health and wellness schemes by the government.</p>
+      <div class="gov-scheme-grid">
+        <div class="gov-scheme-card" data-title="Ayushman Bharat" data-aos="zoom-in">
+          <img src="ayushl.jpeg" alt="Ayushman Bharat Scheme" loading="lazy">
+          <h3>Ayushman Bharat</h3>
+          <p>Free healthcare coverage for eligible families.</p>
+          <a href="https://pmjay.gov.in/" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="gov-scheme-card" data-title="Pradhan Mantri Surakshit Matritva" data-aos="zoom-in" data-aos-delay="100-force">
+          <img src="https://i0.wp.com/iasnext.com/wp-content/uploads/2024/02/Pradhan-Mantri-Surakshit-Matritva-Abhiyan.webp" alt="Pradhan Mantri Surakshit Matritva Abhiyan" loading="lazy">
+          <h3>Pradhan Mantri Surakshit Matritva</h3>
+          <p>Ensuring safe motherhood with free checkups.</p>
+          <a href="https://pmsma.nhp.gov.in/" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="gov-scheme-card" data-title="National Health Mission" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201908/Add_a_subheading_1_.png?VersionId=MoNEvek00g1J_WpgxJkZkiQbvUs3SVU7" alt="National Health Mission" loading="lazy">
+          <h3>Other Gov Schemes</h3>
+          <p>Strengthening healthcare services nationwide.</p>
+          <a href="https://nhm.gov.in/" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wellness Section -->
+  <section id="wellness" class="animate-on-scroll">
+    <div class="container">
+      <h2>Wellness Tips</h2>
+      <p>Adopt healthy habits for a balanced lifestyle.</p>
+      <div class="wellness-grid">
+        <div class="wellness-card" data-title="Yoga Practices" data-aos="zoom-in">
+          <img src="https://www.hindustantimes.com/ht-img/img/2023/08/29/1600x900/yoga_vs_gym_1693307158954_1693307182734.jpg" alt="Yoga practices for wellness" loading="lazy">
+          <h3>Exercise And Yoga</h3>
+          <p>Enhance flexibility and mental peace with yoga.</p>
+          <a href="https://yoga.ayush.gov.in/" class="btn btn-secondary">Explore</a>
+        </div>
+        <div class="wellness-card" data-title="Nutrition Guide" data-aos="zoom-in" data-aos-delay="100">
+          <img src="Balancedietm.jpeg" alt="Nutrition guide for healthy eating" loading="lazy">
+          <h3>Nutrition Guide</h3>
+          <p>Eat right to stay fit and energized.</p>
+          <a href="https://www.hsph.harvard.edu/nutritionsource/healthy-eating-plate/" class="btn btn-secondary">Explore</a>
+        </div>
+        <div class="wellness-card" data-title="Mental Health" data-aos="zoom-in" data-aos-delay="200">
+          <img src="mw.jpg" alt="Mental health awareness" loading="lazy">
+          <h3>Mental Health</h3>
+          <p>Tips to manage stress and boost well-being.</p>
+          <a href="https://www.nimh.nih.gov/health/topics/mental-health" class="btn btn-secondary">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIY Remedies Section -->
+  <section id="diy" class="animate-on-scroll">
+    <div class="container">
+      <h2>DIY Remedies</h2>
+      <p>Natural home remedies for common ailments.</p>
+      <div class="diy-grid">
+        <div class="diy-card" data-title="Cold Relief" data-aos="zoom-in">
+          <img src="https://zandupainrelief.com/wp-content/uploads/2024/08/Steam-Inhalation-Best-remedy-for-cold-sinus.jpg" alt="Cold relief remedy" loading="lazy">
+          <h3>Cold Relief</h3>
+          <p>Ginger tea and honey for soothing colds.</p>
+          <a href="https://www.healthline.com/health/cold-flu/tea-for-colds" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="diy-card" data-title="Skin Care" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://img.forestessentialsindia.com/blog/wp-content/uploads/2021/12/1-1.jpg" alt="DIY skin care remedy" loading="lazy">
+          <h3>Skin Care</h3>
+          <p>Aloe vera for healthy, glowing skin.</p>
+          <a href="https://www.healthline.com/health/beauty-skin-care/aloe-vera-for-face" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="diy-card" data-title="Digestive Health" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://media.istockphoto.com/id/1265549997/photo/human-body-digestive-system-anatomy.jpg?s=612x612&w=0&k=20&c=KNuxSDyLEAJ9a4bzR58xzsWNBLQt30wW_G6vPRrXC70=" alt="Digestive health remedy" loading="lazy">
+          <h3>Digestive Health</h3>
+          <p>Fennel seeds to ease digestion.</p>
+          <a href="https://www.healthline.com/nutrition/fennel-seeds#digestion" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Health Tips Section -->
+  <section id="health-tips" class="animate-on-scroll">
+    <div class="container">
+      <h2>Health Tips</h2>
+      <p>Quick tips to stay healthy and active.</p>
+      <div class="health-tips-grid">
+        <div class="health-tip-card" data-title="Stay Hydrated" data-aos="zoom-in">
+          <img src="watert.jpeg" alt="Stay hydrated tip" loading="lazy">
+          <h3>Stay Hydrated</h3>
+          <p>Drink at least 8 glasses of water daily to maintain optimal health and energy levels.</p>
+        </div>
+        <div class="health-tip-card" data-title="Regular Exercise" data-aos="zoom-in" data-aos-delay="100">
+          <img src="runmw.jpeg" alt="Regular exercise tip" loading="lazy">
+          <h3>Regular Exercise</h3>
+          <p>Engage in 30 minutes of physical activity most days to boost fitness and mood.</p>
+        </div>
+        <div class="health-tip-card" data-title="Balanced Diet" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://images.healthshots.com/healthshots/en/uploads/2024/09/27202614/Balanced-diet.jpg" alt="Balanced diet tip" loading="lazy">
+          <h3>Balanced Diet</h3>
+          <p>Include a variety of fruits, vegetables, and lean proteins for a nutrient-rich diet.</p>
+        </div>
+        <div class="health-tip-card" data-title="Adequate Sleep" data-aos="zoom-in" data-aos-delay="300">
+          <img src="slept.jpeg" alt="Adequate sleep tip" loading="lazy">
+          <h3>Adequate Sleep</h3>
+          <p>Aim for 7-8 hours of quality sleep to support physical and mental well-being.</p>
+        </div>
+        <div class="health-tip-card" data-title="Stress Management" data-aos="zoom-in" data-aos-delay="400">
+          <img src="https://t4.ftcdn.net/jpg/03/06/97/43/360_F_306974389_7iibeULOHE1Ld3EjTiYossOLXxEifkDc.jpg" alt="Stress management tip" loading="lazy">
+          <h3>Stress Management</h3>
+          <p>Practice mindfulness or meditation to reduce stress and improve focus.</p>
+        </div>
+        <div class="health-tip-card" data-title="Regular Checkups" data-aos="zoom-in" data-aos-delay="500">
+          <img src="https://www.eurokidsindia.com/blog/wp-content/uploads/2023/11/importance-of-regular-health-checkups-for-children.jpg" alt="Regular checkups tip" loading="lazy">
+          <h3>Regular Checkups</h3>
+          <p>Schedule annual health screenings to catch potential issues early.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="animate-on-scroll">
+    <div class="container">
+      <h2>What Our Users Say</h2>
+      <p>Hear from those who trust Bharat Arogya for their health needs.</p>
+      <div class="testimonials-slideshow">
+        <div class="testimonial-slide active" data-title="User Testimonial 1">
+          <div class="testimonial-card" data-aos="zoom-in">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User 1" loading="lazy">
+            <p>"Bharat Arogya made it so easy to consult a doctor from home!"</p>
+            <h4>Neha Sharma</h4>
+          </div>
+        </div>
+        <div class="testimonial-slide" data-title="User Testimonial 2">
+          <div class="testimonial-card" data-aos="zoom-in">
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User 2" loading="lazy">
+            <p>"The government scheme information was a game-changer."</p>
+            <h4>Rahul Verma</h4>
+          </div>
+        </div>
+        <div class="testimonial-slide" data-title="User Testimonial 3">
+          <div class="testimonial-card" data-aos="zoom-in">
+            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="User 3" loading="lazy">
+            <p>"I love the DIY remedies; they're simple and effective!"</p>
+            <h4>Priya Singh</h4>
+          </div>
+        </div>
+        <div class="testimonial-dots">
+          <span class="testimonial-dot active" onclick="currentTestimonial(0)"></span>
+          <span class="testimonial-dot" onclick="currentTestimonial(1)"></span>
+          <span class="testimonial-dot" onclick="currentTestimonial(2)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="animate-on-scroll">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <p>Find answers to common queries about our services各地</p>
+      <div class="faq-item" data-title="Tele Hawkins" data-aos="fade-up">
+        <div class="faq-question">
+          <span>How do I book an online consultation?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Visit our Telemedicine section, click "Online Consultation," and follow the steps to book an appointment with a doctor via our partner platform, Practo.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-title="Ayushman Bharat eligibility" data-aos="fade-up" data-aos-delay="100">
+        <div class="faq-question">
+          <span>Who is eligible for Ayushman Bharat?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Ayushman Bharat covers over 50 crore people based on socio-economic criteria. Check eligibility on the official PM-JAY website.</p>
+        </div>
+      </div>
+      <div class="faq-item" data-title="Medicine delivery" data-aos="fade-up" data-aos-delay="200">
+        <div class="faq-question">
+          <span>Can I get medicines delivered?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, order medicines through our partner, 1mg, in the Telemedicine section for home delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="animate-on-scroll">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Reach out for support or inquiries.</p>
+      <div class="contact-details" data-aos="zoom-in">
+        <ul>
+          <li><a href="mailto:support@bharatarogya.com"><i class="fas fa-envelope"></i> support@bharatarogya.com</a></li>
+          <li><a href="tel:+911234567890"><i class="fas fa-phone"></i> +91 123-456-7890</a></li>
+          <li><a href="https://facebook.com/bharatarogya"><i class="fab fa-facebook"></i> BharatArogya</a></li>
+          <li><a href="https://twitter.com/bharatarogya"><i class="fab fa-twitter"></i> @BharatArogya</a></li>
+          <li><a href="https://instagram.com/bharatarogya"><i class="fab fa-instagram"></i> @BharatArogya</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <h3>About Bharat Arogya</h3>
+          <p>Bharat Arogya is your trusted platform for healthcare services, government schemes, wellness tips, and DIY remedies, empowering you to live a healthier life.</p>
+        </div>
+      </div>
+      <p>© 2025 Bharat Arogya. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('hidden');
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 500);
+    });
+
+    // Initialize AOS
+    AOS.init({ duration: 800, once: true });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    hamburger.addEventListener('click', () => {
+      hamburgerMenu.classList.toggle('active');
+      hamburger.textContent = hamburgerMenu.classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Close hamburger menu when a link is clicked
+    const hamburgerLinks = document.querySelectorAll('.hamburger-menu a');
+    hamburgerLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerMenu.classList.remove('active');
+        hamburger.textContent = '☰';
+      });
+    });
+
+    // Slideshow
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName('slide');
+    const dots = document.getElementsByClassName('dot');
+
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+        dots[i].classList.remove('active');
+      }
+      slideIndex = slideIndex >= slides.length ? 0 : slideIndex;
+      slides[slideIndex].classList.add('active');
+      dots[slideIndex].classList.add('active');
+      slideIndex++;
+    }
+
+    function currentSlide(n) {
+      slideIndex = n;
+      showSlides();
+    }
+
+    showSlides();
+    setInterval(showSlides, 5000);
+
+    // Testimonials Slideshow
+    let testimonialIndex = 0;
+    const testimonialSlides = document.getElementsByClassName('testimonial-slide');
+    const testimonialDots = document.getElementsByClassName('testimonial-dot');
+
+    function showTestimonials() {
+      for (let i = 0; i < testimonialSlides.length; i++) {
+        testimonialSlides[i].classList.remove('active');
+        testimonialDots[i].classList.remove('active');
+      }
+      testimonialIndex = testimonialIndex >= testimonialSlides.length ? 0 : testimonialIndex;
+      testimonialSlides[testimonialIndex].classList.add('active');
+      testimonialDots[testimonialIndex].classList.add('active');
+      testimonialIndex++;
+    }
+
+    function currentTestimonial(n) {
+      testimonialIndex = n;
+      showTestimonials();
+    }
+
+    showTestimonials();
+    setInterval(showTestimonials, 7000);
+
+    // FAQ Toggle
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const toggle = question.querySelector('.faq-toggle');
+        answer.classList.toggle('active');
+        toggle.classList.toggle('active');
+      });
+    });
+
+    // Navigation Active State
+    const navLinks = document.querySelectorAll('nav ul.nav-links li a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Search Functionality
+    function filterContent(query) {
+      query = query.toLowerCase();
+      const searchFeedback = document.getElementById('search-feedback');
+      const querySpan = document.getElementById('query');
+      querySpan.textContent = query;
+      let hasResults = false;
+
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        if (section.id === 'home' || section.id === 'search') {
+          section.style.display = '';
+          return;
+        }
+        const cards = section.querySelectorAll('[data-title]');
+        let sectionHasResults = false;
+
+        cards.forEach(card => {
+          const title = card.getAttribute('data-title').toLowerCase();
+          if (title.includes(query) && query !== '') {
+            card.style.display = '';
+            sectionHasResults = true;
+            hasResults = true;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        section.style.display = sectionHasResults ? '' : 'none';
+      });
+
+      if (!hasResults && query !== '') {
+        searchFeedback.classList.add('active');
+      } else {
+        searchFeedback.classList.remove('active');
+      }
+    }
+  </script>
+</body>
+</html>

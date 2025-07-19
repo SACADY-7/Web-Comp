@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Pranix</title>
+    <!-- Font Awesome CDN for custom icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e6f0fa 0%, #f3e8ff 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(90deg, #007bff, #6b48ff);
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            background-color: #fff; /* Fallback background if image is missing */
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-title {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-title i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #e9f1ff 100%);
+            border-bottom: 1px solid #d0e0ff;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .content-block:nth-child(1) { animation-delay: 0.2s; }
+        .content-block:nth-child(2) { animation-delay: 0.4s; }
+        .content-block:nth-child(3) { animation-delay: 0.6s; }
+        .content-block:nth-child(4) { animation-delay: 0.8s; }
+
+        .content-block h2 {
+            font-size: 26px;
+            color: #007bff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-block h2 i {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #6b48ff;
+        }
+
+        .content-block p {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .content-block ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .content-block li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #444;
+        }
+
+        /* Go Back Button */
+        .go-back {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .go-back button {
+            padding: 12px 30px;
+            background-color: #6b48ff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .go-back button i {
+            margin-right: 8px;
+        }
+
+        .go-back button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #007bff, #6b48ff);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .content-block h2 {
+                font-size: 22px;
+            }
+
+            .content-block p, .content-block li {
+                font-size: 14px;
+            }
+
+            .nav-title {
+                font-size: 24px;
+            }
+
+            .nav-logo {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <!-- Attach your logo image here by replacing 'logo.png' with your image file (e.g., 'pranix-logo.png'). Ensure the image is square (e.g., 100x100 pixels) for a perfect circle. Place the image file in the same folder as this HTML file. -->
+            <img src="ba_logo.jpeg" alt="Logo" class="nav-logo">
+            <span class="nav-title"><i class="fas fa-home"></i> Bharat Arogya</span>
+        </div>
+    </nav>
+    <main>
+        <section class="hero">
+            <h1>Privacy Policy & Terms</h1>
+            <p>Your trust is our priority. Learn how we protect your data and the terms for using our services.</p>
+        </section>
+        <section class="content">
+            <div class="content-block">
+                <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+                <p>At Pranix, we are committed to safeguarding your privacy. This Privacy Policy outlines how we collect, use, store, and protect your personal and health-related information when you use our website and services.</p>
+                <ul>
+                    <li><strong>Information We Collect</strong>: We may collect personal details (e.g., name, email, contact number), health-related data (e.g., wellness preferences), and usage data (e.g., website interactions).</li>
+                    <li><strong>How We Use Your Information</strong>: Your data is used to provide personalized health resources, improve our services, communicate with you, and comply with legal obligations.</li>
+                    <li><strong>Data Security</strong>: We employ industry-standard encryption and security measures to protect your data from unauthorized access or disclosure.</li>
+                    <li><strong>Data Sharing</strong>: We do not sell your data. Data may be shared with trusted third-party collaborators (e.g., health-tech partners) only to enhance our services, with strict confidentiality agreements.</li>
+                    <li><strong>Your Rights</strong>: You have the right to access, update, or delete your personal information. Contact us at support@pranix.com to exercise these rights.</li>
+                </ul>
+                <p>For the full Privacy Policy, please contact our support team.</p>
+            </div>
+            <div class="content-block">
+                <h2><i class="fas fa-file-contract"></i> Terms and Conditions</h2>
+                <p>By using the Pranix website and services, you agree to the following terms:</p>
+                <ul>
+                    <li><strong>Eligibility</strong>: You must be at least 18 years old to use our services.</li>
+                    <li><strong>Acceptable Use</strong>: You agree not to misuse our website (e.g., uploading harmful content, attempting unauthorized access).</li>
+                    <li><strong>Content Accuracy</strong>: Our health information and resources are for informational purposes only and should not replace professional medical advice.</li>
+                    <li><strong>Termination</strong>: We reserve the right to suspend or terminate your access if you violate these terms.</li>
+                    <li><strong>Changes to Terms</strong>: We may update these terms periodically. Continued use of our services constitutes acceptance of the updated terms.</li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h2><i class="fas fa-robot"></i> Chatbot Terms</h2>
+                <p>Our Pranix chatbot provides health and wellness guidance. By using the chatbot, you agree to the following:</p>
+                <ul>
+                    <li><strong>Informational Purpose</strong>: The chatbot offers general health tips and information, not medical diagnoses or professional advice.</li>
+                    <li><strong>Data Usage</strong>: Interactions with the chatbot may be collected to improve its functionality and personalize your experience.</li>
+                    <li><strong>Limitations</strong>: The chatbot’s responses are based on algorithms and may not always be accurate. Consult a healthcare professional for medical concerns.</li>
+                    <li><strong>Privacy</strong>: Chatbot data is protected under our Privacy Policy, but you should avoid sharing sensitive personal information in chats.</li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h2><i class="fas fa-handshake"></i> Third-Party Collaborators</h2>
+                <p>Pranix collaborates with third-party partners (e.g., health-tech providers, content creators) to enhance our services. We are not responsible for any issues, errors, or damages arising from the actions, services, or content provided by these third-party collaborators. Any disputes or concerns related to third-party services should be addressed directly with the respective collaborator.</p>
+            </div>
+        </section>
+        <section class="go-back">
+            <button onclick="history.back()">Go Back</button>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Bharat Arogya All rights reserved.</p>
+    </footer>
+</body>
+</html>
