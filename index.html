@@ -1,1 +1,128 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bharat Arogya connects you with doctors, medicines, health awareness, government schemes, wellness tips, and DIY remedies for better health.">
+  <meta name="keywords" content="telemedicine, health awareness, government schemes, wellness, DIY remedies, Bharat Arogya, healthcare">
+  <meta name="author" content="Phantom">
+  <title>Bharat Arogya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Roboto:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Existing styles unchanged, adding new styles for Health Tips Generator */
+    .health-tip-container {
+      max-width: clamp(350px, 80vw, 600px);
+      margin: clamp(15px, 2.5vw, 20px) auto;
+      text-align: center;
+    }
 
+    .health-tip-btn {
+      background: linear-gradient(to right, #1E90FF, #00C896);
+      color: white;
+      padding: clamp(8px, 1.5vw, 12px) clamp(14px, 2.5vw, 18px);
+      border: none;
+      border-radius: 25px;
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .health-tip-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 200, 150, 0.4);
+    }
+
+    .health-tip-display {
+      background: rgba(255, 255, 255, 0.9);
+      padding: clamp(10px, 1.8vw, 15px);
+      border-radius: 12px;
+      margin-top: clamp(10px, 1.5vw, 12px);
+      overflow: hidden;
+      min-height: 50px;
+      font-size: clamp(0.85em, 1.4vw, 1em);
+      color: #333;
+      position: relative;
+    }
+
+    .dark-mode .health-tip-display {
+      background: rgba(55, 71, 79, 0.9);
+      color: #e0e0e0;
+    }
+
+    .health-tip-text {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 15s linear infinite;
+      padding-left: 100%;
+    }
+
+    .health-tip-text:empty {
+      display: none;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .health-tip-error {
+      color: #d32f2f;
+      font-size: clamp(0.75em, 1.2vw, 0.85em);
+      display: none;
+    }
+
+    .health-tip-error.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Existing sections unchanged, showing only Wellness section with Health Tips Generator -->
+  <section id="wellness" class="animate-on-scroll">
+    <div class="container">
+      <h2>Wellness Tips</h2>
+      <p>Adopt healthy habits for a balanced lifestyle.</p>
+      <div class="health-tip-container" data-aos="fade-up">
+        <button class="health-tip-btn" onclick="fetchHealthTip()">Get a Health Tip</button>
+        <div class="health-tip-display">
+          <span class="health-tip-text" id="health-tip-text"></span>
+        </div>
+        <p class="health-tip-error" id="health-tip-error">Unable to fetch tip. Please try again later.</p>
+      </div>
+      <div class="wellness-grid">
+        <div class="wellness-card" data-title="Yoga Practices" data-aos="zoom-in">
+          <img src="https://www.hindustantimes.com/ht-img/img/2023/08/29/1600x900/yoga_vs_gym_1693307158954_1693307182734.jpg" alt="Yoga practices for wellness" loading="lazy">
+          <h3>Exercise And Yoga</h3>
+          <p>Enhance flexibility and mental peace with yoga.</p>
+          <a href="https://yoga.ayush.gov.in/" class="btn btn-secondary">Explore</a>
+        </div>
+        <div class="wellness-card" data-title="Nutrition Guide" data-aos="zoom-in" data-aos-delay="100">
+          <img src="Balancedietm.jpeg" alt="Nutrition guide for healthy eating" loading="lazy">
+          <h3>Nutrition Guide</h3>
+          <p>Eat right to stay fit and energized.</p>
+          <a href="https://www.hsph.harvard.edu/nutritionsource/healthy-eating-plate/" class="btn btn-secondary">Explore</a>
+        </div>
+        <div class="wellness-card" data-title="Mental Health" data-aos="zoom-in" data-aos-delay="200">
+          <img src="mw.jpg" alt="Mental health awareness" loading="lazy">
+          <h3>Mental Health</h3>
+          <p>Tips to manage stress and boost well-being.</p>
+          <a href="https://www.nimh.nih.gov/health/topics/mental-health" class="btn btn-secondary">Explore</a>
+        </div>
+        <div class="wellness-card" data-title="Fresh Produce" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://www.thespruceeats.com/thmb/2Y3h5G8z0z0z0z0z0z0z0z0z0z0=/1500x1000/filters:fill(auto,1)/fresh-produce-5b5f5f5f46e0fb0037f5f5f5.jpg" alt="Fresh fruits and vegetables" loading="lazy">
+          <h3>Fresh Produce</h3>
+          <p>Order fresh fruits and vegetables for a healthy diet.</p>
+          <a href="https://www.bigbasket.com/" class="btn btn-secondary">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+```
