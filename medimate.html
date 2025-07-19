@@ -1,136 +1,996 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MediMate | Smart Health Assistant</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bharat Arogya Medical Help - Smart medical search, symptom checker, AI diagnosis, emergency tips, and first aid resources.">
+  <meta name="keywords" content="medical help, smart search, symptom checker, AI diagnosis, first aid, emergency tips, Bharat Arogya, healthcare">
+  <meta name="author" content="Phantom">
+  <title>Bharat Arogya | Medical Help</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     /* General Styles */
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #eef5f9;
-      color: #333;
     }
 
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F8FAF9;
+      color: #2D3436;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background: #1C2526;
+      color: #D3D8D6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(15px, 2vw, 20px);
+    }
+
+    h2 {
+      font-size: clamp(1.7em, 2.6vw, 2em);
+      text-align: center;
+      margin-bottom: clamp(10px, 1.5vw, 15px);
+      color: #26A69A;
+      font-weight: 600;
+    }
+
+    .dark-mode h2 {
+      color: #FF6F61;
+    }
+
+    /* Header */
     header {
-      background-color: #1c87c9;
+      background: #26A69A;
       color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
+      padding: clamp(12px, 1.8vw, 15px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* Smart Search Section */
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: clamp(6px, 0.8vw, 8px);
+    }
+
+    .logo-container img {
+      width: clamp(30px, 4vw, 40px);
+      height: auto;
+    }
+
+    .logo-container span {
+      font-size: clamp(1.1em, 1.6vw, 1.3em);
+      font-weight: 600;
+    }
+
+    nav ul.nav-links {
+      display: flex;
+      list-style: none;
+      gap: clamp(12px, 1.8vw, 15px);
+    }
+
+    nav ul.nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      transition: opacity 0.3s;
+    }
+
+    nav ul.nav-links li a:hover,
+    nav ul.nav-links li a.active {
+      opacity: 0.7;
+    }
+
+    .dark-mode-toggle {
+      cursor: pointer;
+      font-size: clamp(1em, 1.5vw, 1.2em);
+    }
+
+    .dark-mode-toggle .fa-moon {
+      display: none;
+    }
+
+    .dark-mode .dark-mode-toggle .fa-sun {
+      display: none;
+    }
+
+    .dark-mode .dark-mode-toggle .fa-moon {
+      display: inline;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: clamp(1.4em, 2.2vw, 1.6em);
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hamburger-menu {
+      display: none;
+      background: #fff;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 180px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .dark-mode .hamburger-menu {
+      background: #2E3537;
+    }
+
+    .hamburger-menu.active {
+      display: block;
+    }
+
+    .hamburger-menu ul {
+      list-style: none;
+      padding: clamp(8px, 1.2vw, 12px);
+    }
+
+    .hamburger-menu ul li {
+      margin: clamp(6px, 0.8vw, 8px) 0;
+    }
+
+    .hamburger-menu ul a {
+      color: #2D3436;
+      text-decoration: none;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+    }
+
+    .dark-mode .hamburger-menu ul a {
+      color: #D3D8D6;
+    }
+
+    @media (max-width: 768px) {
+      nav ul.nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Smart Medical Search Bar */
     #smart-search-section {
+      padding: clamp(30px, 4vw, 40px) clamp(15px, 2vw, 20px);
+      background: #F8FAF9;
       text-align: center;
-      padding: 40px 20px;
-      background: #f8f9fa;
     }
 
-    #smart-search-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #145d8f;
+    .dark-mode #smart-search-section {
+      background: #2E3537;
     }
 
-    #smart-search-section input {
-      width: 60%;
-      padding: 12px 16px;
-      font-size: 1rem;
-      border: 2px solid #ccc;
+    .smart-search-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(8px, 1.2vw, 10px);
+      max-width: clamp(450px, 75vw, 650px);
+      margin: 0 auto;
+      background: #fff;
+      padding: clamp(6px, 1vw, 8px);
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark-mode .smart-search-form {
+      background: #2E3537;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .smart-search-input {
+      flex: 1;
+      padding: clamp(10px, 1.5vw, 12px);
+      font-size: clamp(0.9em, 1.4vw, 1em);
+      border: none;
       border-radius: 10px;
       outline: none;
-      margin-right: 10px;
-      transition: border 0.3s ease;
+      background: transparent;
     }
 
-    #smart-search-section input:focus {
-      border-color: #1c87c9;
+    .smart-search-input:focus {
+      box-shadow: inset 0 0 5px rgba(38, 166, 154, 0.3);
     }
 
-    #smart-search-section button {
-      padding: 12px 20px;
-      font-size: 1rem;
-      background-color: #1c87c9;
+    .smart-search-btn {
+      padding: clamp(10px, 1.5vw, 12px) clamp(15px, 2vw, 18px);
+      font-size: clamp(0.9em, 1.4vw, 1em);
+      background: #FF6F61;
       color: white;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    #smart-search-section button:hover {
-      background-color: #145d8f;
+    .smart-search-btn:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 6px 12px rgba(255, 111, 97, 0.3);
     }
 
-    #smart-search-result {
-      margin-top: 30px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      background: white;
+    .smart-search-results {
+      max-width: clamp(450px, 75vw, 650px);
+      margin: clamp(15px, 2vw, 20px) auto;
+      background: #fff;
       border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+      padding: clamp(12px, 1.8vw, 15px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
       text-align: left;
+      display: none;
     }
 
-    #smart-search-result h3 {
-      color: #1c87c9;
+    .dark-mode .smart-search-results {
+      background: #2E3537;
+      color: #D3D8D6;
     }
 
-    footer {
-      margin-top: 60px;
-      padding: 20px;
+    .smart-search-results.active {
+      display: block;
+    }
+
+    .smart-search-results h3 {
+      font-size: clamp(1em, 1.5vw, 1.1em);
+      color: #26A69A;
+      margin-bottom: clamp(6px, 1vw, 8px);
+    }
+
+    .dark-mode .smart-search-results h3 {
+      color: #FF6F61;
+    }
+
+    .smart-search-results p {
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      color: #636E72;
+    }
+
+    .dark-mode .smart-search-results p {
+      color: #B2BEC3;
+    }
+
+    .smart-search-error {
+      color: #D63031;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
       text-align: center;
-      font-size: 0.9rem;
-      color: #666;
+      margin-top: clamp(10px, 1.5vw, 15px);
+      display: none;
+    }
+
+    .smart-search-error.active {
+      display: block;
+    }
+
+    /* Medical Help Cards */
+    #medical-help-section {
+      padding: clamp(30px, 4vw, 40px) clamp(15px, 2vw, 20px);
+    }
+
+    .medical-help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: clamp(15px, 2vw, 20px);
+    }
+
+    .medical-help-card {
+      background: #fff;
+      padding: clamp(12px, 1.8vw, 15px);
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .dark-mode .medical-help-card {
+      background: #2E3537;
+      color: #D3D8D6;
+    }
+
+    .medical-help-card:hover {
+      transform: translateY(-5px) rotate(2deg);
+      box-shadow: 0 8px 16px rgba(38, 166, 154, 0.3);
+    }
+
+    .medical-help-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: clamp(8px, 1.2vw, 10px);
+    }
+
+    .medical-help-card h3 {
+      font-size: clamp(1em, 1.5vw, 1.1em);
+      color: #26A69A;
+      margin-bottom: clamp(6px, 1vw, 8px);
+      font-weight: 600;
+    }
+
+    .dark-mode .medical-help-card h3 {
+      color: #FF6F61;
+    }
+
+    .medical-help-card p {
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      color: #636E72;
+      margin-bottom: clamp(8px, 1.2vw, 10px);
+    }
+
+    .dark-mode .medical-help-card p {
+      color: #B2BEC3;
+    }
+
+    .medical-help-card .btn {
+      background: #FF6F61;
+      color: white;
+      padding: clamp(8px, 1.2vw, 10px) clamp(12px, 1.8vw, 15px);
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .medical-help-card .btn:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 6px 12px rgba(255, 111, 97, 0.3);
+    }
+
+    /* Symptom Checker */
+    .symptom-checker-form {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(8px, 1.2vw, 10px);
+    }
+
+    .symptom-checker-input {
+      padding: clamp(8px, 1.2vw, 10px);
+      border: 2px solid #26A69A;
+      border-radius: 12px;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .symptom-checker-input:focus {
+      border-color: #FF6F61;
+      box-shadow: 0 0 6px rgba(255, 111, 97, 0.3);
+    }
+
+    .symptom-results {
+      background: #fff;
+      padding: clamp(8px, 1.2vw, 10px);
+      border-radius: 12px;
+      margin-top: clamp(8px, 1.2vw, 10px);
+      display: none;
+    }
+
+    .dark-mode .symptom-results {
+      background: #2E3537;
+      color: #D3D8D6;
+    }
+
+    .symptom-results.active {
+      display: block;
+    }
+
+    /* AI Image Upload */
+    .ai-image-upload {
+      display: none;
+    }
+
+    .ai-image-preview {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-top: clamp(8px, 1.2vw, 10px);
+      display: none;
+    }
+
+    .ai-image-preview.active {
+      display: block;
+    }
+
+    .ai-image-result {
+      background: #fff;
+      padding: clamp(8px, 1.2vw, 10px);
+      border-radius: 12px;
+      margin-top: clamp(8px, 1.2vw, 10px);
+      display: none;
+    }
+
+    .dark-mode .ai-image-result {
+      background: #2E3537;
+      color: #D3D8D6;
+    }
+
+    .ai-image-result.active {
+      display: block;
+    }
+
+    .ai-image-disclaimer {
+      font-size: clamp(0.75em, 1.1vw, 0.85em);
+      color: #636E72;
+      margin-top: clamp(5px, 0.8vw, 8px);
+      display: none;
+    }
+
+    .dark-mode .ai-image-disclaimer {
+      color: #B2BEC3;
+    }
+
+    .ai-image-disclaimer.active {
+      display: block;
+    }
+
+    .ai-image-error {
+      color: #D63031;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      margin-top: clamp(8px, 1.2vw, 10px);
+      display: none;
+    }
+
+    .ai-image-error.active {
+      display: block;
+    }
+
+    /* Medical Query Box */
+    .medical-query-form {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(8px, 1.2vw, 10px);
+    }
+
+    .medical-query-input {
+      width: 100%;
+      padding: clamp(8px, 1.2vw, 10px);
+      border: 2px solid #26A69A;
+      border-radius: 12px;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .medical-query-input:focus {
+      border-color: #FF6F61;
+      box-shadow: 0 0 6px rgba(255, 111, 97, 0.3);
+    }
+
+    .medical-query-results {
+      background: #fff;
+      padding: clamp(8px, 1.2vw, 10px);
+      border-radius: 12px;
+      margin-top: clamp(8px, 1.2vw, 10px);
+      max-height: 180px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .dark-mode .medical-query-results {
+      background: #2E3537;
+      color: #D3D8D6;
+    }
+
+    .medical-query-results.active {
+      display: block;
+    }
+
+    .medical-query-result {
+      padding: clamp(6px, 1vw, 8px);
+      border-bottom: 1px solid #ECEFF1;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+    }
+
+    .dark-mode .medical-query-result {
+      border-bottom: 1px solid #4B5557;
+    }
+
+    .medical-query-result:last-child {
+      border-bottom: none;
+    }
+
+    /* Emergency Health Tip Generator */
+    .emergency-tip-display {
+      background: #fff;
+      padding: clamp(8px, 1.2vw, 10px);
+      border-radius: 12px;
+      margin-top: clamp(8px, 1.2vw, 10px);
+      min-height: 40px;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      color: #2D3436;
+      overflow: hidden;
+      position: relative;
+      display: none;
+    }
+
+    .dark-mode .emergency-tip-display {
+      background: #2E3537;
+      color: #D3D8D6;
+    }
+
+    .emergency-tip-display.active {
+      display: block;
+    }
+
+    .emergency-tip-text {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 12s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .emergency-tip-error {
+      color: #D63031;
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      margin-top: clamp(8px, 1.2vw, 10px);
+      display: none;
+    }
+
+    .emergency-tip-error.active {
+      display: block;
+    }
+
+    /* First Aid Library Modal */
+    .first-aid-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .first-aid-modal.active {
+      display: flex;
+    }
+
+    .first-aid-modal-content {
+      background: #fff;
+      padding: clamp(15px, 2vw, 20px);
+      border-radius: 16px;
+      max-width: clamp(350px, 70vw, 550px);
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-mode .first-aid-modal-content {
+      background: #2E3537;
+      color: #D3D8D6;
+    }
+
+    .first-aid-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: clamp(1.1em, 1.6vw, 1.3em);
+      cursor: pointer;
+      color: #2D3436;
+    }
+
+    .dark-mode .first-aid-close {
+      color: #D3D8D6;
+    }
+
+    .first-aid-category {
+      margin-bottom: clamp(12px, 1.8vw, 15px);
+    }
+
+    .first-aid-category h3 {
+      font-size: clamp(1em, 1.5vw, 1.1em);
+      color: #26A69A;
+      margin-bottom: clamp(6px, 1vw, 8px);
+    }
+
+    .dark-mode .first-aid-category h3 {
+      color: #FF6F61;
+    }
+
+    .first-aid-category p {
+      font-size: clamp(0.85em, 1.3vw, 0.95em);
+      color: #636E72;
+    }
+
+    .dark-mode .first-aid-category p {
+      color: #B2BEC3;
+    }
+
+    /* Chatbot Button */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: #FF6F61;
+      color: white;
+      padding: clamp(10px, 1.5vw, 12px);
+      border-radius: 50%;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      font-size: clamp(1.1em, 1.6vw, 1.3em);
+      transition: transform 0.3s;
+    }
+
+    .chatbot-btn:hover {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    /* Footer */
+    footer {
+      background: #26A69A;
+      color: white;
+      padding: clamp(12px, 1.8vw, 15px);
+      text-align: center;
+      margin-top: clamp(30px, 4vw, 40px);
+    }
+
+    .dark-mode footer {
+      background: #FF6F61;
+    }
+
+    footer p {
+      font-size: clamp(0.8em, 1.2vw, 0.9em);
     }
   </style>
 </head>
 <body>
-
+  <!-- Header -->
   <header>
-    🤖 MediMate — Your Smart Health Assistant
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo-container">
+          <img src="ba_logo.jpeg" alt="Bharat Arogya Logo" loading="lazy">
+          <span>Bharat Arogya</span>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="medical-help.html" class="active">Medical Help</a></li>
+            <li><a href="about_bharat_arogya.html">About</a></li>
+            <li><a href="privacy_terms.html">Privacy</a></li>
+            <li><a href="map.html">MediFinder</a></li>
+            <li><div class="dark-mode-toggle" onclick="toggleDarkMode()">
+              <i class="fas fa-sun"></i>
+              <i class="fas fa-moon"></i>
+            </div></li>
+          </ul>
+          <button class="hamburger" onclick="toggleHamburgerMenu()">☰</button>
+          <div class="hamburger-menu">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="medical-help.html">Medical Help</a></li>
+              <li><a href="about_bharat_arogya.html">About</a></li>
+              <li><a href="privacy_terms.html">Privacy</a></li>
+              <li><a href="map.html">MediFinder</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <section id="smart-search-section">
-    <h2>Smart Medical Question Box</h2>
-    <input type="text" id="smart-search-input" placeholder="Ask your health-related question..." />
-    <button id="smart-search-btn">Ask</button>
-    <div id="smart-search-result"></div>
+  <!-- Smart Medical Search Bar -->
+  <section id="smart-search-section" data-aos="zoom-in">
+    <div class="container">
+      <h2>Smart Medical Search</h2>
+      <form class="smart-search-form" onsubmit="searchMedicalQuery(event)">
+        <input type="text" class="smart-search-input" id="smart-search-input" placeholder="e.g., What are the symptoms of dengue?" aria-label="Smart medical search">
+        <button type="submit" class="smart-search-btn">Ask</button>
+      </form>
+      <div class="smart-search-results" id="smart-search-results"></div>
+      <p class="smart-search-error" id="smart-search-error">Please enter a valid question.</p>
+    </div>
   </section>
 
+  <!-- Medical Help Cards -->
+  <section id="medical-help-section" data-aos="zoom-in" data-aos-delay="100">
+    <div class="container">
+      <h2>Health Tools</h2>
+      <div class="medical-help-grid">
+        <!-- Smart Symptom Checker -->
+        <div class="medical-help-card" data-title="Symptom Checker" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://www.healthdirect.gov.au/sites/default/files/styles/hero_image_large/public/2023-02/symptom-checker-hero.jpg" alt="Symptom checker" loading="lazy">
+          <h3>Smart Symptom Checker</h3>
+          <p>Enter symptoms to identify possible conditions.</p>
+          <form class="symptom-checker-form" onsubmit="checkSymptoms(event)">
+            <input type="text" class="symptom-checker-input" id="symptom-checker-input" placeholder="e.g., Fever, headache" aria-label="Symptom input">
+            <button type="submit" class="btn">Check</button>
+          </form>
+          <div class="symptom-results" id="symptom-results"></div>
+        </div>
+        <!-- Upload Image for AI Diagnosis -->
+        <div class="medical-help-card" data-title="AI Diagnosis" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://www.medicai.io/hubfs/AI%20Medical%20Imaging%20Analysis.jpg" alt="AI image diagnosis" loading="lazy">
+          <h3>AI Image Diagnosis</h3>
+          <p>Upload a photo for preliminary health insights.</p>
+          <label for="ai-image-upload" class="btn">Upload Image</label>
+          <input type="file" id="ai-image-upload" class="ai-image-upload" accept="image/*" onchange="uploadImage(event)">
+          <img src="" alt="Uploaded image preview" class="ai-image-preview" id="ai-image-preview">
+          <div class="ai-image-result" id="ai-image-result"></div>
+          <p class="ai-image-disclaimer" id="ai-image-disclaimer">Preliminary analysis only. Consult a doctor.</p>
+          <p class="ai-image-error" id="ai-image-error">Unable to analyze image. Try again.</p>
+        </div>
+        <!-- Medical Query Box -->
+        <div class="medical-help-card" data-title="Medical Query" data-aos="zoom-in" data-aos-delay="400">
+          <img src="https://www.healthline.com/hlcmsresource/images/AN_images/medical-questions-1200x628.jpg" alt="Medical query box" loading="lazy">
+          <h3>Medical Query Box</h3>
+          <p>Quick answers to medical FAQs and emergencies.</p>
+          <form class="medical-query-form" onsubmit="searchMedicalFAQ(event)">
+            <input type="text" class="medical-query-input" id="medical-query-input" placeholder="e.g., How to stop a nosebleed?" aria-label="Medical query input">
+            <button type="submit" class="btn">Ask</button>
+          </form>
+          <div class="medical-query-results" id="medical-query-results"></div>
+        </div>
+        <!-- Emergency Health Tip Generator -->
+        <div class="medical-help-card" data-title="Emergency Tips" data-aos="zoom-in" data-aos-delay="500">
+          <img src="https://www.redcross.org/content/dam/redcross/get-help/images/First-Aid-Tips.jpg" alt="Emergency health tips" loading="lazy">
+          <h3>Emergency Health Tips</h3>
+          <p>Get instant tips for health emergencies.</p>
+          <button class="btn emergency-tip-btn" onclick="fetchEmergencyTip()">Get Tip</button>
+          <div class="emergency-tip-display" id="emergency-tip-display">
+            <span class="emergency-tip-text" id="emergency-tip-text"></span>
+          </div>
+          <p class="emergency-tip-error" id="emergency-tip-error">Unable to fetch tip. Try again.</p>
+        </div>
+        <!-- First Aid Library -->
+        <div class="medical-help-card" data-title="First Aid Library" data-aos="zoom-in" data-aos-delay="600">
+          <img src="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/10/45/ds00069_-ds00570_-ds00929_im00109_fakitthu_jpg.jpg" alt="First aid library" loading="lazy">
+          <h3>First Aid Library</h3>
+          <p>Guides for cuts, burns, fainting, and more.</p>
+          <button class="btn" onclick="openFirstAidModal()">Open Library</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- First Aid Library Modal -->
+  <div class="first-aid-modal" id="first-aid-modal">
+    <div class="first-aid-modal-content">
+      <span class="first-aid-close" onclick="closeFirstAidModal()">×</span>
+      <h2>First Aid Library</h2>
+      <div class="first-aid-category">
+        <h3>Cuts & Wounds</h3>
+        <p>Clean with water, apply pressure to stop bleeding, and cover with a sterile bandage.</p>
+      </div>
+      <div class="first-aid-category">
+        <h3>Burns</h3>
+        <p>Cool under running water for 10-15 minutes, then cover with a clean cloth.</p>
+      </div>
+      <div class="first-aid-category">
+        <h3>Fainting</h3>
+        <p>Lay the person on their back and elevate legs to improve blood flow.</p>
+      </div>
+      <div class="first-aid-category">
+        <h3>Heatstroke</h3>
+        <p>Move to a cool area, apply cool water to skin, and hydrate with water.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot Button -->
+  <a href="https://www.chatbase.co/chatbot-iframe/F4C0HcTdA-6hJUghOy67n" class="chatbot-btn" aria-label="Talk to Health Assistant">
+    <i class="fas fa-robot"></i>
+  </a>
+
+  <!-- Footer -->
   <footer>
-    &copy; 2025 MediMate by S.N. Astra | For educational & health awareness use only.
+    <div class="container">
+      <p>© 2025 Bharat Arogya | For educational & health awareness use only.</p>
+    </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    const searchBtn = document.getElementById('smart-search-btn');
-    const searchInput = document.getElementById('smart-search-input');
-    const resultContainer = document.getElementById('smart-search-result');
+    // Initialize AOS
+    AOS.init({ duration: 600, once: true });
 
-    searchBtn.addEventListener('click', async () => {
-      const query = searchInput.value.trim();
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Hamburger Menu Toggle
+    function toggleHamburgerMenu() {
+      document.querySelector('.hamburger-menu').classList.toggle('active');
+    }
+
+    // Smart Medical Search
+    async function searchMedicalQuery(event) {
+      event.preventDefault();
+      const input = document.getElementById('smart-search-input');
+      const results = document.getElementById('smart-search-results');
+      const error = document.getElementById('smart-search-error');
+      const query = input.value.trim();
+
+      results.classList.remove('active');
+      error.classList.remove('active');
+
       if (!query) {
-        resultContainer.innerHTML = "<p>Please enter a question.</p>";
+        error.classList.add('active');
         return;
       }
 
-      resultContainer.innerHTML = "<p><em>Processing your query...</em></p>";
+      results.innerHTML = '<p><em>Processing your query...</em></p>';
+      results.classList.add('active');
 
+      // Mock API response
       setTimeout(() => {
-        resultContainer.innerHTML = `
-          <h3>AI Suggestion</h3>
-          <p>For <strong>"${query}"</strong>: Stay calm, move to a shaded area, drink water slowly, and call medical help if needed.</p>
+        const mockResponses = {
+          'what are the symptoms of dengue?': 'Dengue symptoms include high fever, severe headache, pain behind the eyes, joint and muscle pain, rash, and mild bleeding (e.g., nosebleeds). Consult a doctor for diagnosis.',
+          'what to do during a nosebleed?': 'Sit upright, lean forward slightly, pinch your nostrils shut for 10-15 minutes, and avoid tilting your head back. Seek medical help if bleeding persists.'
+        };
+        const response = mockResponses[query.toLowerCase()] || 'No specific information available. Try asking about symptoms or emergency actions.';
+        results.innerHTML = `
+          <h3>AI Response</h3>
+          <p><strong>${query}</strong>: ${response}</p>
         `;
-      }, 1500);
-    });
-  </script>
+      }, 1000);
+    }
 
+    // Symptom Checker
+    async function checkSymptoms(event) {
+      event.preventDefault();
+      const input = document.getElementById('symptom-checker-input');
+      const results = document.getElementById('symptom-results');
+      const query = input.value.trim();
+
+      results.classList.remove('active');
+
+      if (!query) {
+        results.innerHTML = '<p>Please enter symptoms.</p>';
+        results.classList.add('active');
+        return;
+      }
+
+      results.innerHTML = '<p><em>Analyzing symptoms...</em></p>';
+      results.classList.add('active');
+
+      // Mock symptom analysis
+      setTimeout(() => {
+        const mockSymptoms = {
+          'fever, headache': 'Possible conditions: Common cold, flu, or dengue. Monitor symptoms and consult a doctor for accurate diagnosis.',
+          'chest pain, shortness of breath': 'Possible conditions: Anxiety, heart-related issues, or respiratory infection. Seek immediate medical attention.'
+        };
+        const response = mockSymptoms[query.toLowerCase()] || 'No specific conditions found. List symptoms clearly and consult a doctor.';
+        results.innerHTML = `
+          <h3>Possible Conditions</h3>
+          <p><strong>${query}</strong>: ${response}</p>
+        `;
+      }, 1000);
+    }
+
+    // AI Image Upload
+    function uploadImage(event) {
+      const file = event.target.files[0];
+      const preview = document.getElementById('ai-image-preview');
+      const result = document.getElementById('ai-image-result');
+      const disclaimer = document.getElementById('ai-image-disclaimer');
+      const error = document.getElementById('ai-image-error');
+
+      preview.classList.remove('active');
+      result.classList.remove('active');
+      disclaimer.classList.remove('active');
+      error.classList.remove('active');
+
+      if (!file) {
+        error.classList.add('active');
+        return;
+      }
+
+      // Preview image
+      const reader = new FileReader();
+      reader.onload = () => {
+        preview.src = reader.result;
+        preview.classList.add('active');
+      };
+      reader.readAsDataURL(file);
+
+      // Mock AI analysis
+      result.innerHTML = '<p><em>Analyzing image...</em></p>';
+      result.classList.add('active');
+      setTimeout(() => {
+        result.innerHTML = `
+          <h3>AI Analysis</h3>
+          <p>Preliminary scan suggests a possible skin rash. Consult a dermatologist for professional diagnosis.</p>
+        `;
+        disclaimer.classList.add('active');
+      }, 1500);
+    }
+
+    // Medical Query Box
+    async function searchMedicalFAQ(event) {
+      event.preventDefault();
+      const input = document.getElementById('medical-query-input');
+      const results = document.getElementById('medical-query-results');
+      const query = input.value.trim();
+
+      results.classList.remove('active');
+
+      if (!query) {
+        results.innerHTML = '<p>Please enter a question.</p>';
+        results.classList.add('active');
+        return;
+      }
+
+      results.innerHTML = '<p><em>Fetching answer...</em></p>';
+      results.classList.add('active');
+
+      // Mock FAQ response
+      setTimeout(() => {
+        const mockFAQs = {
+          'how to stop a nosebleed?': 'Sit upright, lean forward slightly, pinch your nostrils shut for 10-15 minutes, and avoid tilting your head back.',
+          'what to do for a minor burn?': 'Cool the burn under running water for 10-15 minutes, then cover with a clean, dry cloth.'
+        };
+        const response = mockFAQs[query.toLowerCase()] || 'No specific FAQ found. Try a different question or use the Smart Search.';
+        results.innerHTML = `
+          <div class="medical-query-result">
+            <h3>Answer</h3>
+            <p><strong>${query}</strong>: ${response}</p>
+          </div>
+        `;
+      }, 1000);
+    }
+
+    // Emergency Health Tip Generator
+    function fetchEmergencyTip() {
+      const display = document.getElementById('emergency-tip-display');
+      const text = document.getElementById('emergency-tip-text');
+      const error = document.getElementById('emergency-tip-error');
+
+      display.classList.remove('active');
+      error.classList.remove('active');
+
+      const tips = [
+        'Drink water every 30 minutes in heatstroke-prone areas.',
+        'If someone faints, lay them on their back and raise their legs.',
+        'For minor cuts, clean with water and apply a sterile bandage.',
+        'In case of choking, perform the Heimlich maneuver if trained.'
+      ];
+
+      const randomTip = tips[Math.floor(Math.random() * tips.length)];
+      text.textContent = randomTip;
+      display.classList.add('active');
+    }
+
+    // First Aid Library Modal
+    function openFirstAidModal() {
+      document.getElementById('first-aid-modal').classList.add('active');
+    }
+
+    function closeFirstAidModal() {
+      document.getElementById('first-aid-modal').classList.remove('active');
+    }
+  </script>
 </body>
 </html>
