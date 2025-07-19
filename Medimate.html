@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medi-Mate | Health Helper</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fc;
+      color: #333;
+    }
+    header {
+      background: #0d6efd;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #0d6efd;
+    }
+    textarea, input, select, button {
+      padding: 0.8rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #0d6efd;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0b5ed7;
+    }
+    .output-box {
+      background: #e9f2ff;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+    }
+    footer {
+      background: #0d6efd;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Medi-Mate: Your Health Assistant</h1>
+    <p>Quick Diagnosis, Emergency Help & Wellness Tips</p>
+  </header>
+
+  <!-- Symptom Checker -->
+  <section id="symptom-checker">
+    <h2><i class="fas fa-stethoscope"></i> Symptom Checker</h2>
+    <p>Describe your symptoms, and get a possible diagnosis instantly.</p>
+    <textarea id="symptomInput" placeholder="e.g. I have headache and sore throat..."></textarea>
+    <button onclick="checkSymptoms()">Check Symptoms</button>
+    <div class="output-box" id="symptomResult"></div>
+  </section>
+
+  <!-- Emergency First Aid -->
+  <section id="first-aid">
+    <h2><i class="fas fa-briefcase-medical"></i> Emergency First Aid</h2>
+    <select id="emergencySelect">
+      <option value="">-- Select Emergency --</option>
+      <option value="heatstroke">Heat Stroke</option>
+      <option value="burn">Burns</option>
+      <option value="cut">Cuts & Bleeding</option>
+      <option value="faint">Fainting</option>
+    </select>
+    <button onclick="showEmergencyHelp()">Get Help</button>
+    <div class="output-box" id="emergencyHelp"></div>
+  </section>
+
+  <!-- Mental Health Support -->
+  <section id="mental-health">
+    <h2><i class="fas fa-brain"></i> Mental Wellness Check</h2>
+    <p>If you're feeling low or anxious, here's something to help.</p>
+    <button onclick="getMentalHealthTip()">I'm Feeling Low</button>
+    <div class="output-box" id="mentalTip"></div>
+  </section>
+
+  <!-- Chatbot Integration -->
+  <section id="chatbot-section">
+    <h2><i class="fas fa-comments"></i> Ask Anything!</h2>
+    <p>You can also ask your queries directly to our chatbot below.</p>
+    <!-- Embed your existing chatbot here -->
+    <div id="chatbot">
+      <!-- Paste your existing chatbot embed code here -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Medi-Mate | Designed by S.N. Astra</p>
+  </footer>
+
+  <script>
+    function checkSymptoms() {
+      const input = document.getElementById("symptomInput").value.toLowerCase();
+      let result = "";
+      if (input.includes("fever") && input.includes("body ache")) {
+        result = "Possible conditions: Flu, Dengue, or Viral Infection. Please consult a doctor if it persists.";
+      } else if (input.includes("headache") && input.includes("nausea")) {
+        result = "Possible conditions: Migraine or dehydration. Try resting and drinking fluids.";
+      } else {
+        result = "We couldn’t find a direct match. Please describe in more detail or consult a doctor.";
+      }
+      document.getElementById("symptomResult").innerText = result;
+    }
+
+    function showEmergencyHelp() {
+      const val = document.getElementById("emergencySelect").value;
+      let tip = "";
+      switch(val) {
+        case "heatstroke":
+          tip = "Move the person to a cooler place, apply cool cloths, and give small sips of water.";
+          break;
+        case "burn":
+          tip = "Cool the burn with running water, cover with a clean cloth, avoid applying creams.";
+          break;
+        case "cut":
+          tip = "Apply pressure to stop bleeding, clean with water, and cover with sterile bandage.";
+          break;
+        case "faint":
+          tip = "Lay the person flat, elevate legs, loosen tight clothing, and ensure air circulation.";
+          break;
+        default:
+          tip = "Please select a valid emergency.";
+      }
+      document.getElementById("emergencyHelp").innerText = tip;
+    }
+
+    function getMentalHealthTip() {
+      const tips = [
+        "Take a few deep breaths and count backwards from 10.",
+        "Go for a short walk and listen to calm music.",
+        "Drink a glass of water and stretch your body.",
+        "Write down your thoughts and try journaling.",
+        "Try a quick 5-minute meditation on YouTube."
+      ];
+      const tip = tips[Math.floor(Math.random() * tips.length)];
+      document.getElementById("mentalTip").innerText = tip;
+    }
+  </script>
+</body>
+</html>
