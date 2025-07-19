@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediMate | Smart Health Assistant</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eef5f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #1c87c9;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Smart Search Section */
+    #smart-search-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f8f9fa;
+    }
+
+    #smart-search-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #145d8f;
+    }
+
+    #smart-search-section input {
+      width: 60%;
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      margin-right: 10px;
+      transition: border 0.3s ease;
+    }
+
+    #smart-search-section input:focus {
+      border-color: #1c87c9;
+    }
+
+    #smart-search-section button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #1c87c9;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #smart-search-section button:hover {
+      background-color: #145d8f;
+    }
+
+    #smart-search-result {
+      margin-top: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    #smart-search-result h3 {
+      color: #1c87c9;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🤖 MediMate — Your Smart Health Assistant
+  </header>
+
+  <section id="smart-search-section">
+    <h2>Smart Medical Question Box</h2>
+    <input type="text" id="smart-search-input" placeholder="Ask your health-related question..." />
+    <button id="smart-search-btn">Ask</button>
+    <div id="smart-search-result"></div>
+  </section>
+
+  <footer>
+    &copy; 2025 MediMate by S.N. Astra | For educational & health awareness use only.
+  </footer>
+
+  <script>
+    const searchBtn = document.getElementById('smart-search-btn');
+    const searchInput = document.getElementById('smart-search-input');
+    const resultContainer = document.getElementById('smart-search-result');
+
+    searchBtn.addEventListener('click', async () => {
+      const query = searchInput.value.trim();
+      if (!query) {
+        resultContainer.innerHTML = "<p>Please enter a question.</p>";
+        return;
+      }
+
+      resultContainer.innerHTML = "<p><em>Processing your query...</em></p>";
+
+      setTimeout(() => {
+        resultContainer.innerHTML = `
+          <h3>AI Suggestion</h3>
+          <p>For <strong>"${query}"</strong>: Stay calm, move to a shaded area, drink water slowly, and call medical help if needed.</p>
+        `;
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
