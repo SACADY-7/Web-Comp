@@ -114,7 +114,7 @@
         }
         .hamburger-menu ul li { margin: clamp(6px, 0.8vw, 8px) 0; }
         .hamburger-menu ul a, .hamburger-menu ul button {
-            color: var(--text-light);
+            color: var(--text-dark);
             text-decoration: none;
             font-size: clamp(0.8em, 1.2vw, 0.9em);
             background: none;
@@ -131,6 +131,7 @@
             color: white;
             padding: clamp(30px, 4vw, 40px) clamp(15px, 2vw, 20px);
             text-align: center;
+            margin-bottom: clamp(30px, 4vw, 40px);
         }
         .hero-section h1 {
             font-size: clamp(1.7em, 2.6vw, 2em);
@@ -144,8 +145,12 @@
         .feature-section {
             padding: clamp(30px, 4vw, 40px) clamp(15px, 2vw, 20px);
             background: var(--bg-light);
+            margin-bottom: clamp(30px, 4vw, 40px);
         }
         .dark-mode .feature-section { background: var(--bg-dark); }
+        .feature-section .col-md-6 { margin-bottom: clamp(30px, 4vw, 40px); }
+        .feature-section .col-12 { margin-bottom: clamp(30px, 4vw, 40px); }
+        .feature-section .col-12:last-child { margin-bottom: 0; }
         .card {
             border: none;
             border-radius: 16px;
@@ -251,6 +256,10 @@
             border-color: var(--accent);
             box-shadow: 0 0 6px rgba(255,111,97,0.3);
         }
+        .form-text {
+            color: var(--text-light);
+        }
+        .dark-mode .form-text { color: var(--text-dark); }
         .result {
             background: #eceff1;
             padding: 15px;
@@ -298,6 +307,10 @@
             padding: 15px;
         }
         .dark-mode .chat-window { background: var(--card-bg-dark); }
+        #chatMessages p { color: var(--text-light); }
+        .dark-mode #chatMessages p { color: var(--text-dark); }
+        #chatInput { color: var(--text-light); }
+        .dark-mode #chatInput { color: var(--text-dark); }
         .back-to-top {
             position: fixed;
             bottom: 15px;
@@ -323,10 +336,16 @@
             padding: 20px;
             text-align: center;
             color: var(--text-light);
+            margin-bottom: clamp(30px, 4vw, 40px);
         }
         .dark-mode .disclaimer {
             background: #4a5568;
             color: var(--text-dark);
+        }
+        .disclaimer p { color: var(--text-light); }
+        .dark-mode .disclaimer p { color: var(--text-dark); }
+        footer {
+            margin-bottom: clamp(30px, 4vw, 40px);
         }
         .speech-btn {
             cursor: pointer;
@@ -343,6 +362,7 @@
             .hero-section h1 { font-size: clamp(1.5em, 2.2vw, 1.8em); }
             .search-bar { max-width: 90%; }
             .feature-section { padding: clamp(20px, 3vw, 30px) clamp(10px, 1.5vw, 15px); }
+            .feature-section .col-md-6 { margin-bottom: clamp(20px, 3vw, 25px); }
             .card { margin-bottom: 30px; }
             .chat-window { width: 90%; right: 5%; }
             nav ul.nav-links { display: none; }
