@@ -291,26 +291,12 @@
             cursor: pointer;
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
             transition: transform 0.3s;
+            z-index: 1000;
+            text-decoration: none;
         }
         .chat-bot:hover {
             transform: scale(1.1) rotate(2deg);
         }
-        .chat-window {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 15px;
-            width: 300px;
-            background: var(--card-bg-light);
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            padding: 15px;
-        }
-        .dark-mode .chat-window { background: var(--card-bg-dark); }
-        #chatMessages p { color: var(--text-light); }
-        .dark-mode #chatMessages p { color: var(--text-dark); }
-        #chatInput { color: var(--text-light); }
-        .dark-mode #chatInput { color: var(--text-dark); }
         .back-to-top {
             position: fixed;
             bottom: 15px;
@@ -364,14 +350,6 @@
             .feature-section { padding: clamp(20px, 3vw, 30px) clamp(10px, 1.5vw, 15px); }
             .feature-section .col-md-6 { margin-bottom: clamp(20px, 3vw, 25px); }
             .card { margin-bottom: 30px; }
-            .chat-window { width: 90%; right: 5%; }
-            nav ul.nav-links { display: none; }
-            .hamburger { display: block; }
-            .navbar-btn {
-                font-size: clamp(0.75em, 1.1vw, 0.85em);
-                padding: clamp(4px, 0.6vw, 6px) clamp(8px, 1.2vw, 10px);
-            }
-            .carousel-item { min-height: 120px; background-size: 40px; }
         }
     </style>
 </head>
@@ -618,21 +596,10 @@
         </div>
     </footer>
 
-    <!-- Live Chat Bot -->
-    <div class="chat-bot" id="chatBotToggle" aria-label="Open chat bot">
+    <!-- Chat Bot Button -->
+    <a href="https://www.chatbase.co/chatbot-iframe/F4C0HcTdA-6hJUghOy67n" class="chat-bot" target="_blank" aria-label="Open AI health assistant in new tab">
         <i class="fas fa-robot"></i>
-    </div>
-    <div class="chat-window" id="chatWindow">
-        <div class="chat-header">
-            <h5>Medi-Mate Chat</h5>
-            <button class="btn-close" id="chatClose" aria-label="Close chat"></button>
-        </div>
-        <div id="chatMessages" style="height: 200px; overflow-y: auto; padding: 10px;"></div>
-        <div class="input-group mt-2">
-            <input type="text" class="form-control" id="chatInput" placeholder="Ask a health question..." aria-label="Chat input">
-            <button class="btn btn-success" type="button" onclick="sendChat()">Send</button>
-        </div>
-    </div>
+    </a>
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></a>
@@ -750,30 +717,6 @@
                 loading.style.display = 'none';
                 result.innerHTML = `<p>Preliminary scan suggests a possible skin rash. Consult a dermatologist for professional diagnosis.</p>`;
             }, 1500);
-        }
-
-        // Chat Bot Toggle
-        function toggleChat() {
-            const chatWindow = document.getElementById('chatWindow');
-            chatWindow.style.display = chatWindow.style.display === 'block' ? 'none' : 'block';
-        }
-        document.getElementById('chatBotToggle').addEventListener('click', toggleChat);
-        document.getElementById('chatClose').addEventListener('click', () => {
-            document.getElementById('chatWindow').style.display = 'none';
-        });
-
-        async function sendChat() {
-            const message = document.getElementById('chatInput').value.trim();
-            const chatMessages = document.getElementById('chatMessages');
-            if (!message) return;
-            chatMessages.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            document.getElementById('chatInput').value = '';
-            // Simulate API call
-            setTimeout(() => {
-                chatMessages.innerHTML += `<p><strong>Medi-Mate:</strong> ${message} (AI response: Consult a doctor for accurate diagnosis)</p>`;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000);
         }
 
         // Back to Top Button Visibility
