@@ -29,7 +29,7 @@
         header {
             background: var(--primary);
             color: white;
-            padding: clamp(12px, 1.8vw, 15px);
+            padding: clamp(0.75rem, 1.8vw, 1rem);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -44,25 +44,25 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: clamp(6px, 0.8vw, 8px);
+            gap: clamp(0.4rem, 0.8vw, 0.5rem);
         }
         .logo-container img {
-            width: clamp(30px, 4vw, 40px);
+            width: clamp(1.8rem, 4vw, 2.5rem);
         }
         .logo-container span {
-            font-size: clamp(1.1em, 1.6vw, 1.3em);
+            font-size: clamp(0.9rem, 1.6vw, 1.1rem);
             font-weight: 600;
         }
         nav ul.nav-links {
             display: flex;
             list-style: none;
-            gap: clamp(12px, 1.8vw, 15px);
+            gap: clamp(0.8rem, 1.8vw, 1rem);
             align-items: center;
         }
         nav ul.nav-links li a {
             color: white;
             text-decoration: none;
-            font-size: clamp(0.85em, 1.3vw, 0.95em);
+            font-size: clamp(0.75rem, 1.3vw, 0.85rem);
             transition: opacity 0.3s;
         }
         nav ul.nav-links li a:hover,
@@ -70,8 +70,8 @@
             opacity: 0.7;
         }
         .navbar-btn {
-            font-size: clamp(0.8em, 1.2vw, 0.9em);
-            padding: clamp(5px, 0.8vw, 7px) clamp(10px, 1.5vw, 12px);
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+            padding: clamp(0.3rem, 0.8vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.8rem);
             border-radius: 8px;
             color: white;
             border: none;
@@ -84,11 +84,11 @@
         .btn-success { background: var(--accent); }
         .dark-mode-toggle {
             cursor: pointer;
-            font-size: clamp(1em, 1.5vw, 1.2em);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
         .hamburger {
             display: none;
-            font-size: clamp(1.4em, 2.2vw, 1.6em);
+            font-size: clamp(1.2rem, 2.2vw, 1.4rem);
             color: white;
             background: none;
             border: none;
@@ -110,13 +110,13 @@
         .hamburger-menu.active { display: block; }
         .hamburger-menu ul {
             list-style: none;
-            padding: clamp(8px, 1.2vw, 12px);
+            padding: clamp(0.5rem, 1.2vw, 0.75rem);
         }
-        .hamburger-menu ul li { margin: clamp(6px, 0.8vw, 8px) 0; }
+        .hamburger-menu ul li { margin: clamp(0.4rem, 0.8vw, 0.5rem) 0; }
         .hamburger-menu ul a, .hamburger-menu ul button {
-            color: var(--text-dark);
+            color: var(--text-light);
             text-decoration: none;
-            font-size: clamp(0.8em, 1.2vw, 0.9em);
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
             background: none;
             border: none;
         }
@@ -124,32 +124,39 @@
         .hamburger-menu .button-group {
             display: flex;
             flex-wrap: wrap;
-            gap: clamp(6px, 0.8vw, 8px);
+            gap: clamp(0.4rem, 0.8vw, 0.5rem);
         }
         .hero-section {
             background: linear-gradient(135deg, var(--primary), #4dd0e1);
-            color: white;
-            padding: clamp(30px, 4vw, 40px) clamp(15px, 2vw, 20px);
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(0.8rem, 2vw, 1.25rem);
             text-align: center;
-            margin-bottom: clamp(30px, 4vw, 40px);
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
         }
         .hero-section h1 {
-            font-size: clamp(1.7em, 2.6vw, 2em);
+            color: white;
+            font-size: clamp(1.5rem, 2.6vw, 1.8rem);
             font-weight: 600;
-            margin-bottom: clamp(10px, 1.5vw, 15px);
+            margin-bottom: clamp(0.6rem, 1.5vw, 0.9rem);
+        }
+        .hero-section p {
+            color: white;
+            font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+        }
+        .dark-mode .hero-section p {
+            color: var(--text-dark);
         }
         .search-bar {
-            max-width: clamp(450px, 75vw, 650px);
+            max-width: clamp(20rem, 75vw, 40rem);
             margin: 0 auto;
         }
         .feature-section {
-            padding: clamp(30px, 4vw, 40px) clamp(15px, 2vw, 20px);
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(0.8rem, 2vw, 1.25rem);
             background: var(--bg-light);
-            margin-bottom: clamp(30px, 4vw, 40px);
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
         }
         .dark-mode .feature-section { background: var(--bg-dark); }
-        .feature-section .col-md-6 { margin-bottom: clamp(30px, 4vw, 40px); }
-        .feature-section .col-12 { margin-bottom: clamp(30px, 4vw, 40px); }
+        .feature-section .col-md-6 { margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+        .feature-section .col-12 { margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
         .feature-section .col-12:last-child { margin-bottom: 0; }
         .card {
             border: none;
@@ -166,63 +173,82 @@
         .card-title {
             color: var(--primary);
             font-weight: 600;
-            font-size: clamp(1em, 1.5vw, 1.1em);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
         .dark-mode .card-title { color: var(--accent); }
+        .card-body p {
+            color: var(--text-light);
+            font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+        }
+        .dark-mode .card-body p { color: var(--text-dark); }
         .card img {
             max-width: 100%;
             height: auto;
             border-radius: 12px;
-            margin-bottom: clamp(8px, 1.2vw, 10px);
+            margin-bottom: clamp(0.5rem, 1.2vw, 0.6rem);
         }
         .tips-carousel {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 12px;
-            padding: 20px;
+            background: var(--card-bg-light);
+            border-radius: 16px;
+            padding: clamp(1rem, 2vw, 1.5rem);
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
-        .dark-mode .tips-carousel { background: linear-gradient(135deg, #2d3748, #4a5568); }
+        .dark-mode .tips-carousel { background: var(--card-bg-dark); }
         .carousel-item {
-            background: rgba(255,255,255,0.9);
-            border-radius: 8px;
-            padding: 15px;
-            min-height: 150px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            min-height: clamp(8rem, 20vw, 10rem);
             display: flex;
             align-items: center;
             justify-content: center;
-            background-size: 50px;
-            background-repeat: no-repeat;
-            background-position: 10px center;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0.7;
         }
-        .carousel-item:nth-child(1) { background-image: url('https://img.icons8.com/ios/50/000000/heart-health.png'); }
-        .carousel-item:nth-child(2) { background-image: url('https://img.icons8.com/ios/50/000000/water.png'); }
-        .carousel-item:nth-child(3) { background-image: url('https://img.icons8.com/ios/50/000000/emergency-exit.png'); }
-        .carousel-item:nth-child(4) { background-image: url('https://img.icons8.com/ios/50/000000/bandage.png'); }
-        .carousel-item:nth-child(5) { background-image: url('https://img.icons8.com/ios/50/000000/heart-monitor.png'); }
-        .dark-mode .carousel-item { background: rgba(45,55,72,0.9); }
-        .carousel-item p {
-            font-size: clamp(0.9em, 1.4vw, 1em);
-            font-weight: 600;
-            color: var(--text-light);
-            margin: 0;
-            text-align: center;
+        .carousel-item.active {
+            opacity: 1;
+            transform: scale(1.02);
         }
-        .dark-mode .carousel-item p { color: var(--text-dark); }
-        .carousel-control-prev, .carousel-control-next {
-            width: 8%;
-            background: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            height: 40px;
+        .carousel-item:hover {
+            transform: scale(1.02);
+        }
+        .carousel-item i {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: white;
+            position: absolute;
+            left: 1rem;
             top: 50%;
             transform: translateY(-50%);
         }
-        .carousel-control-prev-icon, .carousel-control-next-icon { background-size: 50%; }
-        .carousel-control-prev:hover, .carousel-control-next:hover { background: rgba(0,0,0,0.7); }
+        .carousel-item p {
+            font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+            font-weight: 600;
+            color: white;
+            margin: 0 1rem 0 clamp(3rem, 6vw, 4rem);
+            text-align: left;
+        }
+        .carousel-control-prev, .carousel-control-next {
+            width: 10%;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            height: clamp(2rem, 5vw, 2.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            transition: background 0.3s;
+        }
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            background: rgba(0,0,0,0.7);
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-size: 60%;
+        }
         .btn-primary {
             background: var(--primary);
             border: none;
             border-radius: 8px;
-            padding: clamp(8px, 1.2vw, 10px) clamp(12px, 1.8vw, 15px);
+            padding: clamp(0.5rem, 1.2vw, 0.6rem) clamp(0.8rem, 1.8vw, 1rem);
             color: white;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -234,7 +260,7 @@
             background: var(--accent);
             border: none;
             border-radius: 8px;
-            padding: clamp(8px, 1.2vw, 10px) clamp(12px, 1.8vw, 15px);
+            padding: clamp(0.5rem, 1.2vw, 0.6rem) clamp(0.8rem, 1.8vw, 1rem);
             color: white;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -242,49 +268,97 @@
             transform: scale(1.05) rotate(2deg);
             box-shadow: 0 6px 12px rgba(255,111,97,0.3);
         }
-        .form-control {
+        .btn-outline-secondary {
+            border-color: var(--primary);
+            color: var(--primary);
+            border-radius: 8px;
+            padding: clamp(0.5rem, 1.2vw, 0.6rem) clamp(0.8rem, 1.8vw, 1rem);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .dark-mode .btn-outline-secondary {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .btn-outline-secondary:hover {
+            transform: scale(1.05);
+            background: var(--primary);
+            color: white;
+        }
+        .dark-mode .btn-outline-secondary:hover {
+            background: var(--accent);
+        }
+        .form-control, select.form-control {
             border-radius: 8px;
             border: 2px solid var(--primary);
-            font-size: clamp(0.85em, 1.3vw, 0.95em);
+            font-size: clamp(0.75rem, 1.3vw, 0.85rem);
         }
-        .dark-mode .form-control {
+        .dark-mode .form-control, .dark-mode select.form-control {
             border-color: #4a5568;
             background: #2d3748;
             color: var(--text-dark);
         }
-        .form-control:focus {
+        .form-control:focus, select.form-control:focus {
             border-color: var(--accent);
             box-shadow: 0 0 6px rgba(255,111,97,0.3);
         }
         .form-text {
             color: var(--text-light);
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
         }
         .dark-mode .form-text { color: var(--text-dark); }
         .result {
             background: #eceff1;
-            padding: 15px;
+            padding: clamp(0.8rem, 2vw, 1rem);
             border-radius: 12px;
             min-height: 50px;
+            color: var(--text-light);
         }
-        .dark-mode .result { background: #4a5568; }
+        .dark-mode .result {
+            background: #4a5568;
+            color: var(--text-dark);
+        }
+        .result p {
+            margin: 0;
+            font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+        }
         .loading {
             display: none;
             text-align: center;
-            padding: 10px;
+            padding: clamp(0.5rem, 1.2vw, 0.6rem);
         }
         .spinner-border {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: clamp(1rem, 2vw, 1.2rem);
+            height: clamp(1rem, 2vw, 1.2rem);
+        }
+        .image-dropzone {
+            border: 2px dashed var(--primary);
+            border-radius: 8px;
+            padding: clamp(0.8rem, 2vw, 1rem);
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .image-dropzone:hover, .image-dropzone.dragover {
+            border-color: var(--accent);
+        }
+        .dark-mode .image-dropzone {
+            border-color: #4a5568;
+        }
+        .image-dropzone p {
+            color: var(--text-light);
+        }
+        .dark-mode .image-dropzone p {
+            color: var(--text-dark);
         }
         .chat-bot {
             position: fixed;
-            bottom: 15px;
-            right: 15px;
+            bottom: clamp(0.8rem, 2vw, 1rem);
+            right: clamp(0.8rem, 2vw, 1rem);
             background: var(--accent);
             color: white;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: clamp(2.5rem, 6vw, 3rem);
+            height: clamp(2.5rem, 6vw, 3rem);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -297,15 +371,18 @@
         .chat-bot:hover {
             transform: scale(1.1) rotate(2deg);
         }
+        .chat-bot i {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
         .back-to-top {
             position: fixed;
-            bottom: 15px;
-            right: 75px;
+            bottom: clamp(0.8rem, 2vw, 1rem);
+            right: clamp(4rem, 8vw, 5rem);
             background: var(--primary);
             color: white;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: clamp(2.5rem, 6vw, 3rem);
+            height: clamp(2.5rem, 6vw, 3rem);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -319,23 +396,29 @@
         }
         .disclaimer {
             background: #ffebee;
-            padding: 20px;
+            padding: clamp(1rem, 2vw, 1.5rem);
             text-align: center;
-            color: var(--text-light);
-            margin-bottom: clamp(30px, 4vw, 40px);
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
         }
         .dark-mode .disclaimer {
             background: #4a5568;
-            color: var(--text-dark);
         }
-        .disclaimer p { color: var(--text-light); }
+        .disclaimer p {
+            color: var(--text-light);
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+        }
         .dark-mode .disclaimer p { color: var(--text-dark); }
         footer {
-            margin-bottom: clamp(30px, 4vw, 40px);
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
         }
+        footer p {
+            color: var(--text-light);
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+        }
+        .dark-mode footer p { color: var(--text-dark); }
         .speech-btn {
             cursor: pointer;
-            margin-left: clamp(6px, 1vw, 8px);
+            margin-left: clamp(0.4rem, 1vw, 0.5rem);
         }
         .modal-content {
             border-radius: 16px;
@@ -344,12 +427,40 @@
             background: var(--card-bg-dark);
             color: var(--text-dark);
         }
+        .modal-body p {
+            color: var(--text-light);
+        }
+        .dark-mode .modal-body p { color: var(--text-dark); }
+        .health-news .card {
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
+        }
+        @media (max-width: 576px) {
+            .hero-section h1 { font-size: clamp(1.2rem, 2.2vw, 1.5rem); }
+            .hero-section p { font-size: clamp(0.7rem, 1.3vw, 0.8rem); }
+            .search-bar { max-width: 95%; }
+            .feature-section { padding: clamp(1rem, 3vw, 1.5rem) clamp(0.5rem, 1.5vw, 0.8rem); }
+            .feature-section .col-md-6 { margin-bottom: clamp(1rem, 3vw, 1.5rem); }
+            .card { margin-bottom: clamp(1rem, 3vw, 1.5rem); }
+            .carousel-item { min-height: clamp(6rem, 18vw, 8rem); }
+            .carousel-item i { font-size: clamp(1.2rem, 3.5vw, 1.5rem); }
+            .carousel-item p { font-size: clamp(0.7rem, 1.3vw, 0.8rem); margin-left: clamp(2.5rem, 5vw, 3rem); }
+        }
         @media (max-width: 768px) {
-            .hero-section h1 { font-size: clamp(1.5em, 2.2vw, 1.8em); }
+            .nav-links { display: none; }
+            .hamburger { display: block; }
             .search-bar { max-width: 90%; }
-            .feature-section { padding: clamp(20px, 3vw, 30px) clamp(10px, 1.5vw, 15px); }
-            .feature-section .col-md-6 { margin-bottom: clamp(20px, 3vw, 25px); }
-            .card { margin-bottom: 30px; }
+            .card-title { font-size: clamp(0.8rem, 1.4vw, 0.9rem); }
+            .card-body p { font-size: clamp(0.7rem, 1.3vw, 0.8rem); }
+        }
+        @media (min-width: 1200px) {
+            .hero-section h1 { font-size: clamp(1.8rem, 2.8vw, 2rem); }
+            .hero-section p { font-size: clamp(0.9rem, 1.5vw, 1rem); }
+            .search-bar { max-width: clamp(30rem, 50vw, 45rem); }
+            .feature-section { padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 2.5vw, 1.5rem); }
+            .card-title { font-size: clamp(1rem, 1.6vw, 1.2rem); }
+            .carousel-item { min-height: clamp(10rem, 15vw, 12rem); }
+            .carousel-item i { font-size: clamp(2rem, 4.5vw, 2.5rem); }
+            .carousel-item p { font-size: clamp(0.9rem, 1.5vw, 1rem); }
         }
     </style>
 </head>
@@ -424,11 +535,12 @@
             <p>Instant AI-powered answers for emergencies, symptoms, and health guidance.</p>
             <div class="search-bar">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="smartSearch" placeholder="e.g., What are the symptoms of dengue?" aria-label="Smart Medical Search" aria-describedby="smartSearchBtn">
-                    <button class="btn btn-primary speech-btn" type="button" id="smartSpeechBtn" aria-label="Speech input">
+                    <input type="text" class="form-control" id="smartSearch" placeholder="Ask about fever, chest pain, or first aid" aria-label="Smart Medical Search" aria-describedby="smartSearchBtn">
+                    <button class="btn btn-primary speech-btn" type="button" id="smartSpeechBtn" aria-label="Speak your question" data-bs-toggle="tooltip" title="Click to speak">
                         <i class="fas fa-microphone"></i>
                     </button>
                     <button class="btn btn-success" type="button" id="smartSearchBtn" onclick="smartSearch()">Ask</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="document.getElementById('smartSearch').value = ''; document.getElementById('smartSearchResult').innerHTML = '';" aria-label="Clear search">Clear</button>
                 </div>
                 <div id="smartSearchResult" class="result mt-3"></div>
                 <div id="smartSearchLoading" class="loading">
@@ -449,18 +561,31 @@
                     <div class="card-body">
                         <img src="https://www.healthdirect.gov.au/sites/default/files/styles/hero_image_large/public/2023-02/symptom-checker-hero.jpg" alt="Symptom checker" loading="lazy">
                         <h3 class="card-title">Smart Symptom Checker</h3>
-                        <p>Enter symptoms to identify possible conditions.</p>
+                        <p>Enter or select symptoms to identify possible conditions.</p>
                         <form id="symptomForm">
+                            <div class="mb-3">
+                                <select class="form-control" id="commonSymptoms" aria-describedby="symptomsHelp">
+                                    <option value="">Select common symptoms (optional)</option>
+                                    <option value="Fever">Fever</option>
+                                    <option value="Headache">Headache</option>
+                                    <option value="Chest pain">Chest pain</option>
+                                    <option value="Shortness of breath">Shortness of breath</option>
+                                    <option value="Rash">Rash</option>
+                                </select>
+                            </div>
                             <div class="mb-3">
                                 <div class="input-group">
                                     <textarea class="form-control" id="symptoms" rows="4" placeholder="e.g., Fever, headache" aria-describedby="symptomsHelp"></textarea>
-                                    <button class="btn btn-primary speech-btn" type="button" id="symptomSpeechBtn" aria-label="Speech input for symptoms">
+                                    <button class="btn btn-primary speech-btn" type="button" id="symptomSpeechBtn" aria-label="Speak your symptoms" data-bs-toggle="tooltip" title="Click to speak">
                                         <i class="fas fa-microphone"></i>
                                     </button>
                                 </div>
                                 <div id="symptomsHelp" class="form-text">Provide detailed symptoms for accurate analysis.</div>
                             </div>
-                            <button type="button" class="btn btn-success" onclick="checkSymptoms()">Check</button>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-success" onclick="checkSymptoms()">Check</button>
+                                <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('commonSymptoms').value = ''; document.getElementById('symptoms').value = ''; document.getElementById('symptomResult').innerHTML = '';" aria-label="Clear symptoms">Clear</button>
+                            </div>
                         </form>
                         <div id="symptomResult" class="result mt-3"></div>
                         <div id="symptomLoading" class="loading">
@@ -478,11 +603,17 @@
                     <div class="card-body">
                         <img src="https://www.medicai.io/hubfs/AI%20Medical%20Imaging%20Analysis.jpg" alt="AI image diagnosis" loading="lazy">
                         <h3 class="card-title">AI Image Diagnosis</h3>
-                        <p>Upload a photo for preliminary health insights.</p>
-                        <input type="file" class="form-control" id="medicalImage" accept="image/*" aria-describedby="imageHelp">
+                        <p>Upload or drag-and-drop a photo for preliminary health insights.</p>
+                        <div class="image-dropzone" id="imageDropzone" aria-describedby="imageHelp">
+                            <p>Drag & drop an image here or click to upload</p>
+                            <input type="file" class="form-control d-none" id="medicalImage" accept="image/*">
+                        </div>
                         <div id="imageHelp" class="form-text">Upload an image of a rash, wound, or prescription.</div>
                         <img src="" alt="Uploaded image preview" class="img-fluid rounded mt-2 d-none" id="imagePreview">
-                        <button class="btn btn-success mt-2" onclick="analyzeImage()">Analyze</button>
+                        <div class="d-flex gap-2 mt-2">
+                            <button class="btn btn-success" onclick="analyzeImage()">Analyze</button>
+                            <button class="btn btn-outline-secondary" onclick="document.getElementById('medicalImage').value = ''; document.getElementById('imagePreview').classList.add('d-none'); document.getElementById('imageResult').innerHTML = '';" aria-label="Clear image">Clear</button>
+                        </div>
                         <div id="imageResult" class="result mt-3"></div>
                         <div id="imageLoading" class="loading">
                             <div class="spinner-border text-success" role="status">
@@ -498,21 +629,26 @@
                 <div class="card tips-carousel">
                     <div class="card-body">
                         <h3 class="card-title">Emergency Health Tips</h3>
-                        <div id="tipsCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div id="tipsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false">
                             <div class="carousel-inner">
-                                <div class="carousel-item active" data-aos="fade-right">
+                                <div class="carousel-item active">
+                                    <i class="fas fa-heartbeat"></i>
                                     <p><strong>Stay Calm:</strong> In any emergency, remain calm to assess the situation effectively.</p>
                                 </div>
-                                <div class="carousel-item" data-aos="fade-right">
+                                <div class="carousel-item">
+                                    <i class="fas fa-tint"></i>
                                     <p><strong>Hydration:</strong> Drink water every 30 minutes in heatstroke-prone areas.</p>
                                 </div>
-                                <div class="carousel-item" data-aos="fade-right">
+                                <div class="carousel-item">
+                                    <i class="fas fa-exclamation-triangle"></i>
                                     <p><strong>Choking:</strong> Perform the Heimlich maneuver if trained, or call emergency services immediately.</p>
                                 </div>
-                                <div class="carousel-item" data-aos="fade-right">
+                                <div class="carousel-item">
+                                    <i class="fas fa-band-aid"></i>
                                     <p><strong>Bleeding:</strong> For minor cuts, clean with water and apply a sterile bandage.</p>
                                 </div>
-                                <div class="carousel-item" data-aos="fade-right">
+                                <div class="carousel-item">
+                                    <i class="fas fa-procedures"></i>
                                     <p><strong>CPR:</strong> If someone faints, lay them on their back and raise their legs.</p>
                                 </div>
                             </div>
@@ -534,8 +670,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">First Aid Library</h3>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="firstAidSearch" placeholder="Search first aid topics (e.g., burns, cuts)" aria-label="Search first aid topics">
+                            <button class="btn btn-primary" type="button" onclick="searchFirstAid()">Search</button>
+                            <button class="btn btn-outline-secondary" type="button" onclick="document.getElementById('firstAidSearch').value = ''; searchFirstAid();" aria-label="Clear search">Clear</button>
+                        </div>
+                        <div id="firstAidResults" class="row">
+                            <div class="col-md-4 mb-3 first-aid-item" data-title="Cuts & Wounds">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Cuts & Wounds</h5>
@@ -543,7 +684,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 first-aid-item" data-title="Burns">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Burns</h5>
@@ -551,7 +692,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 first-aid-item" data-title="Fainting">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Fainting</h5>
@@ -559,7 +700,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 first-aid-item" data-title="Heatstroke">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Heatstroke</h5>
@@ -567,11 +708,46 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 first-aid-item" data-title="Heart Attack">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Heart Attack</h5>
                                         <p>Call emergency services immediately. Have the person sit down and rest. Administer aspirin if advised.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health News Section -->
+            <div class="col-12 health-news" data-aos="zoom-in" data-aos-delay="600">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Health News</h3>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dengue Cases Rise</h5>
+                                        <p>Health officials report a surge in dengue cases. Use mosquito repellent and eliminate standing water.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">New Flu Vaccine</h5>
+                                        <p>A new flu vaccine shows promising results in trials. Consult your doctor for vaccination schedules.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Mental Health Awareness</h5>
+                                        <p>October is Mental Health Awareness Month. Reach out to local support groups for resources.</p>
                                     </div>
                                 </div>
                             </div>
@@ -608,7 +784,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Initialize AOS
-        AOS.init({ duration: 600, once: true });
+        AOS.init({ duration: 600, once: true, easing: 'ease-out' });
+
+        // Initialize Bootstrap Tooltips
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(element => {
+            new bootstrap.Tooltip(element);
+        });
 
         // Dark Mode Toggle
         function toggleDarkMode() {
@@ -644,7 +825,8 @@
         document.getElementById('symptomSpeechBtn').addEventListener('click', () => {
             recognition.start();
             recognition.onresult = (event) => {
-                document.getElementById('symptoms').value = event.results[0][0].transcript;
+                const symptomsInput = document.getElementById('symptoms');
+                symptomsInput.value = (symptomsInput.value ? symptomsInput.value + ', ' : '') + event.results[0][0].transcript;
             };
         });
 
@@ -659,12 +841,14 @@
             }
             resultDiv.innerHTML = '';
             loadingDiv.style.display = 'block';
-            // Mock API response (replace with xAI API at https://x.ai/api)
+            // Mock API response
             setTimeout(() => {
                 loadingDiv.style.display = 'none';
                 const mockResponses = {
                     'what are the symptoms of dengue?': 'Dengue symptoms include high fever, severe headache, pain behind the eyes, joint and muscle pain, rash, and mild bleeding (e.g., nosebleeds). Consult a doctor for diagnosis.',
-                    'what to do during a nosebleed?': 'Sit upright, lean forward slightly, pinch your nostrils shut for 10-15 minutes, and avoid tilting your head back. Seek medical help if bleeding persists.'
+                    'what to do during a nosebleed?': 'Sit upright, lean forward slightly, pinch your nostrils shut for 10-15 minutes, and avoid tilting your head back. Seek medical help if bleeding persists.',
+                    'what is a heart attack?': 'A heart attack occurs when blood flow to the heart is blocked, causing chest pain, shortness of breath, and nausea. Call emergency services immediately.',
+                    'how to treat a burn?': 'Cool the burn under running water for 10-15 minutes, cover with a clean cloth, and avoid applying ice directly.'
                 };
                 const response = mockResponses[query.toLowerCase()] || 'No specific information available. Try asking about symptoms or emergency actions.';
                 resultDiv.innerHTML = `<p><strong>${query}</strong>: ${response}</p>`;
@@ -673,11 +857,13 @@
 
         // Symptom Checker
         async function checkSymptoms() {
+            const commonSymptoms = document.getElementById('commonSymptoms').value;
             const symptoms = document.getElementById('symptoms').value.trim();
+            const combinedSymptoms = (commonSymptoms && symptoms) ? `${commonSymptoms}, ${symptoms}` : (commonSymptoms || symptoms);
             const resultDiv = document.getElementById('symptomResult');
             const loadingDiv = document.getElementById('symptomLoading');
-            if (!symptoms) {
-                resultDiv.innerHTML = '<p class="text-danger">Please enter symptoms.</p>';
+            if (!combinedSymptoms) {
+                resultDiv.innerHTML = '<p class="text-danger">Please enter or select symptoms.</p>';
                 return;
             }
             resultDiv.innerHTML = '';
@@ -687,10 +873,13 @@
                 loadingDiv.style.display = 'none';
                 const mockSymptoms = {
                     'fever, headache': 'Possible conditions: Common cold, flu, or dengue. Monitor symptoms and consult a doctor for accurate diagnosis.',
-                    'chest pain, shortness of breath': 'Possible conditions: Anxiety, heart-related issues, or respiratory infection. Seek immediate medical attention.'
+                    'chest pain, shortness of breath': 'Possible conditions: Anxiety, heart-related issues, or respiratory infection. Seek immediate medical attention.',
+                    'rash, fever': 'Possible conditions: Measles, allergic reaction, or viral infection. Consult a dermatologist or doctor.',
+                    'fever': 'Possible conditions: Viral infection, flu, or dengue. Monitor temperature and consult a doctor if persistent.',
+                    'headache': 'Possible conditions: Tension headache, migraine, or dehydration. Rest and hydrate; consult a doctor if severe.'
                 };
-                const response = mockSymptoms[symptoms.toLowerCase()] || 'No specific conditions found. List symptoms clearly and consult a doctor.';
-                resultDiv.innerHTML = `<p><strong>${symptoms}</strong>: ${response}</p>`;
+                const response = mockSymptoms[combinedSymptoms.toLowerCase()] || 'No specific conditions found. List symptoms clearly and consult a doctor.';
+                resultDiv.innerHTML = `<p><strong>${combinedSymptoms}</strong>: ${response}</p>`;
             }, 1000);
         }
 
@@ -710,6 +899,8 @@
             reader.onload = () => {
                 preview.src = reader.result;
                 preview.classList.remove('d-none');
+                preview.classList.add('loading');
+                setTimeout(() => preview.classList.remove('loading'), 500);
             };
             reader.readAsDataURL(file);
             // Mock AI analysis
@@ -717,6 +908,33 @@
                 loading.style.display = 'none';
                 result.innerHTML = `<p>Preliminary scan suggests a possible skin rash. Consult a dermatologist for professional diagnosis.</p>`;
             }, 1500);
+        }
+
+        // Image Drag-and-Drop
+        const dropzone = document.getElementById('imageDropzone');
+        const fileInput = document.getElementById('medicalImage');
+        dropzone.addEventListener('click', () => fileInput.click());
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            analyzeImage();
+        });
+        fileInput.addEventListener('change', analyzeImage);
+
+        // First Aid Search
+        function searchFirstAid() {
+            const query = document.getElementById('firstAidSearch').value.trim().toLowerCase();
+            const items = document.querySelectorAll('.first-aid-item');
+            items.forEach(item => {
+                const title = item.getAttribute('data-title').toLowerCase();
+                item.style.display = query ? title.includes(query) ? 'block' : 'none' : 'block';
+            });
         }
 
         // Back to Top Button Visibility
