@@ -186,12 +186,13 @@
       border: none;
       font-size: clamp(0.75rem, 1.2vw, 0.9rem);
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
     #google_translate_element select:hover {
       background: #00C896;
       transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0, 200, 150, 0.4);
     }
 
     .dark-mode #google_translate_element select {
@@ -207,6 +208,14 @@
       cursor: pointer;
       padding: clamp(6px, 1.5vw, 8px);
       z-index: 101;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hamburger:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 2px 8px rgba(0, 200, 150, 0.4);
     }
 
     .hamburger-menu {
