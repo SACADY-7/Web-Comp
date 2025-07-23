@@ -7,251 +7,381 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #26A69A; /* Teal */
             --accent: #FF6F61; /* Coral */
-            --bg-light: #F8FAFC; /* Light background */
-            --bg-dark: #1A202C; /* Dark background */
-            --text-light: #1A202C; /* Dark text */
-            --text-dark: #E2E8F0; /* Light text */
+            --bg-light: #F9FBFD; /* Softer light background */
+            --bg-dark: #1F2A44; /* Richer dark background */
+            --text-light: #1F2A44; /* Dark text */
+            --text-dark: #E5E7EB; /* Light text */
             --card-bg-light: #FFFFFF;
-            --card-bg-dark: #2D3748;
+            --card-bg-dark: #2F3A5F;
             --navbar-bg-light: #E6F0FA;
             --navbar-bg-dark: #2A3444;
+            --gradient-primary: linear-gradient(135deg, #26A69A, #4DD0E1);
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.2);
         }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg-light);
             color: var(--text-light);
             transition: all 0.3s ease;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1rem;
         }
+
         body.dark-mode {
             background: var(--bg-dark);
             color: var(--text-dark);
         }
+
         header {
             background: var(--navbar-bg-light);
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
         }
+
         .dark-mode header {
             background: var(--navbar-bg-dark);
         }
+
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--primary) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+
         .dark-mode .navbar-brand {
             color: var(--accent) !important;
         }
+
         .navbar-nav .nav-link {
             color: var(--text-light);
             font-weight: 500;
-            margin: 0 1.2rem;
-            transition: color 0.3s;
+            margin: 0 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+            position: relative;
         }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
         .dark-mode .navbar-nav .nav-link {
             color: var(--text-dark);
         }
+
+        .dark-mode .navbar-nav .nav-link:hover {
+            color: var(--accent);
+        }
+
         .navbar-btn {
-            font-size: 0.9rem;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.4rem;
+            border-radius: 10px;
             border: none;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            font-weight: 500;
         }
+
         .navbar-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
         }
+
         .btn-primary {
             background: var(--primary);
             color: white;
         }
+
         .btn-success {
             background: var(--accent);
             color: white;
         }
+
         #google_translate_element select {
-            font-size: 0.9rem;
-            border-radius: 8px;
-            padding: 0.5rem;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            padding: 0.6rem;
             background: var(--card-bg-light);
             color: var(--text-light);
-            border: 1px solid var(--primary);
+            border: 2px solid var(--primary);
+            transition: border-color 0.3s, background 0.3s;
         }
+
         .dark-mode #google_translate_element select {
             background: var(--card-bg-dark);
             color: var(--text-dark);
-            border: 1px solid var(--accent);
+            border: 2px solid var(--accent);
         }
+
         .dark-mode-toggle {
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--primary);
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
+
+        .dark-mode-toggle:hover {
+            transform: rotate(20deg);
+        }
+
         .dark-mode .dark-mode-toggle {
             color: var(--accent);
         }
+
         .hero-section {
-            background: linear-gradient(135deg, var(--primary), #4dd0e1);
-            padding: 4rem 1.5rem;
+            background: var(--gradient-primary);
+            padding: 5rem 1.5rem;
             text-align: center;
             color: white;
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+            opacity: 0.3;
+        }
+
         .hero-section h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
         }
+
         .hero-section p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .search-bar {
+            font-size: 1.4rem;
             max-width: 700px;
-            margin: 2rem auto;
+            margin: 0 auto;
+            position: relative;
         }
+
+        .search-bar {
+            max-width: 800px;
+            margin: 2.5rem auto;
+        }
+
+        .search-bar .form-control {
+            border-radius: 12px 0 0 12px;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+        }
+
+        .search-bar .btn {
+            border-radius: 0 12px 12px 0;
+            padding: 0.8rem 1.5rem;
+        }
+
         .feature-section {
-            padding: 4rem 1.5rem;
+            padding: 5rem 1.5rem;
+            background: var(--bg-light);
         }
+
         .dark-mode .feature-section {
             background: var(--bg-dark);
         }
+
         .card {
             border: none;
-            border-radius: 12px;
+            border-radius: 16px;
             background: var(--card-bg-light);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
         }
+
         .dark-mode .card {
             background: var(--card-bg-dark);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
         }
+
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
+
         .card-title {
             color: var(--primary);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 600;
+            margin-bottom: 1rem;
         }
+
         .dark-mode .card-title {
             color: var(--accent);
         }
+
         .form-control {
-            border-radius: 8px;
+            border-radius: 10px;
             border: 2px solid var(--primary);
-            font-size: 0.9rem;
-            transition: border-color 0.3s;
+            font-size: 0.95rem;
+            padding: 0.75rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
+
+        .form-control:focus {
+            box-shadow: 0 0 8px rgba(38, 166, 154, 0.3);
+            border-color: var(--primary);
+        }
+
         .dark-mode .form-control {
             border-color: var(--accent);
-            background: #2d3748;
+            background: var(--card-bg-dark);
             color: var(--text-dark);
         }
+
+        .dark-mode .form-control:focus {
+            box-shadow: 0 0 8px rgba(255, 111, 97, 0.3);
+            border-color: var(--accent);
+        }
+
         .btn-primary, .btn-success {
-            border-radius: 8px;
-            padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
+            border-radius: 10px;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .btn-primary:hover, .btn-success:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
         }
+
         .image-dropzone {
             border: 2px dashed var(--primary);
-            border-radius: 8px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 2rem;
             text-align: center;
             cursor: pointer;
             background: var(--card-bg-light);
+            transition: background 0.3s, border-color 0.3s;
         }
+
+        .image-dropzone:hover {
+            background: rgba(38, 166, 154, 0.1);
+        }
+
         .dark-mode .image-dropzone {
             border-color: var(--accent);
             background: var(--card-bg-dark);
         }
+
+        .dark-mode .image-dropzone:hover {
+            background: rgba(255, 111, 97, 0.1);
+        }
+
         .chat-bot, .back-to-top {
             position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
+            bottom: 2rem;
+            right: 2rem;
             background: var(--accent);
             color: white;
             border-radius: 50%;
-            width: 3.5rem;
-            height: 3.5rem;
+            width: 4rem;
+            height: 4rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, background 0.3s;
             z-index: 1000;
             text-decoration: none;
         }
+
         .back-to-top {
-            right: 6rem;
+            right: 7rem;
             background: var(--primary);
             opacity: 0;
         }
+
         .back-to-top.show {
             opacity: 1;
         }
+
         .chat-bot:hover, .back-to-top:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
+
         .disclaimer {
-            background: #FFF5F5;
-            padding: 2rem;
+            background: rgba(255, 245, 245, 0.8);
+            padding: 2.5rem;
             text-align: center;
-            border-radius: 12px;
-            margin: 2rem 1.5rem;
+            border-radius: 16px;
+            margin: 3rem 1.5rem;
+            box-shadow: var(--shadow);
         }
+
         .dark-mode .disclaimer {
-            background: #4a5568;
+            background: rgba(74, 85, 104, 0.8);
             color: var(--text-dark);
         }
+
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 1.5rem;
             color: var(--text-light);
+            background: var(--navbar-bg-light);
         }
+
         .dark-mode footer {
             color: var(--text-dark);
+            background: var(--navbar-bg-dark);
         }
+
         @media (max-width: 768px) {
             .hero-section h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             .hero-section p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+            }
+            .navbar-btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1.2rem;
+            }
+            .feature-section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.5rem;
             }
             .navbar-btn {
                 font-size: 0.85rem;
                 padding: 0.4rem 1rem;
             }
-        }
-        @media (max-width: 576px) {
-            .navbar-brand {
+            .card-title {
                 font-size: 1.3rem;
             }
-            .navbar-btn {
-                font-size: 0.8rem;
-                padding: 0.3rem 0.8rem;
+            .chat-bot, .back-to-top {
+                width: 3rem;
+                height: 3rem;
             }
-            .card-title {
-                font-size: 1.2rem;
+            .back-to-top {
+                right: 5.5rem;
             }
         }
     </style>
@@ -260,12 +390,12 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="logo-container d-flex align-items-center">
-                    <img src="ba_logo.jpeg" alt="Bharat Arogya Logo" style="width: 2.5rem; height: 2.5rem; border-radius: 50%;">
+                    <img src="ba_logo.jpeg" alt="Bharat Arogya Logo" style="width: 3rem; height: 3rem; border-radius: 50%; box-shadow: var(--shadow);">
                     <a class="navbar-brand ms-2" href="#">Medi-Mate</a>
                 </div>
-                <div class="d-flex align-items-center gap-2">
+                <div class="d-flex align-items-center gap-3">
                     <a href="https://forms.gle/PVfWYG216C2gmP9z6" class="btn btn-success navbar-btn" target="_blank">Blood Donation</a>
                     <button class="btn btn-primary navbar-btn" data-bs-toggle="modal" data-bs-target="#emergencyModal">Emergency</button>
                     <div id="google_translate_element"></div>
@@ -296,7 +426,7 @@
     <!-- Emergency Modal -->
     <div class="modal fade" id="emergencyModal" tabindex="-1" aria-labelledby="emergencyModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 16px;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="emergencyModalLabel">Emergency Help</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -316,26 +446,26 @@
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
         <div class="container">
-            <h1>Medi-Mate: Your AI Health Companion</h1>
-            <p>Instant AI-powered answers for emergencies, symptoms, and health guidance.</p>
-            <div class="search-bar input-group">
+            <h1 data-aos="fade-down">Medi-Mate: Your AI Health Companion</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Instant AI-powered answers for emergencies, symptoms, and health guidance.</p>
+            <div class="search-bar input-group" data-aos="fade-up" data-aos-delay="200">
                 <input type="text" class="form-control" id="smartSearch" placeholder="Ask about fever, chest pain, or first aid" aria-label="Smart search">
                 <button class="btn btn-primary" onclick="smartSearch()">Ask</button>
             </div>
-            <div id="smartSearchResult" class="result mt-3 text-white"></div>
+            <div id="smartSearchResult" class="result mt-4 text-white"></div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="feature-section" id="features">
         <div class="container">
-            <h2 class="text-center mb-5">Our Features</h2>
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Features</h2>
             <div class="row g-4">
                 <!-- Symptom Checker -->
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100" data-aos="fade-up">
                         <div class="card-body">
-                            <h3 class="card-title">Smart Symptom Checker</h3>
+                            <h3 class="card-title"><i class="fas fa-stethoscope me-2"></i>Smart Symptom Checker</h3>
                             <p>Identify possible conditions by entering symptoms.</p>
                             <select class="form-control mb-3" id="commonSymptoms" aria-label="Common symptoms">
                                 <option value="">Select common symptoms</option>
@@ -345,6 +475,10 @@
                                 <option value="cough">Cough</option>
                                 <option value="fatigue">Fatigue</option>
                                 <option value="sore throat">Sore Throat</option>
+                                <option value="shortness of breath">Shortness of Breath</option>
+                                <option value="abdominal pain">Abdominal Pain</option>
+                                <option value="nausea">Nausea</option>
+                                <option value="dizziness">Dizziness</option>
                             </select>
                             <textarea class="form-control mb-3" id="symptoms" rows="3" placeholder="e.g., Fever, headache" aria-label="Symptoms"></textarea>
                             <button class="btn btn-success w-100" onclick="checkSymptoms()">Check</button>
@@ -357,10 +491,10 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100" data-aos="fade-up" data-aos-delay="100">
                         <div class="card-body">
-                            <h3 class="card-title">AI Image Diagnosis</h3>
+                            <h3 class="card-title"><i class="fas fa-camera me-2"></i>AI Image Diagnosis</h3>
                             <p>Upload a photo for preliminary health insights.</p>
                             <div class="image-dropzone p-3 border rounded text-center mb-3" id="imageDropzone">
-                                <p class="mb-0">Drag & drop or click to upload</p>
+                                <p class="mb-0"><i class="fas fa-upload me-2"></i>Drag & drop or click to upload</p>
                                 <input type="file" class="form-control d-none" id="medicalImage" accept="image/*" aria-label="Upload medical image">
                             </div>
                             <button class="btn btn-success w-100" onclick="analyzeImage()">Analyze</button>
@@ -373,7 +507,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100" data-aos="fade-up" data-aos-delay="200">
                         <div class="card-body">
-                            <h3 class="card-title">Health Reminders</h3>
+                            <h3 class="card-title"><i class="fas fa-calendar-check me-2"></i>Health Reminders</h3>
                             <p>Set reminders for vaccinations or check-ups.</p>
                             <input type="text" class="form-control mb-2" id="eventName" placeholder="e.g., Flu Vaccine" aria-label="Reminder name">
                             <input type="date" class="form-control mb-2" id="eventDate" aria-label="Reminder date">
@@ -389,7 +523,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100" data-aos="fade-up" data-aos-delay="300">
                         <div class="card-body">
-                            <h3 class="card-title">First Aid Library</h3>
+                            <h3 class="card-title"><i class="fas fa-first-aid me-2"></i>First Aid Library</h3>
                             <p>Search for first aid guidance.</p>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="firstAidSearch" placeholder="e.g., Burns, CPR" aria-label="Search first aid">
@@ -404,7 +538,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100" data-aos="fade-up" data-aos-delay="400">
                         <div class="card-body">
-                            <h3 class="card-title">Medical Knowledge Blog</h3>
+                            <h3 class="card-title"><i class="fas fa-book-medical me-2"></i>Medical Knowledge Blog</h3>
                             <p>Explore health articles and resources.</p>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="articleSearch" placeholder="e.g., Diabetes, Nutrition" aria-label="Search articles">
@@ -419,8 +553,12 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100" data-aos="fade-up" data-aos-delay="500">
                         <div class="card-body">
-                            <h3 class="card-title">Health News</h3>
+                            <h3 class="card-title"><i class="fas fa-newspaper me-2"></i>Health News</h3>
                             <p>Stay updated with the latest health news.</p>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="newsSearch" placeholder="e.g., Vaccination, Policy" aria-label="Search news">
+                                <button class="btn btn-primary" onclick="searchNews()">Search</button>
+                            </div>
                             <div id="newsResults" class="row"></div>
                         </div>
                     </div>
@@ -487,20 +625,28 @@
 
         // Mock Data
         const symptomData = {
-            'fever': 'Possible conditions: Flu, infection. Consult a doctor.',
-            'headache': 'Possible conditions: Migraine, tension. Consult a doctor.',
-            'chest pain': 'Possible conditions: Heart issues, muscle strain. Seek immediate medical attention.',
-            'cough': 'Possible conditions: Cold, bronchitis. Consult a doctor.',
-            'fatigue': 'Possible conditions: Anemia, sleep issues. Consult a doctor.',
-            'sore throat': 'Possible conditions: Strep throat, viral infection. Consult a doctor.'
+            'fever': 'Possible conditions: Flu, infection, or malaria. Monitor temperature and consult a doctor if persistent.',
+            'headache': 'Possible conditions: Migraine, tension headache, or dehydration. Rest and hydrate; consult if severe.',
+            'chest pain': 'Possible conditions: Heart issues, muscle strain, or acid reflux. Seek immediate medical attention for severe pain.',
+            'cough': 'Possible conditions: Cold, bronchitis, or allergies. Persistent cough requires medical evaluation.',
+            'fatigue': 'Possible conditions: Anemia, sleep disorders, or thyroid issues. Consult a doctor for ongoing fatigue.',
+            'sore throat': 'Possible conditions: Strep throat, viral infection, or tonsillitis. Gargle salt water and consult if persistent.',
+            'shortness of breath': 'Possible conditions: Asthma, pneumonia, or heart issues. Seek immediate medical attention.',
+            'abdominal pain': 'Possible conditions: Gastritis, appendicitis, or IBS. Consult a doctor for severe or recurring pain.',
+            'nausea': 'Possible conditions: Food poisoning, pregnancy, or migraine. Hydrate and consult if prolonged.',
+            'dizziness': 'Possible conditions: Dehydration, low blood pressure, or vertigo. Rest and consult if frequent.'
         };
         const firstAidData = [
-            { title: "CPR", content: "Perform chest compressions at 100-120 beats per minute." },
-            { title: "Burns", content: "Cool the burn with water for 10-15 minutes." },
-            { title: "Choking", content: "Perform the Heimlich maneuver." },
-            { title: "Cuts", content: "Clean with water and apply a sterile bandage." },
-            { title: "Fracture", content: "Immobilize the area and seek medical help." },
-            { title: "Fainting", content: "Lay the person flat and elevate legs if possible." }
+            { title: "CPR", content: "Perform chest compressions at 100-120 beats per minute. Push hard and fast on the center of the chest, about 2 inches deep. Allow chest to recoil between compressions." },
+            { title: "Burns", content: "Cool the burn with running water for 10-15 minutes. Cover with a clean, non-stick bandage. Do not apply ice or ointments." },
+            { title: "Choking", content: "Perform the Heimlich maneuver: Stand behind the person, wrap arms around their waist, and thrust inward and upward below the ribcage." },
+            { title: "Cuts", content: "Clean with water and mild soap. Apply pressure to stop bleeding, then cover with a sterile bandage. Seek help for deep cuts." },
+            { title: "Fracture", content: "Immobilize the area with a splint or sling. Avoid moving the injured limb and seek medical help immediately." },
+            { title: "Fainting", content: "Lay the person flat and elevate their legs about 12 inches if possible. Ensure fresh air and check for breathing." },
+            { title: "Nosebleed", content: "Pinch the soft part of the nose and lean forward slightly. Hold for 10 minutes. Avoid tilting head back." },
+            { title: "Sprain", content: "Rest the injured area, apply ice for 15-20 minutes, compress with a bandage, and elevate the limb." },
+            { title: "Heatstroke", content: "Move to a cool area, apply cool cloths or water to the skin, and fan the person. Seek emergency help." },
+            { title: "Seizure", content: "Clear the area of hard objects, place the person on their side, and do not restrain them. Call for help if the seizure lasts over 5 minutes." }
         ];
         const articleData = [
             { title: "Understanding Diabetes", summary: "Learn about diabetes management.", url: "https://www.mayoclinic.org/diseases-conditions/diabetes/diagnosis-treatment/drc-20371451" },
@@ -677,9 +823,15 @@
         }
 
         // Health News
-        function loadNews() {
-            const newsList = document.getElementById('newsResults');
-            newsList.innerHTML = newsData.map(news => `
+        function searchNews() {
+            const query = document.getElementById('newsSearch').value.trim().toLowerCase();
+            const resultsDiv = document.getElementById('newsResults');
+            if (!query) {
+                resultsDiv.innerHTML = '<p class="text-danger">Please enter a search term.</p>';
+                return;
+            }
+            const filtered = newsData.filter(news => news.title.toLowerCase().includes(query) || news.summary.toLowerCase().includes(query));
+            resultsDiv.innerHTML = filtered.length ? filtered.map(news => `
                 <div class="col-md-6 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
@@ -689,13 +841,13 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `).join('') : '<p class="col-12 text-center">No news found.</p>';
         }
 
         // Initialize
         displayReminders();
         searchArticles();
-        loadNews();
+        searchNews();
     </script>
 </body>
 </html>
