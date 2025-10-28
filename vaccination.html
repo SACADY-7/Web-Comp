@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaccinateIndia.org | Protect Yourself & Loved Ones</title>
+    <meta name="description" content="Vaccination awareness for all Indians. Learn why, which, where, and how to get vaccinated. Free, safe, and trusted by WHO & MoHFW.">
+    
+    <!-- SEO Tags -->
+    <meta property="og:title" content="VaccinateIndia.org - Free Vaccination Guide">
+    <meta property="og:description" content="Protect your family with vaccines. Find centres, bust myths, download schedules.">
+    <meta property="og:image" content="https://vaccinateindia.org/hero.jpg">
+    <meta property="og:url" content="https://vaccinateindia.org">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root {
+            --blue: #1E88E5;
+            --green: #4CAF50;
+            --orange: #FF7043;
+            --gray-bg: #F5F7FA;
+            --dark: #263238;
+            --light: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            background: var(--gray-bg);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Hindi Font */
+        .hi { font-family: 'Noto Sans Devanagari', sans-serif; }
+
+        /* Navigation */
+        .top-nav {
+            background: var(--light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--blue);
+        }
+
+        .logo i { color: var(--green); }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .lang-toggle {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #eee;
+            border-radius: 50px;
+            padding: 0.4rem 0.8rem;
+            margin-left: 1rem;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 150px;
+            font-size: 0.9rem;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(30,136,229,0.8), rgba(30,136,229,0.9)), url('https://images.unsplash.com/photo-1612277795421-9a129e9b9f8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-btn {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #e65b30;
+            transform: translateY(-3px);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .stat-label {
+            color: var(--dark);
+            margin-top: 0.5rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--blue);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .myth-fact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .myth {
+            background: #ffebee;
+            border-left: 5px solid #e53935;
+        }
+
+        .fact {
+            background: #e8f5e8;
+            border-left: 5px solid var(--green);
+        }
+
+        /* Map */
+        #map {
+            height: 400px;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 0.8rem;
+            color: #555;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .search-bar {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--orange);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="logo"><i class="fas fa-shield-virus"></i> VaccinateIndia.org</div>
+        <div class="hamburger">Menu</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#why">Why Vaccinate?</a>
+            <a href="#which">Which Vaccines?</a>
+            <a href="#myth">Myth vs Fact</a>
+            <a href="#where">Find Centre</a>
+            <a href="#stories">Stories</a>
+            <a href="#resources">Resources</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <button class="lang-toggle" onclick="toggleLang()">HI</button>
+        </div>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search...">
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Protect Yourself & Your Loved Ones</h1>
+        <p class="en">One vaccine can save a lifetime. Free, safe, and available across India.</p>
+        <p class="hi" style="display:none;">एक टीका जीवन भर बचा सकता है। मुफ्त, सुरक्षित और पूरे भारत में उपलब्ध।</p>
+        <button class="cta-btn" onclick="location.href='#where'">Find Vaccination Centre Near You</button>
+    </section>
+
+    <!-- Quick Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">90%</div>
+            <div class="stat-label">Drop in Polio Cases</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">2.5Cr</div>
+            <div class="stat-label">Kids Protected Yearly</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Free at Govt Centres</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">WHO</div>
+            <div class="stat-label">Approved & Safe</div>
+        </div>
+    </div>
+
+    <!-- Why Vaccinate -->
+    <section id="why" class="section">
+        <h2>Why Vaccinate?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-shield-alt"></i> How Vaccines Work</h3>
+                <p>Vaccines train your body to fight germs without making you sick. Like a practice drill for your immune system.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-users"></i> Herd Immunity</h3>
+                <p>When 90% are vaccinated, even babies and elderly stay safe. We protect each other.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-heart"></i> Save Lives & Money</h3>
+                <p>Prevents costly hospital visits. One vaccine = ₹50,000 saved in treatment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Which Vaccines -->
+    <section id="which" class="section" style="background:white;">
+        <h2>Which Vaccines & Who Should Take Them?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-baby"></i> Children (0–15 yrs)</h3>
+                <p>BCG, OPV, DPT, Measles, Hepatitis B<br><small>Free under Universal Immunization Programme</small></p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-female"></i> Pregnant Women</h3>
+                <p>TT, Tdap, COVID-19<br><small>Protect mother & newborn</small></p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-user"></i> Adults (18–60)</h3>
+                <p>HPV, Flu, Hepatitis A/B, Typhoid</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-user-friends"></i> Elderly (60+)</h3>
+                <p>Pneumococcal, Flu, Shingles</p>
+            </div>
+        </div>
+        <center><button class="cta-btn" style="margin-top:2rem;">Download Full Schedule (PDF)</button></center>
+    </section>
+
+    <!-- Myth vs Fact -->
+    <section id="myth" class="section">
+        <h2>Myth vs Fact</h2>
+        <div class="myth-fact">
+            <div class="card myth">
+                <h3>Myth: Vaccines cause the disease</h3>
+                <p>Vaccines use weakened or dead germs. You cannot get sick from them.</p>
+            </div>
+            <div class="card fact">
+                <h3>Fact: Vaccines train immunity safely</h3>
+                <p>Approved by WHO & Indian Government. Billions of doses given safely.</p>
+            </div>
+            <div class="card myth">
+                <h3>Myth: Too many vaccines overload immunity</h3>
+                <p>Babies face 10,000+ germs daily. Vaccines are a tiny fraction.</p>
+            </div>
+            <div class="card fact">
+                <h3>Fact: Multiple vaccines are safe & recommended</h3>
+                <p>Indian Academy of Pediatrics supports full schedule.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to Get Vaccinated -->
+    <section id="where" class="section" style="background:white;">
+        <h2>Where & How to Get Vaccinated</h2>
+        <div id="map"></div>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-clinic-medical"></i> Government PHC/CHC</h3>
+                <p>Free vaccines, ASHA worker support</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-hospital"></i> Private Hospitals</h3>
+                <p>Paid, same quality, appointment-based</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-truck"></i> Mobile Camps</h3>
+                <p>Visit villages weekly. Check with ANM.</p>
+            </div>
+        </div>
+        <center><button class="cta-btn" style="margin-top:1rem;">Search by PIN Code</button></center>
+    </section>
+
+    <!-- Stories -->
+    <section id="stories" class="section">
+        <h2>Real Stories</h2>
+        <div class="grid">
+            <div class="card">
+                <p><em>"My daughter survived measles because of the vaccine. Thank you, government!"</em></p>
+                <p><strong>— Sunita, Bihar</strong></p>
+            </div>
+            <div class="card">
+                <p><em>"Got my elderly mother flu shot. No hospital visits this winter."</em></p>
+                <p><strong>— Rajesh, Mumbai</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="section" style="background:white;">
+        <h2>Resources & Downloads</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-file-pdf"></i> Child Vaccination Schedule</h3>
+                <p>English | <span class="hi">हिंदी</span></p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-image"></i> 5 Myths Busted Infographic</h3>
+                <p>Share on WhatsApp</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-id-card"></i> Printable Vaccination Card</h3>
+                <p>Fill & keep record</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">Are vaccines free? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Yes! All routine vaccines are <strong>100% free</strong> at government centres across India.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I take vaccine during fever? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">No. Wait until you recover. Mild cold is okay.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Side effects? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Mild fever or pain at injection site is normal. Give paracetamol if needed.</div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" style="background:white;">
+        <h2>Contact & Support</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-phone"></i> Helpline</h3>
+                <p>104 (National) | 108 (Emergency)</p>
+            </div>
+            <div class="card">
+                <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+                <p>+91-98765-43210</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-envelope"></i> Email</h3>
+                <p>support@vaccinateindia.org</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#why">Why Vaccinate?</a>
+            <a href="#which">Vaccines</a>
+            <a href="#myth">Myths</a>
+            <a href="#where">Find Centre</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 VaccinateIndia.org | Powered by WHO, MoHFW, IAP</p>
+    </footer>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Leaflet JS for Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Map
+        const map = L.map('map').setView([20.5937, 78.9629], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([28.6139, 77.2090]).addTo(map).bindPopup('AIIMS Delhi').openPopup();
+
+        // Language Toggle
+        function toggleLang() {
+            document.querySelectorAll('.en').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+            document.querySelectorAll('.hi').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+            const btn = document.querySelector('.lang-toggle');
+            btn.textContent = btn.textContent === 'HI' ? 'EN' : 'HI';
+        }
+
+        // Mobile Menu
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const icon = item.querySelector('i');
+                answer.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // Back to Top
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
