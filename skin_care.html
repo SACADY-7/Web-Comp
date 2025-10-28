@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthySkinIndia.in | Healthy Skin for Life</title>
+    <meta name="description" content="Simple, science-backed skin-care guide for every Indian. Learn your skin type, daily routine, and protect from sun & pollution — in English & Hindi.">
+    
+    <!-- SEO & Open Graph -->
+    <meta property="og:title" content="HealthySkinIndia.in - Skin Care for Every Indian">
+    <meta property="og:description" content="Free 3-step routine, myth-busting, sunscreen guide. Works for oily, dry, sensitive skin.">
+    <meta property="og:image" content="https://healthyskinindia.in/hero.jpg">
+    <meta property="og:url" content="https://healthyskinindia.in">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --teal: #26A69A;
+            --navy: #2C3E50;
+            --yellow: #FFCA28;
+            --beige-bg: #F9FAFB;
+            --dark: #2E4057;
+            --light: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            background: var(--beige-bg);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--teal);
+        }
+
+        .hi { font-family: 'Noto Sans Devanagari', sans-serif; }
+
+        /* Navigation */
+        .top-nav {
+            background: var(--light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--teal);
+        }
+
+        .logo i { color: var(--navy); }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .lang-toggle {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #eee;
+            border-radius: 50px;
+            padding: 0.4rem 0.8rem;
+            margin-left: 1rem;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 130px;
+            font-size: 0.9rem;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(38,166,154,0.85), rgba(38,166,154,0.9)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-btn {
+            background: var(--yellow);
+            color: var(--dark);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #ffb300;
+            transform: translateY(-3px);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .stat-label {
+            color: var(--dark);
+            margin-top: 0.5rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--teal);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .myth-fact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .myth {
+            background: #ffebee;
+            border-left: 5px solid #e53935;
+        }
+
+        .fact {
+            background: #e8f5e8;
+            border-left: 5px solid var(--teal);
+        }
+
+        /* Skin Routine Circle */
+        .routine-circle {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            margin: 1.5rem auto;
+            position: relative;
+            background: #f8f9fa;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .step {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            transform-origin: bottom right;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.4rem;
+        }
+
+        .cleanse { background: #4CAF50; transform: rotate(0deg) skewY(-60deg); }
+        .moisturise { background: #2196F3; transform: rotate(120deg) skewY(-60deg); }
+        .protect { background: #FF9800; transform: rotate(240deg) skewY(-60deg); }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 0.8rem;
+            color: #555;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .search-bar {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .routine-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .step {
+                font-size: 0.8rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--yellow);
+            color: var(--dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="logo"><i class="fas fa-spa"></i> HealthySkinIndia.in</div>
+        <div class="hamburger">Menu</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#why">Why Skin Care</a>
+            <a href="#skintype">Know Your Skin</a>
+            <a href="#routine">Routine & Protect</a>
+            <a href="#ingredients">Ingredients</a>
+            <a href="#lifestyle">Lifestyle</a>
+            <a href="#myths">Myths</a>
+            <a href="#concerns">Skin Concerns</a>
+            <a href="#resources">Resources</a>
+            <a href="#blog">Blog</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <button class="lang-toggle" onclick="toggleLang()">HI</button>
+        </div>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search...">
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Healthy Skin for Life</h1>
+        <p class="en">Understanding your skin helps protect it from ageing, spots, and damage. Start simple.</p>
+        <p class="hi" style="display:none;">त्वचा को समझें, इसे उम्र बढ़ने, दाग-धब्बों और नुकसान से बचाएं। आसान शुरुआत करें।</p>
+        <button class="cta-btn" onclick="location.href='#routine'">Start Your Skin-Care Journey</button>
+    </section>
+
+    <!-- Quick Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Steps Daily</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">90%</div>
+            <div class="stat-label">Sun Damage</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">₹50</div>
+            <div class="stat-label">Basic Routine</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">Free</div>
+            <div class="stat-label">Guides</div>
+        </div>
+    </div>
+
+    <!-- Why Skin Care -->
+    <section id="why" class="section">
+        <h2>Why Skin Care Matters</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-shield-alt"></i> Protection</h3>
+                <p>Skin is your body’s first barrier.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-sun"></i> Prevent Damage</h3>
+                <p>Sun, pollution, dryness harm skin.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-smile"></i> Confidence</h3>
+                <p>Healthy skin = happy you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Know Your Skin -->
+    <section id="skintype" class="section" style="background:white;">
+        <h2>Know Your Skin Type</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-check-circle"></i> Normal</h3>
+                <p>Balanced, few issues.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-tint"></i> Dry</h3>
+                <p>Flaky, tight after wash.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-oil-can"></i> Oily</h3>
+                <p>Shiny, large pores.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-adjust"></i> Combination</h3>
+                <p>Oily T-zone, dry cheeks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Routine -->
+    <section id="routine" class="section">
+        <h2>Core Skin-Care Routine</h2>
+        <div class="routine-circle">
+            <div class="step cleanse">1. Cleanse (Gentle face wash)</div>
+            <div class="step moisturise">2. Moisturise (Cream/lotion)</div>
+            <div class="step protect">3. Protect (Sunscreen SPF 30+)</div>
+        </div>
+        <center><button class="cta-btn">Download 3-Step Routine (PDF)</button></center>
+    </section>
+
+    <!-- Ingredients -->
+    <section id="ingredients" class="section" style="background:white;">
+        <h2>Ingredients & Product Guide</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-shield"></i> Sunscreen (SPF 30+)</h3>
+                <p>Blocks UV rays. Reapply every 3 hrs.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-leaf"></i> Ceramides</h3>
+                <p>Repair skin barrier (dry skin).</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-exclamation-triangle"></i> Avoid</h3>
+                <p>Mercury, steroids in fairness creams.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle -->
+    <section id="lifestyle" class="section">
+        <h2>Lifestyle & Environment</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-glass-whiskey"></i> Hydration</h3>
+                <p>Drink 8 glasses water.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-bed"></i> Sleep</h3>
+                <p>7–8 hrs for skin repair.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-smog"></i> Pollution</h3>
+                <p>Cleanse after outdoors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Myths -->
+    <section id="myths" class="section" style="background:white;">
+        <h2>Myth vs Fact</h2>
+        <div class="myth-fact">
+            <div class="card myth">
+                <h3>Myth: Dark skin doesn’t need sunscreen</h3>
+                <p>UV damages all skin tones.</p>
+            </div>
+            <div class="card fact">
+                <h3>Fact: SPF 30+ daily</h3>
+                <p>Indian Dermatologists: Prevents spots, cancer.</p>
+            </div>
+            <div class="card myth">
+                <h3>Myth: Natural = safe</h3>
+                <p>Some herbs irritate.</p>
+            </div>
+            <div class="card fact">
+                <h3>Fact: Patch test first</h3>
+                <p>EWG: Check ingredients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Concerns -->
+    <section id="concerns" class="section">
+        <h2>Common Skin Concerns</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-circle"></i> Acne</h3>
+                <p>Red bumps, oily skin. See derm if >6 weeks.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-sun"></i> Pigmentation</h3>
+                <p>Dark patches. Use sunscreen + niacinamide.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-user-md"></i> See Doctor If</h3>
+                <p>Sudden rash, infection, non-healing spots.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="section" style="background:white;">
+        <h2>Resources & Downloads</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-file-pdf"></i> Daily Routine Checklist</h3>
+                <p>English | <span class="hi">हिंदी</span></p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-image"></i> Sunscreen Guide</h3>
+                <p>Share on WhatsApp</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-link"></i> Trusted Sources</h3>
+                <p>IADVL, EWG, MedElite</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section">
+        <h2>Blog & Community</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Monsoon Skin Care</h3>
+                <p>Use gel moisturiser, antifungal powder.</p>
+            </div>
+            <div class="card">
+                <h3>My Pollution Hack</h3>
+                <p>Double cleanse with micellar water.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" style="background:white;">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">Can I skip sunscreen indoors? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">No. UVA passes through windows. Use daily.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Expensive = better? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">No. Check ingredients, not price. Drugstore works.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How often exfoliate? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">1–2 times/week. Not daily.</div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <h2>Contact & Support</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><i class="fas fa-user-md"></i> Find Dermatologist</h3>
+                <p>IADVL directory</p>
+            </div>
+            <div class="card">
+                <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+                <p>+91-98765-43210</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-envelope"></i> Email</h3>
+                <p>info@healthyskinindia.in</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#routine">Routine</a>
+            <a href="#myths">Myths</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>© 2025 HealthySkinIndia.in | Backed by IADVL, EWG, Dermatologists</p>
+    </footer>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Language Toggle
+        function toggleLang() {
+            document.querySelectorAll('.en').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+            document.querySelectorAll('.hi').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+            const btn = document.querySelector('.lang-toggle');
+            btn.textContent = btn.textContent === 'HI' ? 'EN' : 'HI';
+        }
+
+        // Mobile Menu
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const icon = item.querySelector('i');
+                answer.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // Back to Top
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
