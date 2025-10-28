@@ -1,707 +1,867 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EatWellIndia.in | Eat Well. Live Well.</title>
-    <meta name="description" content="Simple, credible nutrition guide for every Indian. Learn balanced eating with local foods, in English & Hindi.">
-    
-    <!-- SEO & Open Graph -->
-    <meta property="og:title" content="EatWellIndia.in - Nutrition Guide for Every Indian">
-    <meta property="og:description" content="Build a balanced diet with Indian foods. Free guides, myths busted, meal ideas.">
-    <meta property="og:image" content="https://eatwellindia.in/hero.jpg">
-    <meta property="og:url" content="https://eatwellindia.in">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --green: #27AE60;
-            --blue: #2980B9;
-            --orange: #E67E22;
-            --beige-bg: #FDFAF7;
-            --dark: #2C3E50;
-            --light: #FFFFFF;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EatWellIndia.in | Eat Well. Live Well.</title>
+  <meta name="description" content="Simple, credible nutrition guide for every Indian. Learn balanced eating with local foods, in English & Hindi." />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Open Graph -->
+  <meta property="og:title" content="EatWellIndia.in - Nutrition Guide for Every Indian" />
+  <meta property="og:description" content="Build a balanced diet with Indian foods. Free guides, myths busted, meal ideas." />
+  <meta property="og:image" content="https://eatwellindia.in/hero.jpg" />
+  <meta property="og:url" content="https://eatwellindia.in" />
+  <meta property="og:type" content="website" />
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--dark);
-            background: var(--beige-bg);
-            line-height: 1.7;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
-        h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--green);
-        }
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-        .hi { font-family: 'Noto Sans Devanagari', sans-serif; }
+  <style>
+    /* === ROOT VARIABLES === */
+    :root {
+      --green: #27AE60;
+      --blue: #2980B9;
+      --orange: #E67E22;
+      --red: #E74C3C;
+      --beige: #FDFAF7;
+      --dark: #2C3E50;
+      --gray: #555;
+      --light: #FFFFFF;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 20px rgba(0,0,0,0.1);
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-full: 50px;
+      --transition: all 0.3s ease;
+    }
 
-        /* Navigation */
-        .top-nav {
-            background: var(--light);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 0.8rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* === RESET & BASE === */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--green);
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .logo i { color: var(--blue); }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--beige);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 1.2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
 
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.92rem;
-            transition: color 0.3s;
-        }
+    .hi { font-family: 'Noto Sans Devanagari', sans-serif; }
 
-        .nav-links a:hover {
-            color: var(--blue);
-        }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font-family: inherit; }
 
-        .lang-toggle {
-            background: var(--blue);
-            color: white;
-            border: none;
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
 
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background: #eee;
-            border-radius: 50px;
-            padding: 0.4rem 0.8rem;
-            margin-left: 1rem;
-        }
+    /* === TYPOGRAPHY === */
+    .text-center { text-align: center; }
+    .text-lg { font-size: 1.1rem; }
+    .text-sm { font-size: 0.9rem; color: var(--gray); }
 
-        .search-bar input {
-            border: none;
-            background: none;
-            outline: none;
-            width: 130px;
-            font-size: 0.9rem;
-        }
+    /* === NAVIGATION === */
+    .nav {
+      background: var(--light);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+    }
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(rgba(39,174,96,0.85), rgba(39,174,96,0.9)), url('https://images.unsplash.com/photo-1498837167921-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
-            color: white;
-            text-align: center;
-            padding: 6rem 1rem;
-        }
+    .nav__logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
+    .nav__logo i { color: var(--blue); }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
+    .nav__links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        .cta-btn {
-            background: var(--orange);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+    .nav__link {
+      color: var(--dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
 
-        .cta-btn:hover {
-            background: #d35400;
-            transform: translateY(-3px);
-        }
+    .nav__link:hover {
+      color: var(--blue);
+    }
 
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .nav__search {
+      background: #f1f1f1;
+      border-radius: var(--radius-full);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 160px;
+    }
 
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
+    .nav__search input {
+      border: none;
+      background: none;
+      outline: none;
+      font-size: 0.9rem;
+      width: 100%;
+    }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--blue);
-        }
+    .nav__lang-toggle {
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
 
-        .stat-label {
-            color: var(--dark);
-            margin-top: 0.5rem;
-        }
+    .nav__lang-toggle:hover {
+      background: #1a6391;
+    }
 
-        /* Sections */
-        .section {
-            padding: 3rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .nav__hamburger {
+      display: none;
+      font-size: 1.6rem;
+      color: var(--dark);
+    }
 
-        .section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--green);
-        }
+    /* === HERO === */
+    .hero {
+      background: linear-gradient(rgba(39,174,96,0.88), rgba(39,174,96,0.92)),
+                  url('https://images.unsplash.com/photo-1498837167921-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 7rem 1rem;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
+    .hero__title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
 
-        .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
+    .hero__desc {
+      font-size: 1.25rem;
+      max-width: 750px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+    .btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 1rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-        .card h3 {
-            color: var(--green);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .btn:hover {
+      background: #d35400;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.3);
+    }
 
-        .myth-fact {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+    /* === STATS === */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      padding: 3rem 0;
+    }
 
-        .myth {
-            background: #ffebee;
-            border-left: 5px solid #e53935;
-        }
+    .stat {
+      background: white;
+      padding: 1.8rem 1rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
 
-        .fact {
-            background: #e8f5e8;
-            border-left: 5px solid var(--green);
-        }
+    .stat:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
 
-        .plate-guide {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            margin: 2rem 0;
-        }
+    .stat__number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
 
-        .plate {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 1rem auto;
-            position: relative;
-            background: #f8f9fa;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    .stat__label {
+      margin-top: 0.5rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
 
-        .plate-section {
-            position: absolute;
-            text-align: center;
-            color: white;
-            font-weight: 600;
-            padding: 0.5rem;
-        }
+    /* === SECTION === */
+    .section {
+      padding: 4rem 0;
+    }
 
-        .veggies { background: #27AE60; width: 50%; height: 100%; left: 0; top: 0; }
-        .grains { background: #F39C12; width: 25%; height: 100%; right: 25%; top: 0; }
-        .protein { background: #C0392B; width: 25%; height: 100%; right: 0; top: 0; }
-        .dairy { background: #3498DB; width: 100%; height: 25%; bottom: 0; left: 0; }
+    .section--alt {
+      background: white;
+    }
 
-        /* FAQ */
-        .faq-item {
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 1rem;
-        }
+    .section__title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+    }
 
-        .faq-question {
-            font-weight: 600;
-            color: var(--blue);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
 
-        .faq-answer {
-            margin-top: 0.8rem;
-            color: #555;
-            display: none;
-        }
+    .card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
 
-        .faq-answer.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .card__title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--green);
+      font-size: 1.25rem;
+    }
 
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-        }
+    .card__title i {
+      color: var(--blue);
+    }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
+    /* === PLATE GUIDE === */
+    .plate-guide {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      max-width: 400px;
+      margin: 2rem auto;
+    }
 
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-        }
+    .plate {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      margin: 1.5rem auto;
+      position: relative;
+      background: #f8f9fa;
+      overflow: hidden;
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+    }
 
-        .footer-links a:hover {
-            color: white;
-        }
+    .plate__section {
+      position: absolute;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.5rem;
+    }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
+    .plate__veggies  { background: var(--green); width: 50%; height: 100%; left: 0; top: 0; }
+    .plate__grains   { background: #F39C12; width: 25%; height: 100%; right: 25%; top: 0; }
+    .plate__protein  { background: var(--red); width: 25%; height: 100%; right: 0; top: 0; }
+    .plate__dairy    { background: #3498DB; width: 100%; height: 25%; bottom: 0; left: 0; }
 
-        .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-        }
+    /* === MYTH vs FACT === */
+    .myth-fact {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
 
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                padding: 1rem;
-            }
+    .myth, .fact {
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      border-left: 6px solid;
+    }
 
-            .nav-links.active {
-                display: flex;
-            }
+    .myth {
+      background: #ffebee;
+      border-color: var(--red);
+    }
 
-            .hamburger {
-                display: block;
-            }
+    .fact {
+      background: #e8f5e8;
+      border-color: var(--green);
+    }
 
-            .search-bar {
-                margin-left: 0;
-                margin-top: 1rem;
-            }
+    /* === FAQ === */
+    .faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+    .faq__item {
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+    }
 
-            .plate {
-                width: 180px;
-                height: 180px;
-            }
-        }
+    .faq__question {
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--orange);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            opacity: 0;
-            transition: 0.3s;
-        }
+    .faq__question:hover {
+      color: var(--green);
+    }
 
-        .back-to-top.show {
-            opacity: 1;
-        }
-    </style>
+    .faq__answer {
+      margin-top: 1rem;
+      color: var(--gray);
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .faq__answer.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 3.5rem 1rem 2rem;
+      text-align: center;
+    }
+
+    .footer__links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer__links a {
+      color: #bdc3c7;
+      font-size: 0.95rem;
+    }
+
+    .footer__links a:hover {
+      color: white;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    .social a {
+      color: white;
+      font-size: 1.6rem;
+      transition: var(--transition);
+    }
+
+    .social a:hover {
+      color: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    /* === BACK TO TOP === */
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--orange);
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #d35400;
+      transform: translateY(-5px);
+    }
+
+    /* === MOBILE RESPONSIVE === */
+    @media (max-width: 992px) {
+      .hero__title { font-size: 2.5rem; }
+      .plate { width: 200px; height: 200px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: none;
+      }
+
+      .nav__links.active {
+        display: flex;
+      }
+
+      .nav__hamburger {
+        display: block;
+      }
+
+      .nav__search {
+        margin-top: 1rem;
+        width: 100%;
+      }
+
+      .hero {
+        padding: 5rem 1rem;
+      }
+
+      .hero__title {
+        font-size: 2.2rem;
+      }
+
+      .hero__desc {
+        font-size: 1.1rem;
+      }
+
+      .plate-guide {
+        padding: 2rem;
+      }
+
+      .plate {
+        width: 180px;
+        height: 180px;
+      }
+
+      .plate__section {
+        font-size: 0.75rem;
+        padding: 0.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title { font-size: 2rem; }
+      .section__title { font-size: 1.8rem; }
+      .btn { padding: 0.9rem 1.8rem; font-size: 1rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-        <div class="logo"><i class="fas fa-utensils"></i> EatWellIndia.in</div>
-        <div class="hamburger">Menu</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#why">Why It Matters</a>
-            <a href="#nutrients">Nutrients</a>
-            <a href="#balanced">Balanced Diet</a>
-            <a href="#tips">Tips</a>
-            <a href="#myths">Myths</a>
-            <a href="#special">Special Situations</a>
-            <a href="#resources">Resources</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-            <button class="lang-toggle" onclick="toggleLang()">HI</button>
-        </div>
-        <div class="search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search...">
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <h1>Eat Well. Live Well.</h1>
-        <p class="en">Proper nutrition improves energy, immunity, and longevity. Start with Indian foods you love.</p>
-        <p class="hi" style="display:none;">अच्छा खाएं। बेहतर जिएं। पोषण ऊर्जा, रोग प्रतिरोधक क्षमता और लंबी आयु बढ़ाता है।</p>
-        <button class="cta-btn" onclick="location.href='#balanced'">Explore Your Nutrition Guide</button>
-    </section>
-
-    <!-- Quick Stats -->
-    <div class="stats">
-        <div class="stat-card">
-            <div class="stat-number">70%</div>
-            <div class="stat-label">Diseases Preventable</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">5-6</div>
-            <div class="stat-label">Meals/Day</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">₹50</div>
-            <div class="stat-label">Healthy Meal</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">Free</div>
-            <div class="stat-label">Guides</div>
-        </div>
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="nav__logo">
+        <i class="fas fa-utensils"></i> EatWellIndia.in
+      </a>
+      <div class="nav__hamburger">☰</div>
+      <nav class="nav__links">
+        <a href="#home" class="nav__link">Home</a>
+        <a href="#why" class="nav__link">Why It Matters</a>
+        <a href="#nutrients" class="nav__link">Nutrients</a>
+        <a href="#balanced" class="nav__link">Balanced Diet</a>
+        <a href="#tips" class="nav__link">Tips</a>
+        <a href="#myths" class="nav__link">Myths</a>
+        <a href="#special" class="nav__link">Special Cases</a>
+        <a href="#resources" class="nav__link">Resources</a>
+        <a href="#faq" class="nav__link">FAQ</a>
+        <a href="#contact" class="nav__link">Contact</a>
+        <button class="nav__lang-toggle" onclick="toggleLang()">HI</button>
+      </nav>
+      <div class="nav__search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search tips, foods...">
+      </div>
     </div>
+  </header>
 
-    <!-- Why Nutrition Matters -->
-    <section id="why" class="section">
-        <h2>Why Nutrition Matters</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-bolt"></i> Energy & Growth</h3>
-                <p>Food is fuel. Nutrients help kids grow and adults stay active.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-shield-alt"></i> Strong Immunity</h3>
-                <p>Vitamin C, zinc, and protein fight infections.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-heart"></i> Disease Prevention</h3>
-                <p>70% of diabetes, heart disease preventable with diet (WHO).</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Essential Nutrients -->
-    <section id="nutrients" class="section" style="background:white;">
-        <h2>Essential Nutrients & Food Groups</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-bread-slice"></i> Carbohydrates</h3>
-                <p>Energy source: Rice, roti, millets, potatoes.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-drumstick-bite"></i> Proteins</h3>
-                <p>Build muscles: Dal, paneer, eggs, chicken, soy.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-cheese"></i> Fats</h3>
-                <p>Healthy fats: Ghee, nuts, oil (in moderation).</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-apple-alt"></i> Vitamins & Minerals</h3>
-                <p>Fruits, greens, dairy, nuts.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Balanced Diet Guide -->
-    <section id="balanced" class="section">
-        <h2>Balanced Diet & Daily Eating Guide</h2>
-        <div class="plate-guide">
-            <h3>Your Healthy Thali</h3>
-            <div class="plate">
-                <div class="plate-section veggies">½ Vegetables & Fruits</div>
-                <div class="plate-section grains">¼ Grains</div>
-                <div class="plate-section protein">¼ Protein</div>
-                <div class="plate-section dairy">Dairy on side</div>
-            </div>
-            <p><strong>Example:</strong> Roti + Dal + Sabzi + Curd + Salad</p>
-        </div>
-        <center><button class="cta-btn">Download Thali Guide (PDF)</button></center>
-    </section>
-
-    <!-- Practical Tips -->
-    <section id="tips" class="section" style="background:white;">
-        <h2>Practical Tips & Meal Ideas</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-clock"></i> Breakfast</h3>
-                <p>Poha, upma, idli, or oats with fruits.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-apple-alt"></i> Snacks</h3>
-                <p>Roasted chana, fruits, buttermilk.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-tags"></i> Read Labels</h3>
-                <p>Check sugar, salt, oil content.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Myth vs Fact -->
-    <section id="myths" class="section">
-        <h2>Myth vs Fact</h2>
-        <div class="myth-fact">
-            <div class="card myth">
-                <h3>Myth: Carbs are always bad</h3>
-                <p>Whole grains give energy. Avoid refined flour.</p>
-            </div>
-            <div class="card fact">
-                <h3>Fact: Choose millets, brown rice</h3>
-                <p>ICMR recommends 50–60% carbs from whole sources.</p>
-            </div>
-            <div class="card myth">
-                <h3>Myth: Fats make you fat</h3>
-                <p>Healthy fats are essential.</p>
-            </div>
-            <div class="card fact">
-                <h3>Fact: Ghee, nuts, oil in moderation</h3>
-                <p>WHO: 30% calories from fats.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Special Situations -->
-    <section id="special" class="section" style="background:white;">
-        <h2>When You Should Seek Help</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-baby"></i> Children</h3>
-                <p>6 meals/day. Include milk, eggs, fruits.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-female"></i> Pregnant Women</h3>
-                <p>Extra 300 kcal, iron, folic acid.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-user-md"></i> Diabetes</h3>
-                <p>Small frequent meals, low GI foods.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources -->
-    <section id="resources" class="section">
-        <h2>Resources & Downloads</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-file-pdf"></i> Weekly Meal Plan</h3>
-                <p>English | <span class="hi">हिंदी</span></p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-image"></i> Healthy Thali Infographic</h3>
-                <p>Share on WhatsApp</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-check-square"></i> Shopping Checklist</h3>
-                <p>Budget-friendly</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section" style="background:white;">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <div class="faq-question">How many meals a day? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">3 main + 2–3 snacks. Don’t skip breakfast.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">Are supplements needed? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Only if deficient. Get nutrients from food first.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">Healthy on a budget? <i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Yes! Use seasonal veggies, dal, millets.</div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-        <h2>Contact & Support</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-envelope"></i> Email</h3>
-                <p>info@eatwellindia.in</p>
-            </div>
-            <div class="card">
-                <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
-                <p>+91-98765-43210</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-bell"></i> Newsletter</h3>
-                <p>Weekly tips</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#why">Why</a>
-            <a href="#nutrients">Nutrients</a>
-            <a href="#balanced">Balanced Diet</a>
-            <a href="#tips">Tips</a>
-            <a href="#faq">FAQ</a>
-        </div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>© 2025 EatWellIndia.in | Backed by ICMR, NIN, WHO</p>
-    </footer>
-
-    <!-- Back to Top -->
-    <div class="back-to-top" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1 class="hero__title">Eat Well. Live Well.</h1>
+      <p class="hero__desc en">Proper nutrition improves energy, immunity, and longevity. Start with Indian foods you love.</p>
+      <p class="hero__desc hi" style="display:none;">अच्छा खाएं। बेहतर जिएं। पोषण ऊर्जा, रोग प्रतिरोधक क्षमता और लंबी आयु बढ़ाता है।</p>
+      <button class="btn" onclick="location.href='#balanced'">
+        <i class="fas fa-compass"></i> Explore Your Nutrition Guide
+      </button>
     </div>
+  </section>
 
-    <script>
-        // Language Toggle
-        function toggleLang() {
-            document.querySelectorAll('.en').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
-            document.querySelectorAll('.hi').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
-            const btn = document.querySelector('.lang-toggle');
-            btn.textContent = btn.textContent === 'HI' ? 'EN' : 'HI';
+  <!-- Stats -->
+  <div class="container stats">
+    <div class="stat">
+      <div class="stat__number">70%</div>
+      <div class="stat__label">Diseases Preventable</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">5-6</div>
+      <div class="stat__label">Meals/Day</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">₹50</div>
+      <div class="stat__label">Healthy Meal</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">Free</div>
+      <div class="stat__label">Guides</div>
+    </div>
+  </div>
+
+  <!-- Why Nutrition -->
+  <section id="why" class="section">
+    <div class="container">
+      <h2 class="section__title">Why Nutrition Matters</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-bolt"></i> Energy & Growth</h3>
+          <p>Food is fuel. Nutrients help kids grow and adults stay active.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-shield-alt"></i> Strong Immunity</h3>
+          <p>Vitamin C, zinc, and protein fight infections.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-heart"></i> Disease Prevention</h3>
+          <p>70% of diabetes, heart disease preventable with diet (WHO).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nutrients -->
+  <section id="nutrients" class="section section--alt">
+    <div class="container">
+      <h2 class="section__title">Essential Nutrients & Food Groups</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-bread-slice"></i> Carbohydrates</h3>
+          <p>Energy source: Rice, roti, millets, potatoes.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-drumstick-bite"></i> Proteins</h3>
+          <p>Build muscles: Dal, paneer, eggs, chicken, soy.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-cheese"></i> Fats</h3>
+          <p>Healthy fats: Ghee, nuts, oil (in moderation).</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-apple-alt"></i> Vitamins & Minerals</h3>
+          <p>Fruits, greens, dairy, nuts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Balanced Diet -->
+  <section id="balanced" class="section">
+    <div class="container text-center">
+      <h2 class="section__title">Your Healthy Thali Guide</h2>
+      <div class="plate-guide">
+        <h3>Balanced Indian Plate</h3>
+        <div class="plate">
+          <div class="plate__section plate__veggies">½ Vegetables & Fruits</div>
+          <div class="plate__section plate__grains">¼ Grains</div>
+          <div class="plate__section plate__protein">¼ Protein</div>
+          <div class="plate__section plate__dairy">Dairy on side</div>
+        </div>
+        <p class="text-lg"><strong>Example:</strong> Roti + Dal + Sabzi + Curd + Salad</p>
+      </div>
+      <button class="btn">
+        <i class="fas fa-file-pdf"></i> Download Thali Guide (PDF)
+      </button>
+    </div>
+  </section>
+
+  <!-- Tips -->
+  <section id="tips" class="section section--alt">
+    <div class="container">
+      <h2 class="section__title">Practical Tips & Meal Ideas</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-clock"></i> Breakfast</h3>
+          <p>Poha, upma, idli, or oats with fruits.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-apple-alt"></i> Snacks</h3>
+          <p>Roasted chana, fruits, buttermilk.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-tags"></i> Read Labels</h3>
+          <p>Check sugar, salt, oil content.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Myths -->
+  <section id="myths" class="section">
+    <div class="container">
+      <h2 class="section__title">Myth vs Fact</h2>
+      <div class="myth-fact">
+        <div class="card myth">
+          <h3>Myth: Carbs are always bad</h3>
+          <p>Whole grains give energy. Avoid refined flour.</p>
+        </div>
+        <div class="card fact">
+          <h3>Fact: Choose millets, brown rice</h3>
+          <p>ICMR recommends 50–60% carbs from whole sources.</p>
+        </div>
+        <div class="card myth">
+          <h3>Myth: Fats make you fat</h3>
+          <p>Healthy fats are essential.</p>
+        </div>
+        <div class="card fact">
+          <h3>Fact: Ghee, nuts, oil in moderation</h3>
+          <p>WHO: 30% calories from fats.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Situations -->
+  <section id="special" class="section section--alt">
+    <div class="container">
+      <h2 class="section__title">Special Situations</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-baby"></i> Children</h3>
+          <p>6 meals/day. Include milk, eggs, fruits.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-female"></i> Pregnant Women</h3>
+          <p>Extra 300 kcal, iron, folic acid.</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-user-md"></i> Diabetes</h3>
+          <p>Small frequent meals, low GI foods.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources" class="section">
+    <div class="container">
+      <h2 class="section__title">Free Resources & Downloads</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-file-pdf"></i> Weekly Meal Plan</h3>
+          <p>English | <span class="hi">हिंदी</span></p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-image"></i> Healthy Thali Infographic</h3>
+          <p>Share on WhatsApp</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-check-square"></i> Shopping Checklist</h3>
+          <p>Budget-friendly</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section section--alt">
+    <div class="container">
+      <h2 class="section__title">Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq__item">
+          <div class="faq__question">How many meals a day? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq__answer">3 main + 2–3 snacks. Don’t skip breakfast.</div>
+        </div>
+        <div class="faq__item">
+          <div class="faq__question">Are supplements needed? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq__answer">Only if deficient. Get nutrients from food first.</div>
+        </div>
+        <div class="faq__item">
+          <div class="faq__question">Healthy on a budget? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq__answer">Yes! Use seasonal veggies, dal, millets.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section__title">Contact & Support</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-envelope"></i> Email</h3>
+          <p>info@eatwellindia.in</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+          <p>+91-98765-43210</p>
+        </div>
+        <div class="card">
+          <h3 class="card__title"><i class="fas fa-bell"></i> Newsletter</h3>
+          <p>Weekly tips</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__links">
+        <a href="#home">Home</a>
+        <a href="#why">Why</a>
+        <a href="#nutrients">Nutrients</a>
+        <a href="#balanced">Balanced</a>
+        <a href="#tips">Tips</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p class="text-sm">© 2025 EatWellIndia.in | Backed by ICMR, NIN, WHO</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Language Toggle
+    function toggleLang() {
+      document.querySelectorAll('.en').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+      document.querySelectorAll('.hi').forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+      const btn = document.querySelector('.nav__lang-toggle');
+      btn.textContent = btn.textContent === 'HI' ? 'EN' : 'HI';
+    }
+
+    // Mobile Menu
+    document.querySelector('.nav__hamburger').addEventListener('click', () => {
+      document.querySelector('.nav__links').classList.toggle('active');
+    });
+
+    // FAQ Toggle
+    document.querySelectorAll('.faq__question').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        const icon = item.querySelector('i');
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      });
+    });
+
+    // Back to Top
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Smooth Scroll for all # links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
         }
-
-        // Mobile Menu
-        document.querySelector('.hamburger').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                const answer = item.nextElementSibling;
-                const icon = item.querySelector('i');
-                answer.classList.toggle('active');
-                icon.classList.toggle('fa-chevron-down');
-                icon.classList.toggle('fa-chevron-up');
-            });
-        });
-
-        // Back to Top
-        const backToTop = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            backToTop.classList.toggle('show', window.scrollY > 300);
-        });
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
