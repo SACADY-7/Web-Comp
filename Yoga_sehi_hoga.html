@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YogaWell - Heal Your Body, Calm Your Mind</title>
+    <meta name="description" content="...">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2..." rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --primary: #2563eb;      /* Deep calm blue */
+            --secondary: #3b82f6;    /* Sky blue */
+            --accent: #60a5fa;       /* Soft blue */
+            --success: #10b981;      /* Emerald green */
+            --light: #f8fafc;        /* Crisp white */
+            --lighter: #eff6ff;      /* Very light blue */
+            --dark: #1e293b;         /* Deep slate */
+            --gray: #64748b;         /* Cool gray */
+            --highlight: #93c5fd;    /* Light blue highlight */
+            --warning: #f59e0b;      /* Amber */
+            --soft-purple: #c4b5fd;   /* Gentle lavender for restorative */
+            --warm-coral: #fdba74;   /* Warm coral for energy */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0 extant;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, var(--lighter));
+            color: var(--dark);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.3rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.2);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.6rem 0;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background: var(--highlight);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: white;
+        }
+        
+        .hero {
+            max-width: 1200px;
+            margin: 3.5rem auto;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.3rem;
+            color: var(--primary);
+            text-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--gray);
+            max-width: 850px;
+            margin: 0 auto 2.8rem;
+            font-weight: 500;
+        }
+        
+        .cta-button {
+            background: var(--success);
+            color: white;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            border: 3px solid transparent;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px rgba(16, 185, 129, 0.5);
+            background: white;
+            color: var(--success);
+            border-color: var(--success);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin: 5.5rem 0;
+            padding: 3.5rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.7rem;
+            text-align: center;
+            margin-bottom: 2.8rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 130px;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            display: block;
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 7px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            transition: width 0.3s;
+        }
+        
+        .card:hover::before {
+            width: 12px;
+        }
+        
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.18);
+        }
+        
+        .card-icon {
+            font-size: 3.3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 3px 6px rgba(37, 99, 235, 0.2));
+        }
+        
+        .card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .yoga-styles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .style-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            position: relative;
+        }
+        
+        .style-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .style-card:hover::after {
+            opacity: 1;
+        }
+        
+        .style-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.16);
+        }
+        
+        .style-icon {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 3px 6px rgba(59, 130, 246, 0.3));
+        }
+        
+        .style-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .style-card .tag {
+            display: inline-block;
+            background: var(--soft-purple);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+        }
+        
+        .pain-finder {
+            background: white;
+            padding: 3.5rem 2.5rem;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+            margin: 4rem 0;
+            border: 2px solid rgba(96, 165, 250, 0.25);
+            text-align: center;
+        }
+        
+        .body-map {
+            width: 300px;
+            height: 500px;
+            margin: 2rem auto;
+            position: relative;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400"><path d="M100,20 C80,20 60,40 60,60 C60,80 70,100 75,120 C70,140 65,160 70,180 C65,200 60,220 65,240 C60,260 55,280 60,300 C55,320 60,340 70,360 C75,380 90,400 100,400 C110,400 125,380 130,360 C140,340 145,320 140,300 C145,280 140,260 135,240 C140,220 135,200 130,180 C135,160 130,140 125,120 C130,100 140,80 140,60 C140,40 120,20 100,20 Z" fill="%23e0f2fe"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+        
+        .pain-point {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: white;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        .pain-point:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.2);
+        }
+        
+        .pain-point input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .pain-point.selected {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.15);
+        }
+        
+        .pain-point .label {
+            position: absolute;
+            background: var(--dark);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            top: 50%;
+            left: 120%;
+            transform: translateY(-50%);
+            opacity: 0;
+            pointer-events: none;          /* corrected */
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .pain-point:hover .label {
+            opacity: 1;
+        }
+        
+        .finder-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .finder-result {
+            margin-top: 2.5rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 20px;
+            display: none;
+            animation: fadeIn 0.6s ease;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+        
+        .finder-result.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pose-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .pose-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .pose-item h5 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .pose-item .duration {
+            font-size: 0.9rem;
+            color: var(--success);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pose-item ol {
+            padding-left: 1.3rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .safety-note {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--dark);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 6rem 2.5rem;
+            margin: 6rem 0;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.25);
+        }
+        
+        .quote {
+            max-width: 950px;
+            margin: 0 auto;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: white;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            line-height: 1.9;
+            font-weight: 500;
+        }
+        
+        .quote-author {
+            margin-top: 1.8rem;
+            font-weight: 700;
+            color: #dbeafe;
+            font-size: 1.2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+        }
+        
+        .faq-question {
+            padding: 1.6rem 2.2rem;
+            background: linear-gradient(to right, #f8fafc, #f0f9ff);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+        }
+        
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .faq-question.active::after {
+            content: '\f077';
+            color: var(--secondary);
+        }
+        
+        .faq-answer {
+            padding: 0 2.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: white;
+        }
+        
+        .faq-answer.active {
+            padding: 2.2rem;
+            max-height: 800px;
+        }
+        
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 2.2rem;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(37, 99, 235, 0.16);
+        }
+        
+        .resource-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.3rem;
+        }
+        
+        .resource-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+        }
+        
+        .resource-card a:hover {
+            color: var(--secondary);
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4.5rem 2.5rem;
+            border-radius: 32px;
+            text-align: center;
+            margin: 6rem 0;
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+        }
+        
+        .newsletter h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 1.3rem;
+            color: white;
+        }
+        
+        .newsletter p {
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.2rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter form {
+            max-width: 650px;
+            margin: 2.2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .newsletter button {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.2rem;
+            border-radius: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            font-size: 1.1rem;
+        }
+        
+        .newsletter button:hover {
+            background: white;
+            color: var(--success);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(16, 185, 129, 0.5);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1e2a44);
+            color: white;
+            padding: 5rem 1rem 2.5rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 3.5rem;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            padding: 0.3rem 0;
+            font-size: 1.05rem;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 0.8rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.3rem;
+            margin-top: 1.8rem;
+        }
+        
+        .social-links a {
+            width: 52px;
+            height: 52px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(8px);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .body-map {
+                width: 250px;
+                height: 420px;
+            }
+            
+            .pain-point .label {
+                display: none;
+            }
+            
+            .newsletter form {
+                flex-direction: column;
+            }
+            
+            .newsletter input,
+            .newsletter button {
+                width: 100%;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">YogaWell</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#styles">Styles</a></li>
+                <li><a href="#pain-finder">Pain Finder</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <h1>Heal with Yoga, Every Day</h1>
+        <p>Reduce pain, ease stress, and move freely. Just 15 minutes of yoga can transform how your body feels.</p>
+        <a href="#pain-finder" class="cta-button">Find My Pain Relief Plan</a>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Yoga Heals</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-heart card-icon"></i>
+                    <h3>Stress Relief</h3>
+                    <p>Yoga lowers cortisol by <strong>30%</strong> in 8 weeks. Like a daily mental reset.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-child card-icon"></i>
+                    <h3>Flexibility & Mobility</h3>
+                    <p>Increase range of motion by <strong>35%</strong> in 8 weeks. Move without stiffness.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt card-icon"></i>
+                    <h3>Pain Relief</h3>
+                    <p>Back pain reduced by <strong>56%</strong> with consistent practice. Proven in clinical studies.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-brain card-icon"></i>
+                    <h3>Mental Clarity</h3>
+                    <p>Improves focus and memory. 20 min = same brain boost as coffee.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-moon card-icon"></i>
+                    <h3>Better Sleep</h3>
+                    <p>Fall asleep <strong>15 min faster</strong>. Wake up refreshed.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-dumbbell card-icon"></i>
+                    <h3>Strength & Balance</h3>
+                    <p>Build core strength. Reduce fall risk by <strong>40%</strong> in seniors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yoga Styles -->
+    <section id="styles">
+        <div class="container">
+            <h2 class="section-title">Choose Your Healing Path</h2>
+            <div class="yoga-styles">
+                <div class="style-card">
+                    <i class="fas fa-pray style-icon"></i>
+                    <h4>Hatha Yoga</h4>
+                    <p>Slow, gentle poses. Perfect for beginners and pain relief.</p>
+                    <div class="tag">Best for: Back pain, arthritis</div>
+                </div>
+                <div class="style-card">
+                    <i class="fas fa-running style-icon"></i>
+                    <h4>Vinyasa Flow</h4>
+                    <p>Flowing movements with breath. Builds strength and stamina.</p>
+                    <div class="tag">Best for: Energy, weight loss</div>
+                </div>
+                <div class="style-card">
+                    <i class="fas fa-ruler style-icon"></i>
+                    <h4>Iyengar Yoga</h4>
+                    <p>Precision and props. Excellent for alignment and injury recovery.</p>
+                    <div class="tag">Best for: Posture, scoliosis</div>
+                </div>
+                <div class="style-card">
+                    <i class="fas fa-bed style-icon"></i>
+                    <h4>Restorative Yoga</h4>
+                    <p>Deep relaxation with props. Heals stress and insomnia.</p>
+                    <div class="tag">Best for: Anxiety, fatigue</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Area Finder -->
+    <section id="pain-finder">
+        <div class="container">
+            <h2 class="section-title">Your Personalized Pain Relief Plan</h2>
+            <div class="pain-finder">
+                <h3 style="color:var(--primary); margin-bottom:1rem;">Click the areas where you feel pain</h3>
+                <p style="color:var(--gray); max-width:700px; margin:0 auto 1.5rem;">Select one or more areas. We'll create a safe, gentle yoga routine just for you.</p>
+                
+                <div class="body-map" id="bodyMap">
+                    <!-- Head -->
+                    <div class="pain-point" style="top:8%; left:45%;">
+                        <input type="checkbox" id="head" value="head">
+                        <span>!</span>
+                        <div class="label">Head/Neck</div>
+                    </div>
+                    <!-- Shoulders -->
+                    <div class="pain-point" style="top:22%; left:30%;">
+                        <input type="checkbox" id="left-shoulder" value="shoulder">
+                        <span>!</span>
+                        <div class="label">Shoulder</div>
+                    </div>
+                    <div class="pain-point" style="top:22%; left:60%;">
+                        <input type="checkbox" id="right-shoulder" value="shoulder">
+                        <span>!</span>
+                        <div class="label">Shoulder</div>
+                    </div>
+                    <!-- Upper Back -->
+                    <div class="pain-point" style="top:28%; left:45%;">
+                        <input type="checkbox" id="upper-back" value="upper-back">
+                        <span>!</span>
+                        <div class="label">Upper Back</div>
+                    </div>
+                    <!-- Lower Back -->
+                    <div class="pain-point" style="top:45%; left:45%;">
+                        <input type="checkbox" id="lower-back" value="lower-back">
+                        <span>!</span>
+                        <div class="label">Lower Back</div>
+                    </div>
+                    <!-- Hips -->
+                    <div class="pain-point" style="top:55%; left:35%;">
+                        <input type="checkbox" id="left-hip" value="hip">
+                        <span>!</span>
+                        <div class="label">Hip</div>
+                    </div>
+                    <div class="pain-point" style="top:55%; left:55%;">
+                        <input type="checkbox" id="right-hip" value="hip">
+                        <span>!</span>
+                        <div class="label">Hip</div>
+                    </div>
+                    <!-- Knees -->
+                    <div class="pain-point" style="top:75%; left:38%;">
+                        <input type="checkbox" id="left-knee" value="knee">
+                        <span>!</span>
+                        <div class="label">Knee</div>
+                    </div>
+                    <div class="pain-point" style="top:75%; left:52%;">
+                        <input type="checkbox" id="right-knee" value="knee">
+                        <span>!</span>
+                        <div class="label">Knee</div>
+                    </div>
+                </div>
+                
+                <div class="finder-controls">
+                    <button class="cta-button" onclick="generatePainPlan()">Create My Yoga Plan</button>
+                    <button style="background:var(--warning); color:white; border:none; padding:0.8rem 1.5rem; border-radius:50px; font-weight:600; cursor:pointer;" onclick="clearSelections()">Clear All</button>
+                </div>
+                
+                <div id="painResult" class="finder-result">
+                    <h4>Your 15-Minute Daily Healing Routine</h4>
+                    <div id="poseList" class="pose-list"></div>
+                    <div class="safety-note">
+                        <strong>Safety First:</strong> Listen to your body. Stop if you feel sharp pain. Consult a doctor or yoga therapist for chronic conditions.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote">
+                "Yoga does not just change the way we see things; it transforms the person who sees."
+            </div>
+            <div class="quote-author">— B.K.S. Iyengar</div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Common Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do I need to be flexible?<div class="faq-answer">
+                    <p><strong>No!</strong> Yoga is about progress, not perfection. Start where you are — props and modifications help everyone.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can yoga help chronic pain?<div class="faq-answer">
+                    <p><strong>Yes!</strong> Studies show yoga reduces chronic low back pain by 56%, fibromyalgia by 30%, and arthritis symptoms significantly.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How often should I practice?<div class="faq-answer">
+                    <p><strong>15–30 minutes daily</strong> is ideal. Even 3x/week brings major benefits. Consistency > intensity.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if I have injuries?<div class="faq-answer">
+                    <p>Tell your teacher. Use props (blocks, straps, chairs). Restorative and chair yoga are excellent for injuries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources">
+        <div class="container">
+            <h2 class="section-title">Free Yoga Tools</h2>
+            
+            <div class="resources">
+                <div class="resource-card">
+                    <i class="fas fa-play-circle resource-icon"></i>
+                    <h4>Beginner Videos</h4>
+                    <p><a href="https://www.youtube.com/results?search_query=gentle+yoga+for+beginners" target="_blank">YouTube Gentle Yoga</a></p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-chair resource-icon"></i>
+                    <h4>Chair Yoga</h4>
+                    <p><a href="https://www.youtube.com/results?search_query=chair+yoga+for+seniors" target="_blank">Seated Routines</a></p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-bed resource-icon"></i>
+                    <h4>Bedtime Yoga</h4>
+                    <p><a href="https://www.youtube.com/results?search_query=yoga+for+sleep" target="_blank">Sleep Sequences</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Daily Yoga in Your Inbox</h3>
+            <p>Get a new 10-minute sequence every morning, pain relief tips, and gentle reminders to breathe.</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Send Me Peace</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>YogaWell</h4>
+                    <p>Your gentle path to less pain, more ease, and daily calm through yoga.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#benefits">Yoga Benefits</a></li>
+                        <li><a href="#styles">Yoga Styles</a></li>
+                        <li><a href="#pain-finder">Pain Relief Tool</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Daily Practice</h4>
+                    <ul>
+                        <li><a href="#">Morning Flow</a></li>
+                        <li><a href="#">Midday Reset</a></li>
+                        <li><a href="#">Evening Wind-Down</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Find a Class</a></li>
+                        <li><a href="#">Submit Story</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 YogaWell. Made with love and deep breaths.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Pain point selection
+        document.querySelectorAll('.pain-point input').forEach(input => {
+            input.addEventListener('change', function() {
+                const point = this.parentElement;
+                if (this.checked) {
+                    point.classList.add('selected');
+                } else {
+                    point.classList.remove('selected');
+                }
+            });
+        });
+
+        // Clear selections
+        function clearSelections() {
+            document.querySelectorAll('.pain-point input').forEach(input => {
+                input.checked = false;
+                input.parentElement.classList.remove('selected');
+            });
+            document.getElementById('painResult').classList.remove('show');
+        }
+
+        // Generate plan
+        function generatePainPlan() {
+            const selected = Array.from(document.querySelectorAll('.pain-point input:checked'))
+                .map(input => input.value);
+            
+            if (selected.length === 0) {
+                alert('Please select at least one pain area.');
+                return;
+            }
+            
+            const poses = [];
+            const styleMap = {
+                'head': 'Restorative',
+                'shoulder': 'Hatha',
+                'upper-back': 'Iyengar',
+                'lower-back': 'Hatha',
+                'hip': 'Restorative',
+                'knee': 'Iyengar'
+            };
+            
+            // Build routine
+            if (selected.includes('head')) {
+                poses.push({
+                    name: 'Child’s Pose (Balasana)',
+                    duration: '3–5 minutes',
+                    steps: ['Kneel, sit back on heels', 'Fold forward, arms extended', 'Rest forehead on mat', 'Breathe deeply']
+                });
+                poses.push({
+                    name: 'Neck Rolls',
+                    duration: '1 minute each direction',
+                    steps: ['Sit tall', 'Drop ear to shoulder', 'Slowly roll chin to chest', 'Continue in gentle circle']
+                });
+            }
+            
+            if (selected.includes('shoulder') || selected.includes('upper-back')) {
+                poses.push({
+                    name: 'Thread the Needle',
+                    duration: '1 minute per side',
+                    steps: ['Start on all fours', 'Thread one arm under body', 'Rest shoulder on mat', 'Hold and breathe']
+                });
+                poses.push({
+                    name: 'Eagle Arms',
+                    duration: '30 seconds per side',
+                    steps: ['Cross arms at elbows', 'Wrap forearms', 'Lift elbows, relax shoulders', 'Breathe into upper back']
+                });
+            }
+            
+            if (selected.includes('lower-back')) {
+                poses.push({
+                    name: 'Cat-Cow Flow',
+                    duration: '2 minutes',
+                    steps: ['On all fours, wrists under shoulders', 'Inhale: arch back, look up (Cow)', 'Exhale: round spine, tuck chin (Cat)', 'Flow with breath']
+                });
+                poses.push({
+                    name: 'Supine Twist',
+                    duration: '1 minute per side',
+                    steps: ['Lie on back', 'Draw one knee to chest', 'Guide knee across body', 'Keep shoulders grounded']
+                });
+            }
+            
+            if (selected.includes('hip')) {
+                poses.push({
+                    name: 'Figure 4 Stretch',
+                    duration: '1–2 minutes per side',
+                    steps: ['Lie on back', 'Cross ankle over opposite knee', 'Thread hands through to hold thigh', 'Gently pull toward chest']
+                });
+                poses.push({
+                    name: 'Pigeon Pose (Modified)',
+                    duration: '2 minutes per side',
+                    steps: ['From tabletop, bring one knee forward', 'Extend other leg back', 'Use pillows under hips if needed', 'Fold forward gently']
+                });
+            }
+            
+            if (selected.includes('knee')) {
+                poses.push({
+                    name: 'Seated Forward Fold (with bent knees)',
+                    duration: '2 minutes',
+                    steps: ['Sit with legs extended', 'Bend knees as needed', 'Hinge at hips, reach forward', 'Use strap if tight']
+                });
+                poses.push({
+                    name: 'Supported Bridge',
+                    duration: '3 minutes',
+                    steps: ['Lie on back, knees bent', 'Lift hips, place block under sacrum', 'Relax completely', 'Breathe into belly']
+                });
+            }
+            
+            // Always add breathing
+            poses.unshift({
+                name: 'Diaphragmatic Breathing',
+                duration: '3 minutes',
+                steps: ['Sit or lie comfortably', 'Hand on belly', 'Inhale: belly rises', 'Exhale: belly falls', 'Count to 4 in, 6 out']
+            });
+            
+            // Display
+            const poseList = document.getElementById('poseList');
+            poseList.innerHTML = poses.map(pose => `
+                <div class="pose-item">
+                    <h5>${pose.name}</h5>
+                    <div class="duration">${pose.duration}</div>
+                    <ol>
+                        ${pose.steps.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                </div>
+            `).join('');
+            
+            document.getElementById('painResult').classList.add('show');
+        }
+
+        // FAQ
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('active'));
+                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+                
+                if (!isActive) {
+                    answer.classList.add('active');
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                document.querySelector('.nav-links').classList.remove('active');
+                const menuIcon = document.querySelector('#mobileMenu i');
+                if (menuIcon.classList.contains('fa-times')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Newsletter
+        document.querySelector('.newsletter form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Daily yoga coming to ${email} Namaste`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
