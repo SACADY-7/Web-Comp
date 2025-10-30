@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoveWell - Your Journey to an Active, Healthy Life</title>
+    <meta name="description" content="Discover how simple daily movement can transform your body, mind, and energy. Practical tips, real stories, and fun tools to help you stay active.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;      /* Vibrant blue (energy & trust) */
+            --secondary: #3b82f6;    /* Sky blue */
+            --accent: #60a5fa;       /* Soft blue accent */
+            --success: #10b981;      /* Emerald green for action */
+            --light: #f8fafc;        /* Clean white */
+            --lighter: #eff6ff;      /* Very light blue */
+            --dark: #1e293b;         /* Deep slate */
+            --gray: #64748b;         /* Cool gray */
+            --highlight: #93c5fd;    /* Light blue highlight */
+            --warning: #f59e0b;      /* Amber warning */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, var(--lighter));
+            color: var(--dark);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.3rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.2);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.6rem 0;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background: var(--highlight);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: white;
+        }
+        
+        .hero {
+            max-width: 1200px;
+            margin: 3.5rem auto;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.3rem;
+            color: var(--primary);
+            text-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--gray);
+            max-width: 850px;
+            margin: 0 auto 2.8rem;
+            font-weight: 500;
+        }
+        
+        .cta-button {
+            background: var(--success);
+            color: white;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            border: 3px solid transparent;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px rgba(16, 185, 129, 0.5);
+            background: white;
+            color: var(--success);
+            border-color: var(--success);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin: 5.5rem 0;
+            padding: 3.5rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.7rem;
+            text-align: center;
+            margin-bottom: 2.8rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 130px;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            display: block;
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 7px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            transition: width 0.3s;
+        }
+        
+        .card:hover::before {
+            width: 12px;
+        }
+        
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.18);
+        }
+        
+        .card-icon {
+            font-size: 3.3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 3px 6px rgba(37, 99, 235, 0.2));
+        }
+        
+        .card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .card ul {
+            padding-left: 1.5rem;
+            margin: 1.2rem 0;
+        }
+        
+        .card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .card li::marker {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .exercise-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .exercise-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        
+        .exercise-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.16);
+        }
+        
+        .exercise-icon {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 3px 6px rgba(59, 130, 246, 0.3));
+        }
+        
+        .exercise-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .exercise-card p {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+        
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .story-card {
+            background: white;
+            padding: 2.2rem;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            border-left: 6px solid var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .story-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+        }
+        
+        .story-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .story-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .story-author {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .motivation-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        
+        .tip-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 1.8rem;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 6px 22px rgba(59, 130, 246, 0.15);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(59, 130, 246, 0.2);
+        }
+        
+        .tip-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .workout-planner {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.12);
+            margin: 3.5rem 0;
+            border: 2px solid rgba(96, 165, 250, 0.25);
+            text-align: center;
+        }
+        
+        .planner-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 2rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .planner-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .planner-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .planner-group select,
+        .planner-group input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .planner-group select:focus,
+        .planner-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+        
+        .planner-result {
+            margin-top: 2rem;
+            padding: 1.8rem;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 16px;
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .planner-result.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 6rem 2.5rem;
+            margin: 6rem 0;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.25);
+        }
+        
+        .quote {
+            max-width: 950px;
+            margin: 0 auto;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: white;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            line-height: 1.9;
+            font-weight: 500;
+        }
+        
+        .quote-author {
+            margin-top: 1.8rem;
+            font-weight: 700;
+            color: #dbeafe;
+            font-size: 1.2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+        }
+        
+        .faq-question {
+            padding: 1.6rem 2.2rem;
+            background: linear-gradient(to right, #f8fafc, #f0f9ff);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+        }
+        
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .faq-question.active::after {
+            content: '\f077';
+            color: var(--secondary);
+        }
+        
+        .faq-answer {
+            padding: 0 2.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: white;
+        }
+        
+        .faq-answer.active {
+            padding: 2.2rem;
+            max-height: 600px;
+        }
+        
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 2.2rem;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(37, 99, 235, 0.16);
+        }
+        
+        .resource-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.3rem;
+        }
+        
+        .resource-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+        }
+        
+        .resource-card a:hover {
+            color: var(--secondary);
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4.5rem 2.5rem;
+            border-radius: 32px;
+            text-align: center;
+            margin: 6rem 0;
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+        }
+        
+        .newsletter h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 1.3rem;
+            color: white;
+        }
+        
+        .newsletter p {
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.2rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter form {
+            max-width: 650px;
+            margin: 2.2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .newsletter button {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.2rem;
+            border-radius: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            font-size: 1.1rem;
+        }
+        
+        .newsletter button:hover {
+            background: white;
+            color: var(--success);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(16, 185, 129, 0.5);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1e2a44);
+            color: white;
+            padding: 5rem 1rem 2.5rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 3.5rem;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            padding: 0.3rem 0;
+            font-size: 1.05rem;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 0.8rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.3rem;
+            margin-top: 1.8rem;
+        }
+        
+        .social-links a {
+            width: 52px;
+            height: 52px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(8px);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .planner-inputs {
+                flex-direction: column;
+            }
+            
+            .newsletter form {
+                flex-direction: column;
+            }
+            
+            .newsletter input,
+            .newsletter button {
+                width: 100%;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MoveWell</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#types">Exercise Types</a></li>
+                <li><a href="#tips">Daily Tips</a></li>
+                <li><a href="#stories">Success Stories</a></li>
+                <li><a href="#planner">Workout Planner</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Move Your Body, Transform Your Life</h1>
+        <p>Just 30 minutes a day can boost your energy, melt stress, and add years to your life. Start small, stay consistent, and watch yourself thrive.</p>
+        <a href="#planner" class="cta-button">Build My Workout Plan</a>
+    </section>
+
+    <!-- Benefits of Exercise -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Movement Changes Everything</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-heart card-icon"></i>
+                    <h3>Stronger Heart</h3>
+                    <p>Regular exercise cuts heart disease risk by <strong>50%</strong>. It's like giving your heart a daily tune-up.</p>
+                    <p><strong>Real impact:</strong> Brisk walking 30 min/day = 19% lower risk of heart attack.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-weight card-icon"></i>
+                    <h3>Weight Mastery</h3>
+                    <ul>
+                        <li>Burns 300-600 calories per hour</li>
+                        <li>Boosts metabolism for 24+ hours</li>
+                        <li>Preserves muscle while losing fat</li>
+                        <li>Reduces belly fat by 7-10%</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-brain card-icon"></i>
+                    <h3>Mental Superpower</h3>
+                    <p>Exercise releases endorphins — your brain's "happy chemicals". Reduces depression by <strong>30%</strong>.</p>
+                    <p><strong>Like therapy, but free and fun!</strong></p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-bolt card-icon"></i>
+                    <h3>Energy Explosion</h3>
+                    <p>Improves blood flow and oxygen delivery. Active people report <strong>65% more daily energy</strong>.</p>
+                    <p><strong>Pro tip:</strong> Morning workout = all-day energy boost.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-shield-alt card-icon"></i>
+                    <h3>Better Immunity</h3>
+                    <p>Moderate exercise increases immune cells by <strong>300%</strong> for 3 hours post-workout.</p>
+                    <p><strong>Result:</strong> 43% fewer sick days per year.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-moon card-icon"></i>
+                    <h3>Deeper Sleep</h3>
+                    <p>Exercisers fall asleep <strong>15 minutes faster</strong> and sleep 1 hour longer.</p>
+                    <p><strong>Bonus:</strong> Morning light + evening movement = perfect sleep rhythm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exercise Types -->
+    <section id="types">
+        <div class="container">
+            <h2 class="section-title">Choose Your Movement</h2>
+            <div class="exercise-types">
+                <div class="exercise-card">
+                    <i class="fas fa-running exercise-icon"></i>
+                    <h4>Cardio</h4>
+                    <p>Running, cycling, dancing, swimming. Burns fat, boosts heart health. 150 min/week recommended.</p>
+                </div>
+                <div class="exercise-card">
+                    <i class="fas fa-dumbbell exercise-icon"></i>
+                    <h4>Strength</h4>
+                    <p>Weights, resistance bands, bodyweight. Builds muscle, speeds metabolism. 2-3x per week.</p>
+                </div>
+                <div class="exercise-card">
+                    <i class="fas fa-child exercise-icon"></i>
+                    <h4>Flexibility</h4>
+                    <p>Yoga, stretching, pilates. Improves mobility, reduces injury. Daily 10-15 min.</p>
+                </div>
+                <div class="exercise-card">
+                    <i class="fas fa-balance-scale exercise-icon"></i>
+                    <h4>Balance</h4>
+                    <p>Tai chi, single-leg stands. Prevents falls, sharpens focus. Great for all ages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Integration Tips -->
+    <section id="tips">
+        <div class="container">
+            <h2 class="section-title">Sneak Movement Into Your Day</h2>
+            <div class="motivation-tips">
+                <div class="tip-card">
+                    <i class="fas fa-walking tip-icon"></i>
+                    <h4>Walk & Talk</h4>
+                    <p>Phone calls = walking time. 20-min call = 2,000 steps.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-tv tip-icon"></i>
+                    <h4>TV Workouts</h4>
+                    <p>Squats during commercials = 100 squats per show.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-car tip-icon"></i>
+                    <h4>Park Farther</h4>
+                    <p>Add 500 steps per errand. 3 errands = 1-mile walk.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-clock tip-icon"></i>
+                    <h4>10-Min Rule</h4>
+                    <p>Just start for 10 min. 90% continue longer.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-users tip-icon"></i>
+                    <h4>Buddy Up</h4>
+                    <p>Exercise with a friend = 78% higher consistency.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-music tip-icon"></i>
+                    <h4>Playlist Power</h4>
+                    <p>130-140 BPM songs = perfect workout rhythm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section id="stories">
+        <div class="container">
+            <h2 class="section-title">Real People, Real Results</h2>
+            <div class="success-stories">
+                <div class="story-card">
+                    <div class="story-quote">
+                        "I started with 10-minute walks after dinner. Six months later, I'm down 25 pounds and off blood pressure meds!"
+                    </div>
+                    <div class="story-author">
+                        <div class="author-avatar">MJ</div>
+                        <div>
+                            <strong>Maria J., 52</strong><br>
+                            <small>Teacher, Mom of 3</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-quote">
+                        "Bodyweight squats during Zoom breaks cured my back pain. I feel 10 years younger!"
+                    </div>
+                    <div class="story-author">
+                        <div class="author-avatar">TK</div>
+                        <div>
+                            <strong>Tom K., 38</strong><br>
+                            <small>Remote Worker</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-quote">
+                        "Dancing to my favorite songs 3x/week lifted my depression. I smile every day now."
+                    </div>
+                    <div class="story-author">
+                        <div class="author-avatar">SL</div>
+                        <div>
+                            <strong>Sarah L., 29</strong><br>
+                            <small>Graphic Designer</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Workout Planner -->
+    <section id="planner">
+        <div class="container">
+            <h2 class="section-title">Your Custom Workout Plan</h2>
+            <div class="workout-planner">
+                <h3 style="color:var(--primary); margin-bottom:1rem;">Answer 3 quick questions</h3>
+                <div class="planner-inputs">
+                    <div class="planner-group">
+                        <label>Your Fitness Level</label>
+                        <select id="fitnessLevel">
+                            <option>Beginner (new to exercise)</option>
+                            <option>Intermediate (active 1-3x/week)</option>
+                            <option>Advanced (active 4+ times/week)</option>
+                        </select>
+                    </div>
+                    <div class="planner-group">
+                        <label>Time Available</label>
+                        <select id="timeAvailable">
+                            <option>10-20 minutes</option>
+                            <option>30-45 minutes</option>
+                            <option>60+ minutes</option>
+                        </select>
+                    </div>
+                    <div class="planner-group">
+                        <label>Goal</label>
+                        <select id="goal">
+                            <option>Build energy & feel good</option>
+                            <option>Lose weight</option>
+                            <option>Build strength</option>
+                            <option>Reduce stress</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="generatePlan()">Create My Plan</button>
+                <div id="planResult" class="planner-result">
+                    <h4>Your Weekly Workout Plan</h4>
+                    <div id="planDetails"></div>
+                    <p style="margin-top:1.5rem; font-weight:600; color:var(--primary);">
+                        <i class="fas fa-check-circle"></i> Start tomorrow — you've got this!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivational Quote -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote">
+                "The only bad workout is the one that didn't happen. Every step, every rep, every breath brings you closer to the best version of yourself."
+            </div>
+            <div class="quote-author">— MoveWell Community</div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Common Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do I need a gym?<div class="faq-answer">
+                    <p><strong>Nope!</strong> 80% of effective workouts use bodyweight or household items.</p>
+                    <p><strong>Home alternatives:</strong> Water bottles = weights, stairs = cardio, couch = stretching bench.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if I hate running?<div class="faq-answer">
+                    <p>Don't run! Choose movement you enjoy:</p>
+                    <ul>
+                        <li>Dancing (Zumba, freestyle)</li>
+                        <li>Swimming or water aerobics</li>
+                        <li>Cycling or stationary bike</li>
+                        <li>Team sports (pickleball, volleyball)</li>
+                    </ul>
+                    <p><strong>Key:</strong> Consistency > intensity.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">I'm too busy — what can I do in 10 minutes?<div class="faq-answer">
+                    <p><strong>10-Minute Power Circuit:</strong></p>
+                    <ul>
+                        <li>1 min jumping jacks</li>
+                        <li>1 min squats</li>
+                        <li>1 min push-ups (knee or wall)</li>
+                        <li>1 min mountain climbers</li>
+                        <li>Repeat 2x</li>
+                    </ul>
+                    <p>Burns 100+ calories and boosts mood instantly.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How soon will I see results?<div class="faq-answer">
+                    <p><strong>Timeline:</strong></p>
+                    <ul>
+                        <li><strong>1-2 weeks:</strong> More energy, better mood</li>
+                        <li><strong>4-6 weeks:</strong> Clothes fit better, improved strength</li>
+                        <li><strong>8-12 weeks:</strong> Visible body changes, major health improvements</li>
+                    </ul>
+                    <p><strong>Track progress:</strong> Photos, how clothes fit, energy levels — not just scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources">
+        <div class="container">
+            <h2 class="section-title">Free Resources</h2>
+            
+            <div class="resources">
+                <div class="resource-card">
+                    <i class="fas fa-play-circle resource-icon"></i>
+                    <h4>Beginner Workouts</h4>
+                    <p><a href="https://www.youtube.com/results?search_query=10+minute+beginner+workout" target="_blank">YouTube 10-Min Workouts</a></p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-dumbbell resource-icon"></i>
+                    <h4>Bodyweight Plans</h4>
+                    <p><a href="https://darebee.com/" target="_blank">DAREBEE (Free Visual Workouts)</a></p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-running resource-icon"></i>
+                    <h4>Walking Programs</h4>
+                    <p><a href="https://www.walkingforhealthandfitness.com/" target="_blank">Walking for Health</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Stay Motivated All Week</h3>
+            <p>Get Monday motivation, Wednesday workouts, Friday success stories, and weekend challenges delivered to your inbox.</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Send Me Energy</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>MoveWell</h4>
+                    <p>Your daily dose of movement inspiration. Small steps, big changes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Start</h4>
+                    <ul>
+                        <li><a href="#benefits">Health Benefits</a></li>
+                        <li><a href="#types">Exercise Types</a></li>
+                        <li><a href="#planner">Workout Planner</a></li>
+                        <li><a href="#stories">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Daily Boosts</h4>
+                    <ul>
+                        <li><a href="#">Morning Movement</a></li>
+                        <li><a href="#">Desk Stretches</a></li>
+                        <li><a href="#">Evening Wind-Down</a></li>
+                        <li><a href="#">Weekend Warrior</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Join Community</a></li>
+                        <li><a href="#">Submit Story</a></li>
+                        <li><a href="#">Partner with Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 MoveWell. Made with passion for your health and happiness.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // FAQ
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('active'));
+                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+                
+                if (!isActive) {
+                    answer.classList.add('active');
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Workout Planner
+        function generatePlan() {
+            const level = document.getElementById('fitnessLevel').value;
+            const time = document.getElementById('timeAvailable').value;
+            const goal = document.getElementById('goal').value;
+            
+            let plan = '';
+            let days = '';
+            
+            if (level.includes('Beginner')) {
+                days = '3 days/week';
+                plan = `
+                    <strong>Monday, Wednesday, Friday:</strong><br>
+                    • 5 min warm-up walk<br>
+                    • 10-15 min bodyweight circuit (squats, push-ups, planks)<br>
+                    • 5 min stretching<br><br>
+                    <strong>Weekend bonus:</strong> 20-min nature walk
+                `;
+            } else if (level.includes('Intermediate')) {
+                days = '4 days/week';
+                plan = `
+                    <strong>Mon/Tue/Thu/Sat:</strong><br>
+                    • 5 min dynamic warm-up<br>
+                    • 25-35 min workout (mix cardio + strength)<br>
+                    • 5-10 min yoga flow<br><br>
+                    <strong>Rest days:</strong> Light walking or stretching
+                `;
+            } else {
+                days = '5 days/week';
+                plan = `
+                    <strong>Mon-Fri:</strong><br>
+                    • 10 min warm-up<br>
+                    • 45-60 min structured training<br>
+                    • 10 min mobility work<br><br>
+                    <strong>Weekend:</strong> Active recovery (hiking, sports)
+                `;
+            }
+            
+            if (goal.includes('weight')) {
+                plan += `<br><strong>Weight loss tip:</strong> Add 10k steps daily + protein-rich meals`;
+            } else if (goal.includes('strength')) {
+                plan += `<br><strong>Strength tip:</strong> Progressive overload — increase reps/weight weekly`;
+            } else if (goal.includes('stress')) {
+                plan += `<br><strong>Stress relief:</strong> End each session with 5 min meditation`;
+            }
+            
+            document.getElementById('planDetails').innerHTML = `
+                <p><strong>${days}</strong> — Perfect for you!</p>
+                <p>${plan}</p>
+            `;
+            document.getElementById('planResult').classList.add('show');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                document.querySelector('.nav-links').classList.remove('active');
+                const menuIcon = document.querySelector('#mobileMenu i');
+                if (menuIcon.classList.contains('fa-times')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Newsletter
+        document.querySelector('.newsletter form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`You're in! Weekly motivation coming to ${email} 💪`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

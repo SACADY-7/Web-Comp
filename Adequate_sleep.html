@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepWell - Your Guide to Better Rest & Health</title>
+    <meta name="description" content="Discover why sleep matters, learn simple tips to sleep better, and understand common sleep problems. A friendly guide for everyone.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;      /* Vibrant blue */
+            --secondary: #3b82f6;    /* Sky blue */
+            --accent: #60a5fa;       /* Soft blue accent */
+            --light: #f8fafc;        /* Near-white */
+            --lighter: #eff6ff;      /* Very light blue */
+            --dark: #1e293b;         /* Deep slate */
+            --gray: #64748b;         /* Cool gray */
+            --success: #10b981;      /* Emerald for positive actions */
+            --warning: #f59e0b;       /* Amber for warnings */
+            --highlight: #93c5fd;    /* Light blue highlight */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, var(--lighter));
+            color: var(--dark);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: var(--accent);
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .hero {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            text-shadow: 0 3px 10px rgba(37, 99, 235, 0.15);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .cta-button {
+            background: var(--success);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
+            background: white;
+            color: var(--success);
+            border-color: var(--success);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin: 5rem 0;
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 110px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            display: block;
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2.3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 28px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            transition: width 0.3s;
+        }
+        
+        .card:hover::before {
+            width: 10px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 22px 45px rgba(37, 99, 235, 0.18);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.3rem;
+            filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.2));
+        }
+        
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .card ul {
+            padding-left: 1.4rem;
+            margin: 1rem 0;
+        }
+        
+        .card li {
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+        
+        .card li::marker {
+            color: var(--secondary);
+        }
+        
+        .sleep-cycle-demo {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.12);
+            border: 2px solid rgba(96, 165, 250, 0.25);
+        }
+        
+        .sleep-cycle-chart {
+            width: 280px;
+            height: 280px;
+            margin: 2rem auto;
+            position: relative;
+            border-radius: 50%;
+            background: conic-gradient(
+                #3b82f6 0% 25%, 
+                #60a5fa 25% 50%, 
+                #93c5fd 50% 75%, 
+                #bfdbfe 75% 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+        
+        .sleep-cycle-center {
+            width: 180px;
+            height: 180px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+        }
+        
+        .sleep-cycle-center span {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .cycle-labels {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .cycle-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cycle-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+        
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        
+        .tip-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 6px 22px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.15);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(37, 99, 235, 0.15);
+        }
+        
+        .tip-icon {
+            font-size: 2.6rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .consequence-warning {
+            background: linear-gradient(135deg, #fff7ed, #fed7aa);
+            border-left: 6px solid var(--warning);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.1);
+        }
+        
+        .consequence-warning strong {
+            color: var(--warning);
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 5rem 2rem;
+            margin: 5rem 0;
+            border-radius: 28px;
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.2);
+        }
+        
+        .quote {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            line-height: 1.8;
+        }
+        
+        .quote-author {
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: #dbeafe;
+            font-size: 1.1rem;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 1.3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 22px rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+        }
+        
+        .faq-question {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(to right, #f8fafc, #f0f9ff);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            color: var(--dark);
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+        }
+        
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .faq-question.active::after {
+            content: '\f077';
+            color: var(--secondary);
+        }
+        
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: white;
+        }
+        
+        .faq-answer.active {
+            padding: 2rem;
+            max-height: 500px;
+        }
+        
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 35px rgba(37, 99, 235, 0.16);
+        }
+        
+        .resource-icon {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.2rem;
+        }
+        
+        .resource-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .resource-card a:hover {
+            color: var(--secondary);
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 28px;
+            text-align: center;
+            margin: 5rem 0;
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.25);
+        }
+        
+        .newsletter h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+        
+        .newsletter p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .newsletter form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 1.1rem 1.4rem;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        
+        .newsletter button {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 1.1rem 2rem;
+            border-radius: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        .newsletter button:hover {
+            background: white;
+            color: var(--success);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1e2a44);
+            color: white;
+            padding: 4rem 1rem 2rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.3rem;
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s;
+            padding: 0.25rem 0;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 0.6rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(6px);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-4px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+        
+        /* Interactive Sleep Calculator */
+        .sleep-calculator {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.12);
+            margin: 3rem 0;
+            border: 2px solid rgba(96, 165, 250, 0.2);
+        }
+        
+        .calc-input {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+        
+        .calc-input label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .calc-input input {
+            padding: 0.9rem 1.2rem;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .calc-input input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+        
+        .calc-result {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 16px;
+            display: none;
+        }
+        
+        .calc-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                padding: 1.8rem;
+                box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .sleep-cycle-chart {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .sleep-cycle-center {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .newsletter form {
+                flex-direction: column;
+            }
+            
+            .newsletter input,
+            .newsletter button {
+                width: 100%;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">SleepWell</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#disorders">Disorders</a></li>
+                <li><a href="#tips">Sleep Tips</a></li>
+                <li><a href="#consequences">Risks</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Wake Up to Better Health</h1>
+        <p>Sleep isn't just rest — it's your body's nightly repair crew. Discover how 7-9 hours of quality sleep can transform your mood, memory, and energy.</p>
+        <a href="#benefits" class="cta-button">Start Sleeping Better Tonight</a>
+    </section>
+
+    <!-- Benefits of Sleep -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Sleep Matters</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-brain card-icon"></i>
+                    <h3>Sharper Mind</h3>
+                    <p>Sleep consolidates memories and clears brain fog. Students who sleep well score 10-15% higher on tests.</p>
+                    <p><strong>Example:</strong> Like saving files on a computer — sleep "saves" what you learned all day.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-heart card-icon"></i>
+                    <h3>Stronger Body</h3>
+                    <ul>
+                        <li>Repairs muscles and tissues</li>
+                        <li>Regulates blood sugar</li>
+                        <li>Boosts immune system</li>
+                        <li>Lowers heart disease risk by 30%</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-smile card-icon"></i>
+                    <h3>Happier Mood</h3>
+                    <p>Good sleep balances mood hormones. Well-rested people are 60% less likely to feel irritable.</p>
+                    <p><strong>Real talk:</strong> Ever snapped at someone after a bad night? That's sleep talking!</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-weight card-icon"></i>
+                    <h3>Healthy Weight</h3>
+                    <p>Sleep regulates hunger hormones. People who sleep 7+ hours eat 300 fewer calories/day on average.</p>
+                    <p><strong>Tip:</strong> Want to curb late-night snacking? Go to bed earlier!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sleep Cycle Demo -->
+    <section>
+        <div class="container">
+            <div class="sleep-cycle-demo">
+                <h3>Your Night in 90-Minute Cycles</h3>
+                <p>A full night has 4-6 cycles. Each cycle has stages that repair your body and mind.</p>
+                <div class="sleep-cycle-chart">
+                    <div class="sleep-cycle-center">
+                        <span>90</span>
+                        <div>Minute<br>Cycle</div>
+                    </div>
+                </div>
+                <div class="cycle-labels">
+                    <div class="cycle-label"><div class="cycle-dot" style="background:#3b82f6;"></div> Light Sleep</div>
+                    <div class="cycle-label"><div class="cycle-dot" style="background:#60a5fa;"></div> Deep Sleep</div>
+                    <div class="cycle-label"><div class="cycle-dot" style="background:#93c5fd;"></div> REM Sleep</div>
+                    <div class="cycle-label"><div class="cycle-dot" style="background:#bfdbfe;"></div> Wake</div>
+                </div>
+                <p><small>Aim for 5 full cycles (7.5 hours) for optimal restoration.</small></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Sleep Disorders -->
+    <section id="disorders">
+        <div class="container">
+            <h2 class="section-title">Common Sleep Stealers</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-bed card-icon"></i>
+                    <h3>Insomnia</h3>
+                    <p>Difficulty falling or staying asleep. Affects 1 in 3 adults occasionally.</p>
+                    <p><strong>Signs:</strong> Taking >30 min to fall asleep, waking often, feeling tired despite 8 hours in bed.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-lungs card-icon"></i>
+                    <h3>Sleep Apnea</h3>
+                    <p>Breathing stops briefly during sleep. Can happen 30+ times per hour!</p>
+                    <p><strong>Red flags:</strong> Loud snoring, gasping, daytime sleepiness, morning headaches.</p>
+                    <div class="consequence-warning">
+                        <strong>Warning:</strong> Untreated apnea increases heart attack risk by 5x.
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-running card-icon"></i>
+                    <h3>Restless Legs</h3>
+                    <p>Uncomfortable urge to move legs, especially at night.</p>
+                    <p><strong>Feels like:</strong> Crawling, tingling, or aching in legs that only movement relieves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sleep Tips -->
+    <section id="tips">
+        <div class="container">
+            <h2 class="section-title">10 Simple Sleep Hacks</h2>
+            <div class="tip-grid">
+                <div class="tip-card">
+                    <i class="fas fa-clock tip-icon"></i>
+                    <h4>Consistent Schedule</h4>
+                    <p>Same bedtime & wake time — even weekends!</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun tip-icon"></i>
+                    <h4>Morning Sunlight</h4>
+                    <p>15 min of natural light sets your body clock.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-moon tip-icon"></i>
+                    <h4>Dark Bedroom</h4>
+                    <p>Use blackout curtains or eye mask.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-thermometer-half tip-icon"></i>
+                    <h4>Cool Room</h4>
+                    <p>60-67°F (16-19°C) is ideal for sleep.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-mobile-alt tip-icon"></i>
+                    <h4>No Screens 1hr Before Bed</h4>
+                    <p>Blue light blocks melatonin.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-coffee tip-icon"></i>
+                    <h4>No Caffeine After 2 PM</h4>
+                    <p>It stays in your system 8+ hours.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-utensils tip-icon"></i>
+                    <h4>Light Dinner</h4>
+                    <p>Finish eating 3 hours before bed.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-dumbbell tip-icon"></i>
+                    <h4>Exercise Daily</h4>
+                    <p>But not within 3 hours of bedtime.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-book tip-icon"></i>
+                    <h4>Wind-Down Routine</h4>
+                    <p>Read, journal, or meditate 30 min before bed.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-bed tip-icon"></i>
+                    <h4>Bed = Sleep Only</h4>
+                    <p>No work, TV, or phone in bed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sleep Calculator -->
+    <section id="calculator">
+        <div class="container">
+            <h2 class="section-title">Sleep Cycle Calculator</h2>
+            <div class="sleep-calculator">
+                <h3 style="text-align:center; margin-bottom:1.5rem; color:var(--primary);">Find Your Perfect Bedtime</h3>
+                <div class="calc-input">
+                    <label for="wakeTime">When do you need to wake up?</label>
+                    <input type="time" id="wakeTime" required>
+                </div>
+                <button class="cta-button" style="margin:0 auto; display:block;" onclick="calculateSleep()">Calculate Bedtimes</button>
+                <div id="calcResult" class="calc-result">
+                    <h4>Go to bed at:</h4>
+                    <p id="bedtimes"></p>
+                    <p><small>To complete full 90-minute sleep cycles</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consequences of Sleep Deprivation -->
+    <section id="consequences">
+        <div class="container">
+            <h2 class="section-title">What Happens When You Skimp on Sleep</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-car-crash card-icon"></i>
+                    <h3>2x Accident Risk</h3>
+                    <p>Drowsy driving is as dangerous as drunk driving. 1 in 25 adults has fallen asleep while driving.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-brain card-icon"></i>
+                    <h3>Memory Loss</h3>
+                    <p>Chronic sleep loss shrinks brain regions for learning. It's like trying to save files on a full hard drive.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-virus card-icon"></i>
+                    <h3>Weaker Immunity</h3>
+                    <p>Sleep-deprived people are 4x more likely to catch a cold.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivational Quote -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote">
+                "Sleep is the best meditation. It is the golden chain that ties health and our bodies together."
+            </div>
+            <div class="quote-author">— Dalai Lama & Thomas Dekker</div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Sleep Questions Answered</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How much sleep do I really need?<div class="faq-answer">
+                    <p>Adults: <strong>7-9 hours</strong><br>Teens: <strong>8-10 hours</strong><br>Kids: <strong>9-12 hours</strong></p>
+                    <p>Quality > quantity. 6 hours of deep sleep beats 9 hours of restless sleep.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is napping good or bad?<div class="faq-answer">
+                    <p><strong>Good:</strong> 20-30 minute power naps boost alertness.<br><strong>Bad:</strong> Naps >1 hour or after 3 PM disrupt nighttime sleep.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Why do I wake up at 3 AM?<div class="faq-answer">
+                    <p>Common causes:</p>
+                    <ul>
+                        <li>Stress/anxiety</li>
+                        <li>Alcohol (causes rebound wakefulness)</li>
+                        <li>Low blood sugar</li>
+                        <li>Sleep apnea</li>
+                    </ul>
+                    <p><strong>Try:</strong> No food/alcohol 3 hours before bed, relaxation routine.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">When should I see a doctor?<div class="faq-answer">
+                    <p>Seek help if:</p>
+                    <ul>
+                        <li>You feel tired despite 7+ hours sleep</li>
+                        <li>Snoring + daytime fatigue</li>
+                        <li>Can't fall asleep most nights</li>
+                        <li>Falling asleep during day activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources">
+        <div class="container">
+            <h2 class="section-title">Helpful Resources</h2>
+            
+            <div class="resources">
+                <div class="resource-card">
+                    <i class="fas fa-play-circle resource-icon"></i>
+                    <h4>Guided Sleep Meditations</h4>
+                    <p><a href="https://www.youtube.com/results?search_query=guided+sleep+meditation" target="_blank">YouTube Sleep Stories</a></p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-mobile-alt resource-icon"></i>
+                    <h4>Sleep Tracking Apps</h4>
+                    <p><a href="https://www.sleepcycle.com/" target="_blank">Sleep Cycle</a> | <a href="https://sleepscore.com/" target="_blank">SleepScore</a></p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-headset resource-icon"></i>
+                    <h4>Professional Help</h4>
+                    <p>American Academy of Sleep Medicine: <a href="https://sleepeducation.org/" target="_blank">sleepeducation.org</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Sleep Better Every Night</h3>
+            <p>Get weekly sleep tips, bedtime reminders, and science-backed advice delivered to your inbox.</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Send Me to Sleep</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>SleepWell</h4>
+                    <p>Your friendly guide to understanding and improving sleep for better health and happiness.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Learn More</h4>
+                    <ul>
+                        <li><a href="#benefits">Sleep Benefits</a></li>
+                        <li><a href="#disorders">Sleep Disorders</a></li>
+                        <li><a href="#tips">Sleep Tips</a></li>
+                        <li><a href="#calculator">Sleep Calculator</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Daily Habits</h4>
+                    <ul>
+                        <li><a href="#">Morning Routine</a></li>
+                        <li><a href="#">Wind-Down Ritual</a></li>
+                        <li><a href="#">Weekend Recovery</a></li>
+                        <li><a href="#">Travel Sleep Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Submit Feedback</a></li>
+                        <li><a href="#">Partner with Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 SleepWell. Made with ☕ and science for your best rest.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('active'));
+                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+                
+                if (!isActive) {
+                    answer.classList.add('active');
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Sleep Calculator
+        function calculateSleep() {
+            const wakeInput = document.getElementById('wakeTime').value;
+            if (!wakeInput) {
+                alert('Please select a wake-up time!');
+                return;
+            }
+            
+            const wakeTime = new Date(`2000-01-01T${wakeInput}:00`);
+            const bedtimes = [];
+            const cycles = [6, 5, 4]; // 9, 7.5, 6 hours
+            
+            cycles.forEach(cycle => {
+                const sleepTime = new Date(wakeTime - cycle * 90 * 60 * 1000 - 15 * 60 * 1000); // 15 min to fall asleep
+                bedtimes.push(sleepTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}));
+            });
+            
+            document.getElementById('bedtimes').innerHTML = 
+                `<strong>${bedtimes[0]}</strong> (6 cycles - best)<br>
+                 <strong>${bedtimes[1]}</strong> (5 cycles - good)<br>
+                 <strong>${bedtimes[2]}</strong> (4 cycles - minimum)`;
+            
+            document.getElementById('calcResult').classList.add('show');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                document.querySelector('.nav-links').classList.remove('active');
+                const menuIcon = document.querySelector('#mobileMenu i');
+                if (menuIcon.classList.contains('fa-times')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Newsletter
+        document.querySelector('.newsletter form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Sweet dreams! Sleep tips coming to ${email}`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

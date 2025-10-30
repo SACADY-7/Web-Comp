@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydrateWell - Drink Smart, Live Well</title>
+    <meta name="description" content="Discover why water is your body’s best friend. Learn the dangers of dehydration, how much to drink, and simple ways to stay hydrated every day.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;      /* Deep ocean blue */
+            --secondary: #3b82f6;    /* Bright sky blue */
+            --accent: #60a5fa;       /* Soft blue accent */
+            --success: #10b981;      /* Emerald green */
+            --light: #f8fafc;        /* Crisp white */
+            --lighter: #eff6ff;      /* Very light blue */
+            --dark: #1e293b;         /* Deep slate */
+            --gray: #64748b;         /* Cool gray */
+            --highlight: #93c5fd;    /* Light blue highlight */
+            --warning: #f59e0b;      /* Amber warning */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, var(--lighter));
+            color: var(--dark);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.3rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.2);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.6rem 0;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background: var(--highlight);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: white;
+        }
+        
+        .hero {
+            max-width: 1200px;
+            margin: 3.5rem auto;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.3rem;
+            color: var(--primary);
+            text-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--gray);
+            max-width: 850px;
+            margin: 0 auto 2.8rem;
+            font-weight: 500;
+        }
+        
+        .cta-button {
+            background: var(--success);
+            color: white;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            border: 3px solid transparent;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 35px rgba(16, 185, 129, 0.5);
+            background: white;
+            color: var(--success);
+            border-color: var(--success);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin: 5.5rem 0;
+            padding: 3.5rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.7rem;
+            text-align: center;
+            margin-bottom: 2.8rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 130px;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            display: block;
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 7px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            transition: width 0.3s;
+        }
+        
+        .card:hover::before {
+            width: 12px;
+        }
+        
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.18);
+        }
+        
+        .card-icon {
+            font-size: 3.3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 3px 6px rgba(37, 99, 235, 0.2));
+        }
+        
+        .card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .card ul {
+            padding-left: 1.5rem;
+            margin: 1.2rem 0;
+        }
+        
+        .card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .card li::marker {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .dehydration-risks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .risk-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.15);
+            transition: all 0.3s;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+        
+        .risk-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(245, 158, 11, 0.2);
+        }
+        
+        .risk-icon {
+            font-size: 3.2rem;
+            color: var(--warning);
+            margin-bottom: 1rem;
+        }
+        
+        .risk-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .hydration-chart {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.12);
+            margin: 3rem 0;
+            text-align: center;
+            border: 2px solid rgba(96, 165, 250, 0.25);
+        }
+        
+        .chart-container {
+            width: 300px;
+            height: 300px;
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .water-drop {
+            width: 180px;
+            height: 220px;
+            background: conic-gradient(
+                var(--secondary) 0% 65%,
+                var(--accent) 65% 100%
+            );
+            clip-path: path('M90,10 C50,10 10,50 10,100 C10,150 40,210 90,220 C140,210 170,150 170,100 C170,50 130,10 90,10 Z');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.25);
+        }
+        
+        .drop-center {
+            width: 140px;
+            height: 180px;
+            background: white;
+            clip-path: path('M70,10 C40,10 15,40 15,80 C15,120 35,170 70,180 C105,170 125,120 125,80 C125,40 100,10 70,10 Z');
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .drop-center span {
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+        
+        .chart-labels {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .chart-label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        
+        .label-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        
+        .hydration-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        
+        .tip-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 1.8rem;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 6px 22px rgba(59, 130, 246, 0.15);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(59, 130, 246, 0.2);
+        }
+        
+        .tip-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .hydration-calculator {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.12);
+            margin: 3.5rem 0;
+            border: 2px solid rgba(96, 165, 250, 0.25);
+            text-align: center;
+        }
+        
+        .calc-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 2rem 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .calc-group {
+            flex: 1;
+            min-width: 180px;
+        }
+        
+        .calc-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .calc-group input,
+        .calc-group select {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .calc-group input:focus,
+        .calc-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+        
+        .calc-result {
+            margin-top: 2rem;
+            padding: 1.8rem;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 16px;
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .calc-result.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 6rem 2.5rem;
+            margin: 6rem 0;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.25);
+        }
+        
+        .quote {
+            max-width: 950px;
+            margin: 0 auto;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: white;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            line-height: 1.9;
+            font-weight: 500;
+        }
+        
+        .quote-author {
+            margin-top: 1.8rem;
+            font-weight: 700;
+            color: #dbeafe;
+            font-size: 1.2rem;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+        }
+        
+        .faq-question {
+            padding: 1.6rem 2.2rem;
+            background: linear-gradient(to right, #f8fafc, #f0f9ff);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+        }
+        
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .faq-question.active::after {
+            content: '\f077';
+            color: var(--secondary);
+        }
+        
+        .faq-answer {
+            padding: 0 2.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: white;
+        }
+        
+        .faq-answer.active {
+            padding: 2.2rem;
+            max-height: 600px;
+        }
+        
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 2.2rem;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(37, 99, 235, 0.16);
+        }
+        
+        .resource-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.3rem;
+        }
+        
+        .resource-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+        }
+        
+        .resource-card a:hover {
+            color: var(--secondary);
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4.5rem 2.5rem;
+            border-radius: 32px;
+            text-align: center;
+            margin: 6rem 0;
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+        }
+        
+        .newsletter h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 1.3rem;
+            color: white;
+        }
+        
+        .newsletter p {
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.2rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter form {
+            max-width: 650px;
+            margin: 2.2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .newsletter button {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.2rem;
+            border-radius: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            font-size: 1.1rem;
+        }
+        
+        .newsletter button:hover {
+            background: white;
+            color: var(--success);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(16, 185, 129, 0.5);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1e2a44);
+            color: white;
+            padding: 5rem 1rem 2.5rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 3.5rem;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            padding: 0.3rem 0;
+            font-size: 1.05rem;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 0.8rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.3rem;
+            margin-top: 1.8rem;
+        }
+        
+        .social-links a {
+            width: 52px;
+            height: 52px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(8px);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .calc-inputs {
+                flex-direction: column;
+            }
+            
+            .newsletter form {
+                flex-direction: column;
+            }
+            
+            .newsletter input,
+            .newsletter button {
+                width: 100%;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">HydrateWell</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#risks">Risks</a></li>
+                <li><a href="#intake">How Much</a></li>
+                <li><a href="#signs">Signs</a></li>
+                <li><a href="#tips">Tips</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <h1>Water: Your Body’s Best Friend</h1>
+        <p>60% of your body is water. Skip it, and everything slows down. Drink enough, and you’ll feel sharper, stronger, and happier.</p>
+        <a href="#calculator" class="cta-button">Find My Water Goal</a>
+    </section>
+
+    <!-- Dehydration Risks -->
+    <section id="risks">
+        <div class="container">
+            <h2 class="section-title">What Happens When You Don’t Drink Enough</h2>
+            <div class="dehydration-risks">
+                <div class="risk-card">
+                    <i class="fas fa-head-side-cough risk-icon"></i>
+                    <h4>Brain Fog</h4>
+                    <p>Just <strong>2% dehydration</strong> = 20% drop in focus. Like trying to work with a foggy windshield.</p>
+                </div>
+                <div class="risk-card">
+                    <i class="fas fa-battery-low risk-icon"></i>
+                    <h4>Constant Fatigue</h4>
+                    <p>Low water = thick blood = tired heart. You feel exhausted even after 8 hours sleep.</p>
+                </div>
+                <div class="risk-card">
+                    <i class="fas fa-kidneys risk-icon"></i>
+                    <h4>Kidney Stress</h4>
+                    <p>Dehydrated kidneys work 2x harder. Risk of stones up <strong>30%</strong> with chronic low intake.</p>
+                </div>
+                <div class="risk-card">
+                    <i class="fas fa-weight risk-icon"></i>
+                    <h4>Weight Gain</h4>
+                    <p>Thirst = hunger in disguise. Many overeat because they’re actually thirsty.</p>
+                </div>
+                <div class="risk-card">
+                    <i class="fas fa-temperature-high risk-icon"></i>
+                    <h4>Overheating</h4>
+                    <p>No water = no sweat = body temp rises. Heatstroke risk skyrockets.</p>
+                </div>
+                <div class="risk-card">
+                    <i class="fas fa-joint risk-icon"></i>
+                    <h4>Joint Pain</h4>
+                    <p>Cartilage needs water to stay cushy. Dry joints = creaky, painful movement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Intake Chart -->
+    <section id="intake">
+        <div class="container">
+            <h2 class="section-title">How Much Water Do You Need?</h2>
+            <div class="hydration-chart">
+                <h3 style="color:var(--primary); margin-bottom:1rem;">Daily Water Needs</h3>
+                <div class="chart-container">
+                    <div class="water-drop">
+                        <div class="drop-center">
+                            <span>8</span>
+                            <div>Glasses<br>(~2L)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-labels">
+                    <div class="chart-label"><div class="label-dot" style="background:var(--secondary);"></div> Women: 2.0–2.7L</div>
+                    <div class="chart-label"><div class="label-dot" style="background:var(--accent);"></div> Men: 2.5–3.7L</div>
+                </div>
+                <p style="margin-top:1.5rem; color:var(--gray);"><small>Adjust for exercise, heat, pregnancy, or illness.</small></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dehydration Signs -->
+    <section id="signs">
+        <div class="container">
+            <h2 class="section-title">Spot the Warning Signs</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-tint card-icon"></i>
+                    <h3>Dark Urine</h3>
+                    <p>Pale yellow = hydrated. Dark yellow/amber = drink now!</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-dizzy card-icon"></i>
+                    <h3>Dizziness</h3>
+                    <p>Standing up makes you woozy? Low blood volume from dehydration.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-frown card-icon"></i>
+                    <h3>Dry Mouth & Skin</h3>
+                    <p>Skin loses bounce. Lips crack. Thirsty all the time.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-headache card-icon"></i>
+                    <h3>Headaches</h3>
+                    <p>Brain shrinks slightly when dehydrated → painful pressure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hydration Tips -->
+    <section id="tips">
+        <div class="container">
+            <h2 class="section-title">8 Easy Ways to Drink More</h2>
+            <div class="hydration-tips">
+                <div class="tip-card">
+                    <i class="fas fa-bottle-water tip-icon"></i>
+                    <h4>Carry a Bottle</h4>
+                    <p>Keep it visible. You’ll sip 30% more automatically.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-apple-alt tip-icon"></i>
+                    <h4>Eat Water-Rich Foods</h4>
+                    <p>Cucumber (96%), watermelon (92%), oranges (86%) = tasty hydration.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-clock tip-icon"></i>
+                    <h4>2-Glass Rule</h4>
+                    <p>Drink 2 glasses when you wake up. Sets the tone.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-utensils tip-icon"></i>
+                    <h4>With Every Meal</h4>
+                    <p>1 glass before, during, after meals = 3+ glasses daily.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-bell tip-icon"></i>
+                    <h4>Set Phone Reminders</h4>
+                    <p>Every 2 hours: “Time to hydrate!”</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-lemon tip-icon"></i>
+                    <h4>Add Flavor</h4>
+                    <p>Lemon, mint, cucumber, berries — makes water fun.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-running tip-icon"></i>
+                    <h4>Post-Workout</h4>
+                    <p>16–24 oz for every pound lost in sweat.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-chart-line tip-icon"></i>
+                    <h4>Track It</h4>
+                    <p>Apps or mark bottle with time goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator -->
+    <section id="calculator">
+        <div class="container">
+            <h2 class="section-title">Your Personal Water Goal</h2>
+            <div class="hydration-calculator">
+                <h3 style="color:var(--primary); margin-bottom:1rem;">Answer 3 quick questions</h3>
+                <div class="calc-inputs">
+                    <div class="calc-group">
+                        <label>Weight (lbs)</label>
+                        <input type="number" id="weight" placeholder="150" min="50" max="400">
+                    </div>
+                    <div class="calc-group">
+                        <label>Activity Level</label>
+                        <select id="activity">
+                            <option>Sedentary (desk job)</option>
+                            <option>Moderate (walks, light exercise)</option>
+                            <option>Active (sports, heavy labor)</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Climate</label>
+                        <select id="climate">
+                            <option>Temperate</option>
+                            <option>Hot/Humid</option>
+                            <option>Cold/Dry</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="calculateWater()">Calculate My Goal</button>
+                <div id="calcResult" class="calc-result">
+                    <h4>Your Daily Water Target</h4>
+                    <div id="resultText"></div>
+                    <p style="margin-top:1rem; color:var(--primary); font-weight:600;">
+                        <i class="fas fa-check-circle"></i> Start sipping — your body thanks you!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote">
+                "Pure water is the world’s first and foremost medicine. Drink it like your life depends on it — because it does."
+            </div>
+            <div class="quote-author">— Slovakian Proverb</div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Water Myths Busted</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is 8 glasses a hard rule?<div class="faq-answer">
+                    <p><strong>No!</strong> It’s a guideline. Your needs depend on:</p>
+                    <ul>
+                        <li>Body size</li>
+                        <li>Activity</li>
+                        <li>Climate</li>
+                        <li>Diet (soups, fruits count!)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Does coffee dehydrate you?<div class="faq-answer">
+                    <p><strong>Myth!</strong> Coffee, tea, and milk <strong>count</strong> toward hydration. Just don’t replace all water with them.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I drink too much water?<div class="faq-answer">
+                    <p><strong>Rarely.</strong> Over 1 gallon/hour can dilute sodium (hyponatremia). Spread intake throughout the day.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What about sparkling water?<div class="faq-answer">
+                    <p><strong>Yes!</strong> Plain sparkling water hydrates just as well. Avoid sugary sodas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources">
+        <div class="container">
+            <h2 class="section-title">Hydration Tools</h2>
+            
+            <div class="resources">
+                <div class="resource-card">
+                    <i class="fas fa-mobile-alt resource-icon"></i>
+                    <h4>Water Apps</h4>
+                    <p><a href="https://www.waterminder.com/" target="_blank">WaterMinder</a> | <a href="https://plantnanny.app/" target="_blank">Plant Nanny</a></p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-bottle-water resource-icon"></i>
+                    <h4>Smart Bottles</h4>
+                    <p><a href="https://hidratespark.com/" target="_blank">HidrateSpark</a> (tracks & glows)</p>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-chart-bar resource-icon"></i>
+                    <h4>Urine Color Chart</h4>
+                    <p><a href="https://www.healthline.com/health/urine-color-chart" target="_blank">Healthline Guide</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Stay Hydrated All Week</h3>
+            <p>Get daily water reminders, flavor recipes, and science-backed hydration tips in your inbox.</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Keep Me Hydrated</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>HydrateWell</h4>
+                    <p>Your simple guide to drinking enough water for energy, focus, and health.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Learn More</h4>
+                    <ul>
+                        <li><a href="#risks">Dehydration Risks</a></li>
+                        <li><a href="#intake">Daily Needs</a></li>
+                        <li><a href="#calculator">Water Calculator</a></li>
+                        <li><a href="#tips">Hydration Hacks</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Daily Boosts</h4>
+                    <ul>
+                        <li><a href="#">Morning Ritual</a></li>
+                        <li><a href="#">Workday Hydration</a></li>
+                        <li><a href="#">Workout Recovery</a></li>
+                        <li><a href="#">Bedtime Wind-Down</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Submit Tip</a></li>
+                        <li><a href="#">Partner with Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 HydrateWell. Made with 💧 for your best health.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // FAQ
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('active'));
+                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+                
+                if (!isActive) {
+                    answer.classList.add('active');
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Water Calculator
+        function calculateWater() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const activity = document.getElementById('activity').value;
+            const climate = document.getElementById('climate').value;
+            
+            if (!weight || weight < 50) {
+                alert('Please enter a valid weight (50+ lbs)');
+                return;
+            }
+            
+            let base = weight / 2; // oz per lb
+            let multiplier = 1;
+            
+            if (activity.includes('Moderate')) multiplier = 1.2;
+            else if (activity.includes('Active')) multiplier = 1.4;
+            
+            if (climate.includes('Hot')) multiplier *= 1.3;
+            else if (climate.includes('Cold')) multiplier *= 1.1;
+            
+            let totalOz = Math.round(base * multiplier);
+            let glasses = Math.round(totalOz / 8);
+            let liters = (totalOz / 33.8).toFixed(1);
+            
+            document.getElementById('resultText').innerHTML = `
+                <p style="font-size:1.4rem; margin:1rem 0;"><strong>${totalOz} oz</strong> (${glasses} glasses)</p>
+                <p>or <strong>${liters} liters</strong> per day</p>
+                <p style="margin-top:1rem; color:var(--gray);"><small>Spread throughout the day. Listen to your body!</small></p>
+            `;
+            document.getElementById('calcResult').classList.add('show');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                document.querySelector('.nav-links').classList.remove('active');
+                const menuIcon = document.querySelector('#mobileMenu i');
+                if (menuIcon.classList.contains('fa-times')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Newsletter
+        document.querySelector('.newsletter form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            alert(`Hydration tips coming to ${email} 💧`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
